@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <title>Сообщения</title>
+
+    <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css"/>
+    <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
+</head>
+<body>
+<script>
+    $(document).ready(function() {
+        var table = $('#messagesTable').DataTable();
+
+        $('#messagesTable tbody').on( 'click', 'tr', function () {
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        } );
+
+        $('#delete_button').click( function () {
+            var msgId = table.row('.selected').data()[0];
+            table.row('.selected').remove().draw(false);
+            $.ajax({
+                type : "DELETE",
+                url : "/manage/messages/" + msgId,
+                beforeSend: function(request) {
+                    let token = $("meta[name='_csrf']").attr("content");
+                    let header = $("meta[name='_csrf_header']").attr("content");
+                    request.setRequestHeader(header, token);
+                },
+                success: function (result) {
+                    console.log(result);
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            });
+        } );
+    } );
+</script>
+
+<h1>Управление сообщениями</h1>
+<br>
+<h3>Все сообщения</h3>
+<br />
+<button id="delete_button">Удалить выбранную строку</button>
+<table border="1" id="messagesTable" class="display">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Имя</td>
+        <td>Email</td>
+        <td>Телефон</td>
+        <td>Сообщение</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="msg : ${msgList}">
+        <td th:text="${msg.id}">msgId</td>
+        <td th:text="${msg.name}">name</td>
+        <td th:text="${msg.email}">email</td>
+        <td th:text="${msg.phone}">phone</td>
+        <td th:text="${msg.message}">Message</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
