@@ -22,9 +22,8 @@ public class DachaHttpErrorController implements ErrorController {
         Integer statusCode = 0;
         if (status != null) {
             statusCode = Integer.valueOf(status.toString());
-
             if (statusCode == HttpStatus.NOT_FOUND.value()) {
-                logger.info("Happened normal: " + HttpStatus.valueOf(statusCode).toString());
+                logger.warn("Not found: " + request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI));
                 return "404";
             } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
                 return "error";

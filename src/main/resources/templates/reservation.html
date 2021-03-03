@@ -39,91 +39,7 @@
 	<div th:insert="index.html :: header"></div>
 
 	<!-- Sidebar -->
-	<aside class="sidebar trans-0-4">
-		<!-- Button Hide sidebar -->
-		<button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
-
-		<!-- - -->
-		<ul class="menu-sidebar p-t-95 p-b-70">
-			<li class="t-center m-b-13">
-				<a href="index.html" class="txt19">Home</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="menu.html" class="txt19">Menu</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="gallery.html" class="txt19">Gallery</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="about.html" class="txt19">About</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="blog.html" class="txt19">Blog</a>
-			</li>
-
-			<li class="t-center m-b-33">
-				<a href="contact.html" class="txt19">Contact</a>
-			</li>
-
-			<li class="t-center">
-				<!-- Button3 -->
-				<a href="reservation.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
-					Reservation
-				</a>
-			</li>
-		</ul>
-
-		<!-- - -->
-		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
-			<!-- - -->
-			<h4 class="txt20 m-b-33">
-				Gallery
-			</h4>
-
-			<!-- Gallery -->
-			<div class="wrap-gallery-sidebar flex-w">
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-01.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-01.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-02.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-02.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-03.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-03.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-05.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-05.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-06.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-06.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-07.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-07.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-09.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-09.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-10.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-10.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-11.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-11.jpg" alt="GALLERY">
-				</a>
-			</div>
-		</div>
-	</aside>
+	<div th:insert="index.html :: sidebar"></div>
 
 
 	<!-- Title Page -->
@@ -172,15 +88,30 @@
 								<div class="wrap-inputtime size12 bo2 bo-rad-10 m-t-3 m-b-23">
 									<!-- Select2 -->
 									<select class="selection-1" name="time" th:field="*{time}">
-										<option th:value="'9:00'">9:00</option>
-										<option th:value="'9:30'">9:30</option>
-										<option th:value="'10:00'">10:00</option>
-										<option th:value="'10:30'">10:30</option>
-										<option th:value="'11:00'">11:00</option>
-										<option th:value="'11:30'">11:30</option>
 										<option th:value="'12:00'">12:00</option>
 										<option th:value="'12:30'">12:30</option>
 										<option th:value="'13:00'">13:00</option>
+										<option th:value="'13:30'">13:30</option>
+										<option th:value="'14:00'">14:00</option>
+										<option th:value="'14:30'">14:30</option>
+										<option th:value="'15:00'">15:00</option>
+										<option th:value="'15:30'">15:30</option>
+										<option th:value="'16:00'">16:00</option>
+										<option th:value="'16:30'">16:30</option>
+										<option th:value="'17:00'">17:00</option>
+										<option th:value="'17:30'">17:30</option>
+										<option th:value="'18:00'">18:00</option>
+										<option th:value="'18:30'">18:30</option>
+										<option th:value="'19:00'">19:00</option>
+										<option th:value="'19:30'">19:30</option>
+										<option th:value="'20:00'">20:00</option>
+										<option th:value="'20:30'">20:30</option>
+										<option th:value="'21:00'">21:00</option>
+										<option th:value="'21:30'">21:30</option>
+										<option th:value="'22:00'">22:00</option>
+										<option th:value="'22:30'">22:30</option>
+										<option th:value="'23:00'">23:00</option>
+										<option th:value="'23:30'">23:30</option>
 									</select>
 								</div>
 							</div>
@@ -209,7 +140,7 @@
 								</span>
 
 								<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name" th:fiedl="*{name}">
+									<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name" th:field="*{name}">
 								</div>
 							</div>
 

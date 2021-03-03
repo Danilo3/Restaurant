@@ -36,4 +36,8 @@ build/
 .vscode/
 
 ### logs ###
-dacha.log
+*.log
+
+
+### files ###
+*.pdf

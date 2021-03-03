@@ -3,7 +3,6 @@
 <head>
 	<title>Ресторан Дача</title>
 	<meta charset="UTF-8">
-
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
@@ -38,13 +37,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <!--===============================================================================================-->
 </head>
-<!-- TODO: DELETE ME -->
-<script type="application/javascript">
- function warning() {
- 	alert("Сайт находится в разработке, приносим извинения. Нажмите ОК чтобы увидеть текущую версию.");
- }
+
 </script>
-<body class="animsition" onload="warning()">
+<body class="animsition" >
 
 	<!-- Header -->
 	<div th:fragment="header">
@@ -110,6 +105,7 @@
 	</div>
 
 	<!-- Sidebar -->
+	<div th:fragment="sidebar">
 	<aside class="sidebar trans-0-4">
 		<!-- Button Hide sidebar -->
 		<button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
@@ -193,6 +189,7 @@
 			</div>
 		</div>
 	</aside>
+	</div>
 
 	<!-- Slide1 -->
 	<section class="section-slide">
@@ -319,7 +316,7 @@
 
 							<div class="wrap-text-blo1 p-t-35">
 								<a href="#"><h4 class="txt5 color0-hov trans-0-4 m-b-13">
-									Romantic Restaurant
+									Романтичный ресторан
 								</h4></a>
 
 								<p class="m-b-20">
@@ -375,13 +372,12 @@
 								</p>
 
 								<a href="#" class="txt4">
-									Learn More
+									Узнать больше
 									<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
 								</a>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</div>
@@ -433,7 +429,7 @@
 								<img src="/images/our-menu-13.jpg" alt="IMG-MENU">
 
 								<!-- Button2 -->
-								<a href="#" class="btn2 flex-c-m txt5 ab-c-m size6">
+								<a href="/menu" class="btn2 flex-c-m txt5 ab-c-m size6">
 									Бизнес-Ланч
 								</a>
 							</div>
@@ -449,7 +445,7 @@
 								<img src="/images/our-menu-08.jpg" alt="IMG-MENU">
 
 								<!-- Button2 -->
-								<a href="#" class="btn2 flex-c-m txt5 ab-c-m size7">
+								<a href="/menu" class="btn2 flex-c-m txt5 ab-c-m size7">
 									Напитки
 								</a>
 							</div>
@@ -461,7 +457,7 @@
 								<img src="/images/our-menu-10.jpg" alt="IMG-MENU">
 
 								<!-- Button2 -->
-								<a href="#" class="btn2 flex-c-m txt5 ab-c-m size8">
+								<a href="/menu" class="btn2 flex-c-m txt5 ab-c-m size8">
 									Закуски
 								</a>
 							</div>
@@ -473,7 +469,7 @@
 								<img src="/images/our-menu-16.jpg" alt="IMG-MENU">
 
 								<!-- Button2 -->
-								<a href="#" class="btn2 flex-c-m txt5 ab-c-m size9">
+								<a href="/menu" class="btn2 flex-c-m txt5 ab-c-m size9">
 									Десерты
 								</a>
 							</div>
@@ -481,7 +477,15 @@
 					</div>
 				</div>
 			</div>
-
+			<div class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
+				<div class="pos-relative m-5">
+					<form action="/menu/download/">
+						<button type="submit" class="btn3 flex-c-m size17 txt20 trans-0-4">
+							Скачать меню
+						</button>
+					</form>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -510,7 +514,7 @@
 								<a href="#" class="wrap-pic-blo2 bg1-blo2" style="background-image: url(/images/event-02.jpg);">
 									<div class="time-event size10 txt6 effect1">
 										<span class="txt-effect1 flex-c-m t-center">
-											08:00 PM Tuesday - 21 November 2018
+											08:00 PM Tuesday - 21 November 2021
 										</span>
 									</div>
 								</a>
@@ -518,54 +522,12 @@
 								<!-- Text block2 -->
 								<div class="wrap-text-blo2 flex-col-c-m p-l-40 p-r-40 p-t-45 p-b-30">
 									<h4 class="tit7 t-center m-b-10">
-										Особенные инные ночи
+										Особенные винные ночи
 									</h4>
 
 									<p class="t-center">
 										Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia
 									</p>
-
-									<div class="flex-sa-m flex-w w-full m-t-40">
-										<div class="size11 flex-col-c-m">
-											<span class="dis-block t-center txt7 m-b-2 days">
-												25
-											</span>
-
-											<span class="dis-block t-center txt8">
-												Days
-											</span>
-										</div>
-
-										<div class="size11 flex-col-c-m">
-											<span class="dis-block t-center txt7 m-b-2 hours">
-												12
-											</span>
-
-											<span class="dis-block t-center txt8">
-												Hours
-											</span>
-										</div>
-
-										<div class="size11 flex-col-c-m">
-											<span class="dis-block t-center txt7 m-b-2 minutes">
-												59
-											</span>
-
-											<span class="dis-block t-center txt8">
-												Minutes
-											</span>
-										</div>
-
-										<div class="size11 flex-col-c-m">
-											<span class="dis-block t-center txt7 m-b-2 seconds">
-												56
-											</span>
-
-											<span class="dis-block t-center txt8">
-												Seconds
-											</span>
-										</div>
-									</div>
 
 									<a href="#" class="txt4 m-t-40">
 										Посмотреть детали
@@ -583,11 +545,11 @@
 							<!-- - -->
 							<div class="title-event t-center m-b-52">
 								<span class="tit2 p-l-15 p-r-15">
-									Upcomming
+									Предстоящие
 								</span>
 
 								<h3 class="tit6 t-center p-l-15 p-r-15 p-t-3">
-									Events
+									События
 								</h3>
 							</div>
 
@@ -597,7 +559,7 @@
 								<a href="#" class="wrap-pic-blo2 bg2-blo2" style="background-image: url(/images/event-06.jpg);">
 									<div class="time-event size10 txt6 effect1">
 										<span class="txt-effect1 flex-c-m">
-											08:00 PM Tuesday - 21 November 2018
+											08:00 PM Tuesday - 21 November 2021
 										</span>
 									</div>
 								</a>
@@ -605,57 +567,15 @@
 								<!-- Text block2 -->
 								<div class="wrap-text-blo2 flex-col-c-m p-l-40 p-r-40 p-t-45 p-b-30">
 									<h4 class="tit7 t-center m-b-10">
-										Wines during specific nights
+										Винные вечера на Даче
 									</h4>
 
 									<p class="t-center">
 										Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia
 									</p>
 
-									<div class="flex-sa-m flex-w w-full m-t-40">
-										<div class="size11 flex-col-c-m">
-											<span class="dis-block t-center txt7 m-b-2 days">
-												25
-											</span>
-
-											<span class="dis-block t-center txt8">
-												Days
-											</span>
-										</div>
-
-										<div class="size11 flex-col-c-m">
-											<span class="dis-block t-center txt7 m-b-2 hours">
-												12
-											</span>
-
-											<span class="dis-block t-center txt8">
-												Hours
-											</span>
-										</div>
-
-										<div class="size11 flex-col-c-m">
-											<span class="dis-block t-center txt7 m-b-2 minutes">
-												59
-											</span>
-
-											<span class="dis-block t-center txt8">
-												Minutes
-											</span>
-										</div>
-
-										<div class="size11 flex-col-c-m">
-											<span class="dis-block t-center txt7 m-b-2 seconds">
-												56
-											</span>
-
-											<span class="dis-block t-center txt8">
-												Seconds
-											</span>
-										</div>
-									</div>
-
 									<a href="#" class="txt4 m-t-40">
-										View Details
+										Посмотреть детали
 										<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
 									</a>
 								</div>
@@ -684,7 +604,7 @@
 								<a href="#" class="wrap-pic-blo2 bg3-blo2" style="background-image: url(/images/event-01.jpg);">
 									<div class="time-event size10 txt6 effect1">
 										<span class="txt-effect1 flex-c-m">
-											08:00 PM Tuesday - 21 November 2018
+											08:00 PM Tuesday - 21 November 2021
 										</span>
 									</div>
 								</a>
@@ -699,50 +619,8 @@
 										Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia
 									</p>
 
-									<div class="flex-sa-m flex-w w-full m-t-40">
-										<div class="size11 flex-col-c-m">
-											<span class="dis-block t-center txt7 m-b-2 days">
-												25
-											</span>
-
-											<span class="dis-block t-center txt8">
-												Days
-											</span>
-										</div>
-
-										<div class="size11 flex-col-c-m">
-											<span class="dis-block t-center txt7 m-b-2 hours">
-												12
-											</span>
-
-											<span class="dis-block t-center txt8">
-												Hours
-											</span>
-										</div>
-
-										<div class="size11 flex-col-c-m">
-											<span class="dis-block t-center txt7 m-b-2 minutes">
-												59
-											</span>
-
-											<span class="dis-block t-center txt8">
-												Minutes
-											</span>
-										</div>
-
-										<div class="size11 flex-col-c-m">
-											<span class="dis-block t-center txt7 m-b-2 seconds">
-												56
-											</span>
-
-											<span class="dis-block t-center txt8">
-												Seconds
-											</span>
-										</div>
-									</div>
-
 									<a href="#" class="txt4 m-t-40">
-										View Details
+										Посмотреть детали
 										<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
 									</a>
 								</div>
@@ -772,7 +650,7 @@
 						</h3>
 					</div>
 
-					<form class="wrap-form-booking">
+					<form class="wrap-form-booking" action="/reserve" th:object="${tablebooking}" method="post">
 						<div class="row">
 							<div class="col-md-6">
 								<!-- Date -->
@@ -781,7 +659,7 @@
 								</span>
 
 								<div class="wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input class="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="text" name="date">
+									<input class="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="text" name="date" th:field="*{date}">
 									<i class="btn-calendar fa fa-calendar ab-r-m hov-pointer m-r-18" aria-hidden="true"></i>
 								</div>
 
@@ -792,26 +670,31 @@
 
 								<div class="wrap-inputtime size12 bo2 bo-rad-10 m-t-3 m-b-23">
 									<!-- Select2 -->
-									<select class="selection-1" name="time">
-										<option>9:00</option>
-										<option>9:30</option>
-										<option>10:00</option>
-										<option>10:30</option>
-										<option>11:00</option>
-										<option>11:30</option>
-										<option>12:00</option>
-										<option>12:30</option>
-										<option>13:00</option>
-										<option>13:30</option>
-										<option>14:00</option>
-										<option>14:30</option>
-										<option>15:00</option>
-										<option>15:30</option>
-										<option>16:00</option>
-										<option>16:30</option>
-										<option>17:00</option>
-										<option>17:30</option>
-										<option>18:00</option>
+									<select class="selection-1" name="time" th:field="*{time}">
+									<option th:value="'12:00'">12:00</option>
+									<option th:value="'12:30'">12:30</option>
+									<option th:value="'13:00'">13:00</option>
+									<option th:value="'13:30'">13:30</option>
+									<option th:value="'14:00'">14:00</option>
+									<option th:value="'14:30'">14:30</option>
+									<option th:value="'15:00'">15:00</option>
+									<option th:value="'15:30'">15:30</option>
+									<option th:value="'16:00'">16:00</option>
+									<option th:value="'16:30'">16:30</option>
+									<option th:value="'17:00'">17:00</option>
+									<option th:value="'17:30'">17:30</option>
+									<option th:value="'18:00'">18:00</option>
+									<option th:value="'18:30'">18:30</option>
+									<option th:value="'19:00'">19:00</option>
+									<option th:value="'19:30'">19:30</option>
+									<option th:value="'20:00'">20:00</option>
+									<option th:value="'20:30'">20:30</option>
+									<option th:value="'21:00'">21:00</option>
+									<option th:value="'21:30'">21:30</option>
+									<option th:value="'22:00'">22:00</option>
+									<option th:value="'22:30'">22:30</option>
+									<option th:value="'23:00'">23:00</option>
+									<option th:value="'23:30'">23:30</option>
 									</select>
 								</div>
 
@@ -822,19 +705,9 @@
 
 								<div class="wrap-inputpeople size12 bo2 bo-rad-10 m-t-3 m-b-23">
 									<!-- Select2 -->
-									<select class="selection-1" name="people">
-										<option>1 person</option>
-										<option>2 people</option>
-										<option>3 people</option>
-										<option>4 people</option>
-										<option>5 people</option>
-										<option>6 people</option>
-										<option>7 people</option>
-										<option>8 people</option>
-										<option>9 people</option>
-										<option>10 people</option>
-										<option>11 people</option>
-										<option>12 people</option>
+									<select class="selection-1" name="people" th:field="*{personCount}">
+										<option th:each="i : ${#numbers.sequence(0, 15)}" th:value="${i}" th:text="${i}">
+										</option>
 									</select>
 								</div>
 							</div>
@@ -846,7 +719,7 @@
 								</span>
 
 								<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name">
+									<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name" th:field="*{name}">
 								</div>
 
 								<!-- Phone -->
@@ -855,7 +728,7 @@
 								</span>
 
 								<div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone">
+									<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone" th:field="*{phone}">
 								</div>
 
 								<!-- Email -->
@@ -864,7 +737,7 @@
 								</span>
 
 								<div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email">
+									<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email" th:field="*{email}">
 								</div>
 							</div>
 						</div>
@@ -912,7 +785,7 @@
 
 							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
 								<p class="t-center txt12 size15 m-l-r-auto">
-									“ We are lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus sem, mattis in pre-tium nec, fermentum viverra dui ”
+									"Ratatouille the best"
 								</p>
 
 								<div class="star-review fs-18 color0 flex-c-m m-t-12">
@@ -940,8 +813,7 @@
 
 							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
 								<p class="t-center txt12 size15 m-l-r-auto">
-									“ We are lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus sem, mattis in pre-tium nec, fermentum viverra dui ”
-								</p>
+									По мне так лучший ресторан в городе. Очень вкусное классическое меню, комуникабельные и вежливые официанты, спокойная (по домашнему обстановка). Итог: все СУПЕР!!!								</p>
 
 								<div class="star-review fs-18 color0 flex-c-m m-t-12">
 									<i class="fa fa-star" aria-hidden="true"></i>
@@ -968,7 +840,7 @@
 
 							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
 								<p class="t-center txt12 size15 m-l-r-auto">
-									“ We are lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus sem, mattis in pre-tium nec, fermentum viverra dui ”
+									Данный ресторан-это прекрасное место для отдыха всей семьей.
 								</p>
 
 								<div class="star-review fs-18 color0 flex-c-m m-t-12">
@@ -1151,7 +1023,7 @@
 					<ul class="m-b-70">
 						<li class="txt14 m-b-14">
 							<i class="fa fa-map-marker fs-16 dis-inline-block size19" aria-hidden="true"></i>
-							г.Дзержинск,проспект Циолковского,65a
+							г.Дзержинск, проспект Циолковского, 65a
 						</li>
 
 						<li class="txt14 m-b-14">
@@ -1161,7 +1033,7 @@
 
 						<li class="txt14 m-b-14">
 							<i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
-							https://vk.com/dacharestaurant
+							contact@dacha-restaurant.ru
 						</li>
 					</ul>
 
@@ -1172,7 +1044,7 @@
 
 					<ul>
 						<li class="txt14">
-							12:00 – 24:00 PM
+							12:00 – 24:00
 						</li>
 
 						<li class="txt14">
@@ -1184,46 +1056,24 @@
 				<div class="col-sm-6 col-md-4 p-t-50">
 					<!-- - -->
 					<h4 class="txt13 m-b-33">
-						Последнее из инстаграм
+						Последнее из Вконтакте
 					</h4>
 
 					<div class="m-b-25">
 						<span class="fs-13 color2 m-r-5">
-							<i class="fa fa-twitter" aria-hidden="true"></i>
+							<i class="fa fa-vk" aria-hidden="true"></i>
 						</span>
-
-						<p class="txt14 m-b-18">
-							23 февраля @just_duet_nn снова с нами! Ждем Вас в 19.00
-							Бронирование по телефону: 370-100
+						<div id="imgFromVk"></div>
+						<p class="txt14 m-b-18" id="txtFromVk">
 							<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="txt15">
 								Подробнее
 							</a>
 						</p>
 
-						<span class="txt16">
+						<span class="txt16" id="dateFromVk">
 							23 Feb 2021
 						</span>
 					</div>
-
-<!--					<div>-->
-<!--						<span class="fs-13 color2 m-r-5">-->
-<!--							<i class="fa fa-twitter" aria-hidden="true"></i>-->
-<!--						</span>-->
-<!--						<a href="#" class="txt15">-->
-<!--							@text-->
-<!--						</a>-->
-
-<!--						<p class="txt14 m-b-18">-->
-<!--							Activello is a good option. It has a slider built into that displays-->
-<!--							<a href="#" class="txt15">-->
-<!--								https://buff.ly/2zaSfAQ-->
-<!--							</a>-->
-<!--						</p>-->
-
-<!--						<span class="txt16">-->
-<!--							21 Dec 2017-->
-<!--						</span>-->
-<!--					</div>-->
 				</div>
 
 				<div class="col-sm-6 col-md-4 p-t-50">
@@ -1297,12 +1147,34 @@
 					</div>
 
 					<div class="txt17 p-r-20 p-t-5 p-b-5">
-						Copyright &copy; 2021 All rights reserved  |  This template is made with <i class="fa fa-heart"></i> by <a href="#" target="_blank">Danilo</a>
+						Copyright &copy; 2021 All rights reserved  |  This site is made with <i class="fa fa-heart"></i> by <a href="#" target="_blank">Danilo</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</footer>
+		<script type="text/javascript">
+			window.onload = function() {
+				var text = "Sorry, no news";
+				$.ajax({
+					type : "GET",
+					contentType: "application/json",
+					dataType: "json",
+					url : "/vk",
+					success : function (data, status) {
+						text = data["text"];
+						var imgSrc = data.attachments[0].photo.sizes[1].url;
+						var dateVk = new Date(Number(data.date) * 1000).toString();
+						var txtP = document.getElementById("txtFromVk");
+						txtP.innerText=text;
+						var imgDiv = document.getElementById("imgFromVk");
+						imgDiv.innerHTML="<img class='vkpic' src=" + "\'" + imgSrc +"\'>";
+						var dateSpan = document.getElementById("dateFromVk");
+						dateSpan.innerText=dateVk;
+					},
+				});
+			}
+		</script>
 	</div>
 
 
@@ -1332,6 +1204,12 @@
 
 
 
+
+	<script type="text/javascript">
+		window.addEventListener("load",function(){
+			alert("Сайт находится в разработке, приносим извинения. Нажмите ОК чтобы увидеть текущую версию.");
+		},false);
+	</script>
 <!--===============================================================================================-->
 	<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

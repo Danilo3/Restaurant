@@ -7,9 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.koryakin.dacha2.model.UserMessage;
+import ru.koryakin.dacha2.domain.UserMessage;
+import ru.koryakin.dacha2.repositories.DachaUserRepository;
 import ru.koryakin.dacha2.repositories.UserMessageRepository;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 
@@ -21,8 +23,15 @@ public class ManageController {
     @Autowired
     private UserMessageRepository userMessageRepository;
 
+    @Autowired
+    private DachaUserRepository dachaUserRepository;
+
     @GetMapping(value = "/manage.html")
-    public String manage(){
+    public String manage(HttpServletRequest request, Model model){
+        String username = request.getUserPrincipal().getName();
+        model.addAttribute("name", username);
+        String imgUrl = dachaUserRepository.findByUsername(username).getAvatarUrl();
+        model.addAttribute("imgUrl", imgUrl);
         return "manage";
     }
 

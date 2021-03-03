@@ -2973,7 +2973,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 .tit3 {
 	font-family: Poppins;
 	font-weight: 700;
-	font-size: 50px;
+	font-size: 30px;
 	line-height: 1.2;
 	color: #222222;
 	text-transform: uppercase;
@@ -3699,6 +3699,7 @@ EFFECT   EFFECT   EFFECT   EFFECT   EFFECT   EFFECT  EFFECT
   	background-repeat: repeat;
 }
 
+
 .bg2-pattern {
 	background-image: url(../images/icons/pattern2.png);
   	background-repeat: repeat;
@@ -3709,6 +3710,10 @@ EFFECT   EFFECT   EFFECT   EFFECT   EFFECT   EFFECT  EFFECT
   	background-repeat: repeat;
 }
 
+.bg4-pattern {
+    background-image: url(../images/pattern-bg7.jpg);
+    background-repeat: repeat;
+}
 
 /*[ Hover ]
 -----------------------------------------------------------

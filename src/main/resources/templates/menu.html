@@ -39,92 +39,7 @@
 	<div th:insert="index.html :: header"></div>
 
 	<!-- Sidebar -->
-	<aside class="sidebar trans-0-4">
-		<!-- Button Hide sidebar -->
-		<button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
-
-		<!-- - -->
-		<ul class="menu-sidebar p-t-95 p-b-70">
-			<li class="t-center m-b-13">
-				<a href="index.html" class="txt19">Главная</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="menu.html" class="txt19">Меню</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="gallery.html" class="txt19">Галерея</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="about.html" class="txt19">О нас</a>
-			</li>
-
-			<li class="t-center m-b-13">
-				<a href="blog.html" class="txt19">Блог</a>
-			</li>
-
-			<li class="t-center m-b-33">
-				<a href="contact.html" class="txt19">Контакты</a>
-			</li>
-
-			<li class="t-center">
-				<!-- Button3 -->
-				<a href="reservation.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">
-					Бронирование
-				</a>
-			</li>
-		</ul>
-
-		<!-- - -->
-		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
-			<!-- - -->
-			<h4 class="txt20 m-b-33">
-				Галерея
-			</h4>
-
-			<!-- Gallery -->
-			<div class="wrap-gallery-sidebar flex-w">
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-01.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-01.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-02.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-02.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-03.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-03.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-05.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-05.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-06.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-06.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-07.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-07.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-09.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-09.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-10.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-10.jpg" alt="GALLERY">
-				</a>
-
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-11.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-11.jpg" alt="GALLERY">
-				</a>
-			</div>
-		</div>
-	</aside>
-
+	<div th:insert="index.html :: sidebar"></div>
 
 	<!-- Title Page -->
 	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(/images/bg-title-page-01.jpg);">
@@ -132,7 +47,18 @@
 			Дачное Меню
 		</h2>
 	</section>
-
+	<!-- Download Menu -->
+	<section class="section-mainmenu p-t-25 p-b-25 bg4-pattern">
+		<div class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
+			<div class="pos-relative m-5">
+				<form action="/menu/download/">
+				<button type="submit" class="btn4 flex-c-m size17 txt20 trans-0-4">
+					Скачать меню
+				</button>
+				</form>
+			</div>
+		</div>
+	</section>
 
 	<!-- Main menu -->
 	<section class="section-mainmenu p-t-110 p-b-70 bg1-pattern">

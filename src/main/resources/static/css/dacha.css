@@ -1,0 +1,46 @@
+.avatar {
+    border-radius: 100px; /* Радиус скругления */
+    border: 3px solid red; /* Параметры рамки */
+    box-shadow: 0 0 7px #777; /* Параметры тени */
+    width:64px;
+    height:64px;
+}
+
+.header-username {
+    padding: 5px;
+}
+
+/* mobile (you can change 540px to whatever breakpoint you like) */
+@media(max-width: 540px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+        width: 430px;
+        height: 330px;
+    }
+}
+
+/* desktop */
+@media(min-width: 541px) {
+    .desktop {
+        display: block;
+    }
+
+    .mobile {
+        display: none;
+    }
+}
+
+.btn-menu {
+    position: relative !important;
+    left: 50% !important;
+    transform: translate(-50%, 0) !important;
+}
+
+.section-download-menu {
+    background-color: #0275d7;
+}
+

@@ -991,6 +991,7 @@ input[type="date" i] {
 .btn3 {
   background: #111111;
   border-radius: 10px;
+  color: white;
 }
 
 .btn3:hover {
@@ -998,6 +999,16 @@ input[type="date" i] {
   color: white;
 }
 
+.btn4 {
+  background: #f3f3f3;
+  border-radius: 10px;
+  color: #0c0c0c;
+}
+
+.btn4:hover {
+  background-color: #d51313;
+  color: white;
+}
 
 /*[ Button2 ]
 ///////////////////////////////////////////////////////////
@@ -1438,7 +1449,7 @@ body {padding-right: 0px !important;}
 }
 
 @media (max-width: 576px) {
-  .bg-title-page .tit6 {font-size: 30px;}
+  .bg-title-page .tit6 {font-size: 25px;}
 }
 
 
@@ -1633,4 +1644,11 @@ body {padding-right: 0px !important;}
   left: 20px;
   border-radius: 10px;
   background-color: #ec1d25;
+}
+/* [DANILO's]
+//////////////////////
+*/
+
+.vkpic {
+  text-align: center;
 }
