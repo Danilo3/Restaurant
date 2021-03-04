@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Сообщения</title>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/dacha.css">
+</head>
+<body>
+
+    <div th:insert="manage.html :: header"> </div>
+    <div class="container-fluid bg2-pattern w-full-md">
+        <h4>Загружать по очереди</h4>
+        <form method="POST" enctype="multipart/form-data"  th:action="@{/manage/menu}">
+            <div class="form-file" >
+            <div  th:if="${error}" class="error-login alert alert-error">
+                <div class="alert alert-warning">
+                    Не удалось загрузить файл.
+                </div>
+            </div>
+                <label for="fileUpload">Выберите файл меню(.pdf, size <= 10Mb)</label>
+                <div class="input-group">
+                    <input type="file" name="file" id="fileUpload" accept="application/pdf"><br />
+                    <button type="submit" class="btn btn-primary">Загрузить</button>
+                </div>
+            </div>
+        </form>
+        <form method="POST" enctype="multipart/form-data"  th:action="@{/manage/wine}">
+            <div class="form-file" >
+                <div  th:if="${error}" class="error-login alert alert-error">
+                    <div class="alert alert-warning">
+                        Не удалось загрузить файл.
+                    </div>
+                </div>
+                <label for="wineFileUpload">Выберите файл винной карты(.pdf, size <= 10Mb)</label>
+                <div class="input-group">
+                    <input type="file" name="file" id="wineFileUpload" accept="application/pdf">
+                    <button type="submit" class="btn btn-primary">Загрузить</button>
+                </div>
+            </div>
+        </form>
+        <form method="get" action="/manage/updateMenu/">
+            <button type="submit" class="btn-danger flex-c-m trans-0-4 m-t-5 bo-rad-3 bo4" onclick="return confirm('are u sure about that?');">
+                Обновить цены и блюда из файла
+            </button>
+        </form>
+    </div>
+
+
+</body>
+</html>

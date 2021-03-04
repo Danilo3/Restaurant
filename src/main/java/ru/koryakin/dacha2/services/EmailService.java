@@ -16,11 +16,11 @@ public class EmailService {
     @Bean
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.yandex.ru");
+        mailSender.setHost("smtp.mail.ru");
         mailSender.setPort(465);
 
 
-        mailSender.setUsername("username"); // ERROR THERE!
+        mailSender.setUsername("username"); //ERROR
         mailSender.setPassword("password");
 
         Properties props = mailSender.getJavaMailProperties();
@@ -39,7 +39,7 @@ public class EmailService {
     public void sendSimpleMessage(
             String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("user"); // ERROR THERE!
+        message.setFrom("from");
         message.setTo(to);
         message.setSubject(subject);
         message.setText(text);

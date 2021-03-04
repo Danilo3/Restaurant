@@ -1,17 +1,26 @@
 package ru.koryakin.dacha2.controllers;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ru.koryakin.dacha2.domain.UserMessage;
 import ru.koryakin.dacha2.repositories.DachaUserRepository;
 import ru.koryakin.dacha2.repositories.UserMessageRepository;
+import ru.koryakin.dacha2.services.SaveMenuFromPDFService;
+import ru.koryakin.dacha2.services.SessionUtilService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Optional;
 
 
@@ -26,12 +35,17 @@ public class ManageController {
     @Autowired
     private DachaUserRepository dachaUserRepository;
 
+    @Autowired
+    SessionUtilService sessionUtilService;
+
     @GetMapping(value = "/manage.html")
-    public String manage(HttpServletRequest request, Model model){
+    public String manage(HttpServletRequest request, HttpSession session, Model model){
         String username = request.getUserPrincipal().getName();
         model.addAttribute("name", username);
         String imgUrl = dachaUserRepository.findByUsername(username).getAvatarUrl();
         model.addAttribute("imgUrl", imgUrl);
+        sessionUtilService.addSessionAttribute(session, "name", username);
+        sessionUtilService.addSessionAttribute(session, "imgUrl", imgUrl);
         return "manage";
     }
 
@@ -47,8 +61,9 @@ public class ManageController {
     }
 
     @RequestMapping(value = "/manage/messages/")
-    public String manageMessages(Model model){
+    public String manageMessages(HttpSession session, Model model){
         model.addAttribute("msgList", userMessageRepository.findAll());
+        addUserDataFromSession(session, model);
         return "messages.html";
     }
 
@@ -58,5 +73,69 @@ public class ManageController {
         Optional<UserMessage> message = userMessageRepository.findById(id);
         userMessageRepository.deleteById(id);
         message.ifPresent(userMessage -> logger.info("[DELETE] Message: " + userMessage));
+    }
+
+
+    @GetMapping("/manage/menu/")
+    public String menuPage(Model model, HttpSession session){
+        addUserDataFromSession(session, model);
+        return "upload-menu";
+    }
+
+
+    @Value("${menu.path}")
+    private String menuPath;
+
+
+
+    @PostMapping("/manage/menu")
+    public String uploadMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model){
+        uploadFile(file, model, menuPath);
+        addUserDataFromSession(session, model);
+        return "upload-menu";
+    }
+
+    @Value("${wine.path}")
+    private String wineMenuPath;
+
+    @PostMapping("/manage/wine")
+    public String uploadWineMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model){
+        uploadFile(file, model, wineMenuPath);
+        addUserDataFromSession(session, model);
+        return "upload-menu";
+    }
+
+
+    private static void addUserDataFromSession(HttpSession session, Model model) {
+        model.addAttribute("imgUrl", session.getAttribute("imgUrl"));
+        model.addAttribute("name", session.getAttribute("name"));
+    }
+
+    private void uploadFile(MultipartFile file, Model model, String filename) {
+        boolean error = true;
+        if (!file.isEmpty()) {
+            try {
+                FileUtils.deleteQuietly(new File(filename));
+                File newMenu = new File(filename);
+                byte[] bytes = file.getBytes();
+                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(newMenu));
+                stream.write(bytes);
+                stream.close();
+                error = false;
+                logger.info("Upload new menu successfully");
+            } catch (Exception e) {
+                logger.info("Failed to upload file:" + e.getMessage());
+            }
+        }
+        model.addAttribute("error", error);
+    }
+
+    @Autowired
+    private SaveMenuFromPDFService saveMenuFromPDFService;
+
+    @GetMapping(value = "/manage/updateMenu")
+    public String updateMenu(Model model){
+        saveMenuFromPDFService.save();
+        return "menu";
     }
 }

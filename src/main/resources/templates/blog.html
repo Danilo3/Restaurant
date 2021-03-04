@@ -31,6 +31,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/css/dacha.css">
 <!--===============================================================================================-->
 </head>
 <body class="animsition">
@@ -44,7 +45,7 @@
 	<!-- Title Page -->
 	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(/images/bg-title-page-03.jpg);">
 		<h2 class="tit6 t-center">
-			Blog
+			Блог
 		</h2>
 	</section>
 
@@ -54,13 +55,13 @@
 		<div class="bread-crumb bo5-b p-t-17 p-b-17">
 			<div class="container">
 				<a href="index.html" class="txt27">
-					Home
+					Главная
 				</a>
 
 				<span class="txt29 m-l-10 m-r-10">/</span>
 
 				<span class="txt29">
-					Blog
+					Блог
 				</span>
 			</div>
 		</div>
@@ -70,10 +71,10 @@
 				<div class="col-md-8 col-lg-9">
 					<div class="p-t-80 p-b-124 bo5-r h-full p-r-50 p-r-0-md bo-none-md">
 						<!-- Block4 -->
-						<div class="blo4 p-b-63">
+						<div th:each="blogpost : ${blogPage.content}" class="blo4 p-b-63">
 							<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
 								<a href="blog-detail.html">
-									<img src="/images/blog-05.jpg" alt="IMG-BLOG">
+									<img th:attr="src=${blogpost.imageUrl}" alt="IMG-BLOG">
 								</a>
 
 								<div class="date-blo4 flex-col-c-m">
@@ -89,7 +90,7 @@
 
 							<div class="text-blo4 p-t-33">
 								<h4 class="p-b-16">
-									<a href="blog-detail.html" class="tit9">Cooking recipe Delicious</a>
+									<a href="blog-detail.html" class="tit9" th:text="${blogpost.title}">Cooking recipe Delicious</a>
 								</h4>
 
 								<div class="txt32 flex-w p-b-24">
@@ -113,227 +114,7 @@
 									</span>
 								</div>
 
-								<p>
-									Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius
-								</p>
-
-								<a href="blog-detail.html" class="dis-block txt4 m-t-30">
-									Continue Reading
-									<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-								</a>
-							</div>
-						</div>
-
-						<!-- Block4 -->
-						<div class="blo4 p-b-63">
-							<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
-								<a href="blog-detail.html">
-									<img src="/images/blog-06.jpg" alt="IMG-BLOG">
-								</a>
-
-								<div class="date-blo4 flex-col-c-m">
-									<span class="txt30 m-b-4">
-										20
-									</span>
-
-									<span class="txt31">
-										Dec, 2018
-									</span>
-								</div>
-							</div>
-
-							<div class="text-blo4 p-t-33">
-								<h4 class="p-b-16">
-									<a href="blog-detail.html" class="tit9">Pizza is prepared fresh</a>
-								</h4>
-
-								<div class="txt32 flex-w p-b-24">
-									<span>
-										by Admin
-										<span class="m-r-6 m-l-4">|</span>
-									</span>
-
-									<span>
-										20 December, 2018
-										<span class="m-r-6 m-l-4">|</span>
-									</span>
-
-									<span>
-										Cooking, Food
-										<span class="m-r-6 m-l-4">|</span>
-									</span>
-
-									<span>
-										8 Comments
-									</span>
-								</div>
-
-								<p>
-									Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius
-								</p>
-
-								<a href="blog-detail.html" class="dis-block txt4 m-t-30">
-									Continue Reading
-									<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-								</a>
-							</div>
-						</div>
-
-						<!-- Block4 -->
-						<div class="blo4 p-b-63">
-							<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
-								<a href="blog-detail.html">
-									<img src="/images/blog-04.jpg" alt="IMG-BLOG">
-								</a>
-
-								<div class="date-blo4 flex-col-c-m">
-									<span class="txt30 m-b-4">
-										16
-									</span>
-
-									<span class="txt31">
-										Dec, 2018
-									</span>
-								</div>
-							</div>
-
-							<div class="text-blo4 p-t-33">
-								<h4 class="p-b-16">
-									<a href="blog-detail.html" class="tit9">Style the Wedding Party</a>
-								</h4>
-
-								<div class="txt32 flex-w p-b-24">
-									<span>
-										by Admin
-										<span class="m-r-6 m-l-4">|</span>
-									</span>
-
-									<span>
-										16 December, 2018
-										<span class="m-r-6 m-l-4">|</span>
-									</span>
-
-									<span>
-										Cooking, Food
-										<span class="m-r-6 m-l-4">|</span>
-									</span>
-
-									<span>
-										8 Comments
-									</span>
-								</div>
-
-								<p>
-									Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius
-								</p>
-
-								<a href="blog-detail.html" class="dis-block txt4 m-t-30">
-									Continue Reading
-									<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-								</a>
-							</div>
-						</div>
-
-						<!-- Block4 -->
-						<div class="blo4 p-b-63">
-							<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
-								<a href="blog-detail.html">
-									<img src="/images/blog-07.jpg" alt="IMG-BLOG">
-								</a>
-
-								<div class="date-blo4 flex-col-c-m">
-									<span class="txt30 m-b-4">
-										15
-									</span>
-
-									<span class="txt31">
-										Dec, 2018
-									</span>
-								</div>
-							</div>
-
-							<div class="text-blo4 p-t-33">
-								<h4 class="p-b-16">
-									<a href="blog-detail.html" class="tit9">Best Places for Wine</a>
-								</h4>
-
-								<div class="txt32 flex-w p-b-24">
-									<span>
-										by Admin
-										<span class="m-r-6 m-l-4">|</span>
-									</span>
-
-									<span>
-										15 December, 2018
-										<span class="m-r-6 m-l-4">|</span>
-									</span>
-
-									<span>
-										Cooking, Food
-										<span class="m-r-6 m-l-4">|</span>
-									</span>
-
-									<span>
-										8 Comments
-									</span>
-								</div>
-
-								<p>
-									Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius
-								</p>
-
-								<a href="blog-detail.html" class="dis-block txt4 m-t-30">
-									Continue Reading
-									<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-								</a>
-							</div>
-						</div>
-
-						<!-- Block4 -->
-						<div class="blo4 p-b-63">
-							<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
-								<a href="blog-detail.html">
-									<img src="/images/blog-10.jpg" alt="IMG-BLOG">
-								</a>
-
-								<div class="date-blo4 flex-col-c-m">
-									<span class="txt30 m-b-4">
-										12
-									</span>
-
-									<span class="txt31">
-										Dec, 2018
-									</span>
-								</div>
-							</div>
-
-							<div class="text-blo4 p-t-33">
-								<h4 class="p-b-16">
-									<a href="blog-detail.html" class="tit9">Best Places for Wine</a>
-								</h4>
-
-								<div class="txt32 flex-w p-b-24">
-									<span>
-										by Admin
-										<span class="m-r-6 m-l-4">|</span>
-									</span>
-
-									<span>
-										12 December, 2018
-										<span class="m-r-6 m-l-4">|</span>
-									</span>
-
-									<span>
-										Cooking, Food
-										<span class="m-r-6 m-l-4">|</span>
-									</span>
-
-									<span>
-										8 Comments
-									</span>
-								</div>
-
-								<p>
+								<p th:text="${blogpost.content}">
 									Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce eget dictum tortor. Donec dictum vitae sapien eu varius
 								</p>
 
@@ -346,9 +127,13 @@
 
 						<!-- Pagination -->
 						<div class="pagination flex-l-m flex-w m-l--6 p-t-25">
-							<a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-							<a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
+						<div th:if="${blogPage.totalPages > 0}" th:each="pageNumber : ${pageNumbers}">
+							<a class="item-pagination flex-c-m trans-0-4 pag-a" th:href="@{/blog.html/(size=${blogPage.size}, page=${pageNumber})}"
+							   th:text=${pageNumber}
+							   th:classappend="${pageNumber==blogPage.number + 1} ? active-pagination"></a>
 						</div>
+						</div>
+
 					</div>
 				</div>
 

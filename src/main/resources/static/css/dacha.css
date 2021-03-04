@@ -1,6 +1,13 @@
+
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url('../fonts/montserrat/Montserrat-Regular.ttf');
+}
+
 .avatar {
     border-radius: 100px; /* Радиус скругления */
-    border: 3px solid red; /* Параметры рамки */
+    border: 3px solid green; /* Параметры рамки */
     box-shadow: 0 0 7px #777; /* Параметры тени */
     width:64px;
     height:64px;
@@ -44,3 +51,34 @@
     background-color: #0275d7;
 }
 
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: #CC3333;
+}
+
+.nav-link {
+    font-family: Montserrat-Regular;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.7;
+    color: white;
+    margin: 0px;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+}
+
+.navbar-brand-custom {
+    color: whitesmoke;
+}
+
+.color17-hov:hover {color: wheat;}
+
+
+.pag-a {
+    margin-right: 3px !important;
+}
+
+
+/* FORM UPLOAD*/

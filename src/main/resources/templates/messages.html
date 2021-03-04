@@ -5,7 +5,16 @@
     <meta name="_csrf" th:content="${_csrf.token}" />
     <meta name="_csrf_header" th:content="${_csrf.headerName}" />
     <title>Сообщения</title>
-
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/dacha.css">
     <link rel="stylesheet" type="text/css" href="/DataTables/datatables.min.css"/>
     <script type="text/javascript" src="/DataTables/datatables.min.js"></script>
 </head>
@@ -45,31 +54,30 @@
         } );
     } );
 </script>
-
-<h1>Управление сообщениями</h1>
-<br>
-<h3>Все сообщения</h3>
-<br />
-<button id="delete_button">Удалить выбранную строку</button>
-<table border="1" id="messagesTable" class="display">
-    <thead>
-    <tr>
-        <td>ID</td>
-        <td>Имя</td>
-        <td>Email</td>
-        <td>Телефон</td>
-        <td>Сообщение</td>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="msg : ${msgList}">
-        <td th:text="${msg.id}">msgId</td>
-        <td th:text="${msg.name}">name</td>
-        <td th:text="${msg.email}">email</td>
-        <td th:text="${msg.phone}">phone</td>
-        <td th:text="${msg.message}">Message</td>
-    </tr>
-    </tbody>
-</table>
+<div th:insert="manage.html :: header"> </div>
+<div class="container-fluid bg2-pattern w-full-md">
+        <table border="1" id="messagesTable" class="display">
+            <thead>
+            <tr>
+                <td>ID</td>
+                <td>Имя</td>
+                <td>Email</td>
+                <td>Телефон</td>
+                <td>Сообщение</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="msg : ${msgList}">
+                <td th:text="${msg.id}">msgId</td>
+                <td th:text="${msg.name}">name</td>
+                <td th:text="${msg.email}">email</td>
+                <td th:text="${msg.phone}">phone</td>
+                <td th:text="${msg.message}">Message</td>
+            </tr>
+            </tbody>
+        </table>
+        <button class="btn3 m-3 bo4" id="delete_button">Удалить выбранную строку</button>
+    </div>
+</div>
 </body>
 </html>

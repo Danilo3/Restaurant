@@ -1,5 +1,6 @@
 package ru.koryakin.dacha2.services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.userdetails.User;
@@ -10,9 +11,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.koryakin.dacha2.domain.DachaUser;
 import ru.koryakin.dacha2.repositories.DachaUserRepository;
-import ru.koryakin.dacha2.security.DachaUserPrincipal;
 
 @Service
+@Slf4j
 public class DachaUserDetailsService implements UserDetailsService {
 
     @Autowired
