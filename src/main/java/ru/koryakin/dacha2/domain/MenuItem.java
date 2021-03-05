@@ -15,9 +15,9 @@ public class MenuItem {
     private Integer id;
 
     private String name;
-    private String price; // why not Integer?
+    private String price;
     private String category;
-    //private String description; //TODO: it will be important in future
+    private String description;
 
 
     public MenuItem (String line, String category) {

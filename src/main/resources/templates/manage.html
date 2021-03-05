@@ -35,13 +35,17 @@
                 <li class="nav-item"><a class="nav-link color17-hov" href="/">Home <span class="sr-only">(current)</span></a></li>
                 <li class="nav-item"><a class="nav-link color17-hov" href="/manage/menu/">Меню</a></li>
                 <li class="nav-item"><a class="nav-link color17-hov" href="/manage/messages/">Сообщения</a></li>
-                <li class="nav-item"><a class="nav-link color17-hov" href="#">Бронирование</a></li>
+                <li class="nav-item"><a class="nav-link color17-hov" href="/manage/booking/">Бронирование</a></li>
                 <li class="nav-item"><a class="nav-link color17-hov" href="#">Заказы</a></li>
-                <li class="nav-item"><a class="nav-link color17-hov" href="#">Блог</a></li>
+                <li class="nav-item"><a class="nav-link color17-hov" href="/manage/blog/">Блог</a></li>
                 <li class="nav-item"><a class="nav-link color17-hov" href="#">События</a></li>
+                <li class="nav-item"><a class="nav-link color17-hov" href="#">Отзывы</a></li>
+                <li class="nav-item"><a class="nav-link color17-hov" href="#">О ресторане</a></li>
+                <li class="nav-item"><a class="nav-link color17-hov" href="#">Подписка</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item"><a class="nav-link color17-hov" href="#"><img th:attr="src=${imgUrl}" class="avatar"><span class="header-username" th:text="${name}">Chuck Norris</span></a></li>
+                <li class="nav-item"><a class="nav-link color17-hov" href="#"><img th:attr="src=${imgUrl}" class="avatar">
+                <li class="nav-item">Logged as <a class="nav-link color17-hov" href="#" th:text="${name}">Chuck Norris</a></li>
                 <li class="nav-item"><a class="nav-link color17-hov" href="/logout">Log Out</a></li>
             </ul>
         </div>

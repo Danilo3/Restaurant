@@ -29,9 +29,11 @@ public class DachaHttpErrorController implements ErrorController {
                 return "error";
             } else if (statusCode == HttpStatus.FORBIDDEN.value()) {
                 return "login";
+            } else if (statusCode == HttpStatus.BAD_GATEWAY.value()) {
+                return "404";
             }
         }
-        logger.warn("Happened strange: " + HttpStatus.valueOf(statusCode).toString());
+        logger.warn("Happened strange: " + HttpStatus.valueOf(statusCode).toString() + " " + request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI));
         return "error";
     }
 }

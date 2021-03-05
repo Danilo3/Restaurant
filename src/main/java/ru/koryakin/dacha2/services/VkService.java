@@ -15,7 +15,7 @@ public class VkService {
     }
 
     public String getWallPlainJSON() {
-        String url = "https://api.vk.com/method/wall.get"; // ERROR WITHOUT KEY
+        String url = "https://api.vk.com/method/wall.get"; // ERROR
         return this.restTemplate.getForObject(url, String.class);
     }
 

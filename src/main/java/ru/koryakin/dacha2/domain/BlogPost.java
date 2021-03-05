@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -22,10 +23,16 @@ public class BlogPost {
 
     private String imageUrl;
 
-    private Date createDate;
+    private LocalDate createDate;
+
+    private String previewText;
+
+    private String urlTitle;
+
+    private String author;
+
+    private LocalDate modifyDate;
 
     @ElementCollection
     private List<String> categories;
-
-    private Date modifyDate;
 }

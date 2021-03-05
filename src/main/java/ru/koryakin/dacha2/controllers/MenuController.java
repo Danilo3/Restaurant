@@ -11,18 +11,18 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import ru.koryakin.dacha2.domain.MenuCategory;
 import ru.koryakin.dacha2.domain.MenuItem;
+import ru.koryakin.dacha2.domain.TableBooking;
 import ru.koryakin.dacha2.repositories.MenuItemRepository;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
-import java.util.Enumeration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 @Controller
@@ -91,5 +91,35 @@ public class MenuController {
         return "strange";
     }
 
+
+    @RequestMapping(value = "/api/menu/all/", method = RequestMethod.GET)
+    public @ResponseBody List<MenuItem> getAllMenu(){
+        return new ArrayList<>(menuItemRepository.findAll());
+    }
+
+    @RequestMapping(value = "/api/menu/{id}", method = RequestMethod.DELETE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody String deleteMenuItemById(@PathVariable(name = "id") Integer id){
+        menuItemRepository.deleteById(id);
+        log.info("menu item was deleted");
+        return "{\"httpStatus\": \"ok\"}";
+    }
+
+    @RequestMapping(value = "/api/menu/{id}", method = RequestMethod.PATCH,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody String updateMenuItemById(@PathVariable(name = "id") Integer id,
+                                                  @RequestBody MenuItem menuItem) {
+        menuItemRepository.save(menuItem);
+        log.info(" menu item was updated");
+        return "{\"httpStatus\": \"ok\"}";
+    }
+
+    @RequestMapping(value = "/api/menu/", method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody List<MenuItem> createMenuItem(@RequestBody MenuItem menuItem) {
+        menuItemRepository.save(menuItem);
+        log.info("menu item was created");
+        return new ArrayList<>(menuItemRepository.findAll());
+    }
 
 }

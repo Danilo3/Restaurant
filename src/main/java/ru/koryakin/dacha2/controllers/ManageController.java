@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import ru.koryakin.dacha2.domain.UserMessage;
 import ru.koryakin.dacha2.repositories.DachaUserRepository;
+import ru.koryakin.dacha2.repositories.MenuItemRepository;
+import ru.koryakin.dacha2.repositories.TableBookingRepository;
 import ru.koryakin.dacha2.repositories.UserMessageRepository;
 import ru.koryakin.dacha2.services.SaveMenuFromPDFService;
 import ru.koryakin.dacha2.services.SessionUtilService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -76,17 +79,18 @@ public class ManageController {
     }
 
 
+    @Autowired
+    private MenuItemRepository menuItemRepository;
+
     @GetMapping("/manage/menu/")
     public String menuPage(Model model, HttpSession session){
+        model.addAttribute("menuList", menuItemRepository.findAll());
         addUserDataFromSession(session, model);
         return "upload-menu";
     }
 
-
     @Value("${menu.path}")
     private String menuPath;
-
-
 
     @PostMapping("/manage/menu")
     public String uploadMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model){
@@ -134,8 +138,26 @@ public class ManageController {
     private SaveMenuFromPDFService saveMenuFromPDFService;
 
     @GetMapping(value = "/manage/updateMenu")
-    public String updateMenu(Model model){
+    public String updateMenu(Model model, HttpServletResponse response){
         saveMenuFromPDFService.save();
-        return "menu";
+        response.setHeader("Location", "menu.html");
+        return "redirect:" + "/menu";
     }
+
+    @Autowired
+    private TableBookingRepository tableBookingRepository;
+
+    @GetMapping("/manage/booking/")
+    public String bookingPage(Model model, HttpSession session){
+        model.addAttribute("bookingList", tableBookingRepository.findAll());
+        addUserDataFromSession(session, model);
+        return "manage-booking";
+    }
+
+    @GetMapping("/manage/blog/")
+    public String blogPage(Model model, HttpSession session){
+        addUserDataFromSession(session, model);
+        return "manage-blog";
+    }
+
 }

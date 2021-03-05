@@ -27,8 +27,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic();// .and().csrf().disable();
-        http.authorizeRequests().antMatchers("/manage/**", "/manage.html").authenticated();
+        http.httpBasic(); //.and().csrf().disable();
+        http.authorizeRequests().antMatchers("/manage/**", "/manage.html", "/api/**").authenticated();
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/blog").authenticated();
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/manage/menu/").authenticated();
         http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/manage/messages/*").authenticated();
@@ -52,5 +52,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/send");
         web.ignoring().antMatchers("/reserve");
+        web.ignoring().antMatchers(HttpMethod.POST, "/subscribe/**");
     }
 }

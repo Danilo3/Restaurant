@@ -41,6 +41,11 @@ public class BlogPostService {
                                                         postArrayList.size());
 
         return blogPage;
+    }
 
+    public ArrayList<BlogPost> getNLatestPostsFromRepository(Integer num) {
+        if (num == null || num == 0)
+            return new ArrayList<>();
+        return new ArrayList<>(blogPostRepository.findAll(PageRequest.of(0, (int) Math.min(num, blogPostRepository.count()))).getContent());
     }
 }

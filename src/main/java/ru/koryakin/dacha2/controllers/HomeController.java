@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import ru.koryakin.dacha2.domain.SystemMessage;
 import ru.koryakin.dacha2.domain.TableBooking;
+import ru.koryakin.dacha2.domain.UserEmail;
+import ru.koryakin.dacha2.services.BlogPostService;
 import ru.koryakin.dacha2.services.VkService;
 
 @Controller
@@ -24,18 +27,26 @@ public class HomeController {
     @Autowired
     VkService vkService;
 
+    @Autowired
+    BlogPostService blogPostService;
+
     @GetMapping(value = "/")
     public String welcome(Model model) {
-        model.addAttribute("tablebooking", new TableBooking());
+        addAttributes(model);
         return "index";
     }
 
     @GetMapping(value = "/index.html")
     public String home(Model model){
-        model.addAttribute("tablebooking", new TableBooking());
+       addAttributes(model);
         return "index";
     }
 
+    private void addAttributes(Model model){
+        model.addAttribute("tablebooking", new TableBooking());
+        model.addAttribute("latestPosts", blogPostService.getNLatestPostsFromRepository(3));
+        model.addAttribute("useremail", new UserEmail());
+    }
 
     @RequestMapping(value = "/vk", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -45,9 +56,7 @@ public class HomeController {
         String wallJSON = vkService.getWallPlainJSON();
         JsonNode rootNode = objectMapper.readTree(wallJSON);
         JsonNode first = rootNode.path("response").path("items").get(0);
-
-        String prettyPrintWall = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(first);
-        return prettyPrintWall;
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(first);
     }
 
 }

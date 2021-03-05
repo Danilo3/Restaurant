@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <title>Управление блогом</title>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/dacha.css">
+    <script type="text/javascript" src="/js/zinggrid.min.js" defer></script>
+</head>
+<body>
+<script>
+    window.onload = function() {
+        let token = $("meta[name='_csrf']").attr("content");
+        let header = $("meta[name='_csrf_header']").attr("content");
+        let headers = '"headers" : {"' + header +'" : "' + token + '"}'
+        document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "http://localhost:8080/api/blog/", ' + headers  + '}');
+        document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "http://localhost:8080/api/blog/", ' + headers  + '}');
+        document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "http://localhost:8080/api/blog/", ' + headers  + '}');
+        document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "http://localhost:8080/api/blog/all/", ' + headers  + '}');
+        document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "http://localhost:8080/api/blog/", ' + headers  + '}');
+
+    }
+</script>
+<div th:insert="manage.html :: header"> </div>
+<div class="container-fluid bg2-pattern w-full-md p-t-20">
+    <zing-grid
+            caption="Записи в блоге"
+            search
+            columns-control
+            editor-controls
+            pager
+            page-size="10"
+            page-size-options="2,5,10,20">
+        <zg-column index="title" header="Заголовок"></zg-column>
+        <zg-column index="content" header="Содержание"></zg-column>
+        <zg-column index="imageUrl"  type="image" header="Путь до картинки"></zg-column>
+        <zg-column index="createDate" header="Дата создания"></zg-column>
+        <zg-column index="previewText" header="Превью"></zg-column>
+        <zg-column index="author" header="Автор"></zg-column>
+        <zg-column index="urlTitle" header="Название для ссылки"></zg-column>
+
+        <zg-data>
+            <zg-param name="deleteOptions" id="idDelete"> </zg-param>
+            <zg-param name="readOptions" id="idRead"></zg-param>
+            <zg-param name="createOptions" id="idCreate"> </zg-param>
+            <zg-param name="updateCellOptions" id="idUpdateCell"></zg-param>
+            <zg-param name="updateRowOptions" id="idUpdateRow"></zg-param>
+        </zg-data>
+    </zing-grid>
+</div>
+</body>
+<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+</html>
