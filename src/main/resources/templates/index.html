@@ -3,9 +3,12 @@
 <head>
 	<title>Ресторан Дача</title>
 	<meta charset="UTF-8">
+	<meta name="yandex-verification" content="6371e1a3b4a38c08" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
+	<meta name="Description" content="Официальный сайт ресторана Дача в городе Дзержинске. На данный момент сайт находится в разработке, но вы можете открыть его. Будьте осторожны, почти вся информация кроме основного меню и контактных данных ресторана является недостоверной."/>
+	<meta name="Keywords" content="Ресторан Дача в городе Дзержинске Официальный сайт"/>
+	<!--===============================================================================================-->
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -28,7 +31,7 @@
 	<link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
 <!--===============================================================================================-->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
@@ -36,9 +39,23 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <!--===============================================================================================-->
-</head>
 
-</script>
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript" >
+		(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+			m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+		(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+		ym(73333237, "init", {
+			clickmap:true,
+			trackLinks:true,
+			accurateTrackBounce:true
+		});
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/73333237" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
+	<meta name="google-site-verification" content="PrHOQJ8Addb8YUBS4vL-aCbv07-SoRGhg1qjxzB2EP8" />
+</head>
 <body class="animsition" >
 
 	<!-- Header -->
@@ -50,7 +67,7 @@
 				<div class="wrap_header trans-0-3">
 					<!-- Logo -->
 					<div class="logo">
-						<a href="index.html">
+						<a href="/index.html">
 							<img src="/images/icons/logo.png" alt="IMG-LOGO" data-logofixed="/images/icons/logo.png">
 						</a>
 					</div>
@@ -207,7 +224,7 @@
 
 						<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
 							<!-- Button1 -->
-							<a href="menu.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
+							<a href="menu.html" class="btn1 flex-c-m size4 txt3 trans-0-4">
 								Посмотреть Меню
 							</a>
 						</div>
@@ -307,71 +324,23 @@
 		<div class="content-intro bg-white p-t-77 p-b-133">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4 p-t-30">
+					<div class="col-md-4 p-t-30" th:each="in : ${intro}">
 						<!-- Block1 -->
 						<div class="blo1">
 							<div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-								<a href="#"><img src="/images/intro-01.jpg" alt="IMG-INTRO"></a>
+								<a th:href="@{/blog-detail/(name=${in.urlTitle})}"><img th:attr="src=${in.imageUrl}"  alt="IMG-INTRO"></a>
 							</div>
 
 							<div class="wrap-text-blo1 p-t-35">
-								<a href="#"><h4 class="txt5 color0-hov trans-0-4 m-b-13">
+								<a th:href="@{/blog-detail/(name=${in.urlTitle})}"><h4 class="txt5 color0-hov trans-0-4 m-b-13" th:text="${in.title}">
 									Романтичный ресторан
 								</h4></a>
 
-								<p class="m-b-20">
+								<p class="m-b-20" th:text="${in.previewText}">
 									Phasellus lorem enim, luctus ut velit eget, con-vallis egestas eros.
 								</p>
 
-								<a href="#" class="txt4">
-									Узнать больше
-									<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-4 p-t-30">
-						<!-- Block1 -->
-						<div class="blo1">
-							<div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-								<a href="#"><img src="/images/intro-02.jpg" alt="IMG-INTRO"></a>
-							</div>
-
-							<div class="wrap-text-blo1 p-t-35">
-								<a href="#"><h4 class="txt5 color0-hov trans-0-4 m-b-13">
-									Изысканная еда
-								</h4></a>
-
-								<p class="m-b-20">
-									Aliquam eget aliquam magna, quis posuere risus ac justo ipsum nibh urna
-								</p>
-
-								<a href="#" class="txt4">
-									Узнать больше
-									<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-4 p-t-30">
-						<!-- Block1 -->
-						<div class="blo1">
-							<div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-								<a href="#"><img src="/images/intro-04.jpg" alt="IMG-INTRO"></a>
-							</div>
-
-							<div class="wrap-text-blo1 p-t-35">
-								<a href="#"><h4 class="txt5 color0-hov trans-0-4 m-b-13">
-									Красные вина которые Вы любите
-								</h4></a>
-
-								<p class="m-b-20">
-									Sed ornare ligula eget tortor tempor, quis porta tellus dictum.
-								</p>
-
-								<a href="#" class="txt4">
+								<a th:href="@{/blog-detail/(name=${in.urlTitle})}" class="txt4">
 									Узнать больше
 									<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
 								</a>
@@ -477,10 +446,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
-				<div class="pos-relative m-5">
-					<form action="/menu/download/">
-						<button type="submit" class="btn3 flex-c-m size17 txt20 trans-0-4">
+			<div class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5 p-t-35">
+				<div class="pos-absolute m-5">
+					<form action="/pdf/menu.pdf">
+						<button type="submit" class="btn3 flex-c-m size17 txt20 trans-0-4 no-wrap">
 							Скачать меню
 						</button>
 					</form>
@@ -494,7 +463,7 @@
 	<section class="section-event">
 		<div class="wrap-slick2">
 			<div class="slick2">
-				<div class="item-slick2 item1-slick2" style="background-image: url(/images/bg-event-01.jpg);">
+				<div  th:each="event : ${events}" class="item-slick2 item1-slick2" th:attr="style=${event.eventBackgroundImageUrl}">
 					<div class="wrap-content-slide2 p-t-115 p-b-208">
 						<div class="container">
 							<!-- - -->
@@ -511,9 +480,9 @@
 							<!-- Block2 -->
 							<div class="blo2 flex-w flex-str flex-col-c-m-lg animated visible-false" data-appear="zoomIn">
 								<!-- Pic block2 -->
-								<a href="#" class="wrap-pic-blo2 bg1-blo2" style="background-image: url(/images/event-02.jpg);">
+								<a th:href="@{/blog-detail/(name=${event.urlTitle})}" class="wrap-pic-blo2 bg1-blo2" th:attr="style=${event.imageUrl}">
 									<div class="time-event size10 txt6 effect1">
-										<span class="txt-effect1 flex-c-m t-center">
+										<span class="txt-effect1 flex-c-m t-center" th:text="${event.eventDateTime}">
 											08:00 PM Tuesday - 21 November 2021
 										</span>
 									</div>
@@ -521,15 +490,15 @@
 
 								<!-- Text block2 -->
 								<div class="wrap-text-blo2 flex-col-c-m p-l-40 p-r-40 p-t-45 p-b-30">
-									<h4 class="tit7 t-center m-b-10">
+									<h4 class="tit7 t-center m-b-10" th:text="${event.title}">
 										Особенные винные ночи
 									</h4>
 
-									<p class="t-center">
+									<p class="t-center" th:text="${event.previewText}">
 										Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia
 									</p>
 
-									<a href="#" class="txt4 m-t-40">
+									<a th:href="@{/blog-detail/(name=${event.urlTitle})}" class="txt4 m-t-40">
 										Посмотреть детали
 										<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
 									</a>
@@ -538,99 +507,7 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="item-slick2 item2-slick2" style="background-image: url(/images/bg-event-02.jpg);">
-					<div class="wrap-content-slide2 p-t-115 p-b-208">
-						<div class="container">
-							<!-- - -->
-							<div class="title-event t-center m-b-52">
-								<span class="tit2 p-l-15 p-r-15">
-									Предстоящие
-								</span>
-
-								<h3 class="tit6 t-center p-l-15 p-r-15 p-t-3">
-									События
-								</h3>
-							</div>
-
-							<!-- Block2 -->
-							<div class="blo2 flex-w flex-str flex-col-c-m-lg animated visible-false" data-appear="fadeInDown">
-								<!-- Pic block2 -->
-								<a href="#" class="wrap-pic-blo2 bg2-blo2" style="background-image: url(/images/event-06.jpg);">
-									<div class="time-event size10 txt6 effect1">
-										<span class="txt-effect1 flex-c-m">
-											08:00 PM Tuesday - 21 November 2021
-										</span>
-									</div>
-								</a>
-
-								<!-- Text block2 -->
-								<div class="wrap-text-blo2 flex-col-c-m p-l-40 p-r-40 p-t-45 p-b-30">
-									<h4 class="tit7 t-center m-b-10">
-										Винные вечера на Даче
-									</h4>
-
-									<p class="t-center">
-										Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia
-									</p>
-
-									<a href="#" class="txt4 m-t-40">
-										Посмотреть детали
-										<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="item-slick2 item3-slick2" style="background-image: url(/images/bg-event-04.jpg);">
-					<div class="wrap-content-slide2 p-t-115 p-b-208">
-						<div class="container">
-							<!-- - -->
-							<div class="title-event t-center m-b-52">
-								<span class="tit2 p-l-15 p-r-15">
-									Грядущие
-								</span>
-
-								<h3 class="tit6 t-center p-l-15 p-r-15 p-t-3">
-									События
-								</h3>
-							</div>
-
-							<!-- Block2 -->
-							<div class="blo2 flex-w flex-str flex-col-c-m-lg animated visible-false" data-appear="rotateInUpLeft">
-								<!-- Pic block2 -->
-								<a href="#" class="wrap-pic-blo2 bg3-blo2" style="background-image: url(/images/event-01.jpg);">
-									<div class="time-event size10 txt6 effect1">
-										<span class="txt-effect1 flex-c-m">
-											08:00 PM Tuesday - 21 November 2021
-										</span>
-									</div>
-								</a>
-
-								<!-- Text block2 -->
-								<div class="wrap-text-blo2 flex-col-c-m p-l-40 p-r-40 p-t-45 p-b-30">
-									<h4 class="tit7 t-center m-b-10">
-										Wines during specific nights
-									</h4>
-
-									<p class="t-center">
-										Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia
-									</p>
-
-									<a href="#" class="txt4 m-t-40">
-										Посмотреть детали
-										<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
 			</div>
-
 			<div class="wrap-slick2-dots"></div>
 		</div>
 	</section>
@@ -808,7 +685,7 @@
 					<div class="wrap-content-slide3 p-b-50 p-t-50">
 						<div class="container">
 							<div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false" data-appear="zoomIn">
-								<img src="/images/avatar-04.jpg" alt="IGM-AVATAR">
+								<img src="/images/yandex.jpg" alt="IGM-AVATAR">
 							</div>
 
 							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
@@ -835,7 +712,7 @@
 					<div class="wrap-content-slide3 p-b-50 p-t-50">
 						<div class="container">
 							<div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false" data-appear="zoomIn">
-								<img src="/images/avatar-05.jpg" alt="IGM-AVATAR">
+								<img src="/images/yandex.jpg" alt="IGM-AVATAR">
 							</div>
 
 							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
@@ -904,7 +781,7 @@
 					<!-- Block1 -->
 					<div class="blo1">
 						<div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom pos-relative">
-							<a href="blog-detail.html"><img th:attr="src=${blogpost.imageUrl}" alt="IMG-INTRO"></a>
+							<a th:href="@{/blog-detail/(name=${blogpost.urlTitle})}"><img th:attr="src=${blogpost.imageUrl}" alt="IMG-INTRO"></a>
 
 							<div class="time-blog">
 								21 Dec 2020
@@ -912,15 +789,15 @@
 						</div>
 
 						<div class="wrap-text-blo1 p-t-35">
-							<a href="blog-detail.html"><h4 class="txt5 color0-hov trans-0-4 m-b-13" th:text="${blogpost.title}">
+							<a th:href="@{/blog-detail/(name=${blogpost.urlTitle})}"><h4 class="txt5 color0-hov trans-0-4 m-b-13" th:text="${blogpost.title}">
 								Лучшие места для Вин
 							</h4></a>
 
-							<p class="m-b-20" th:text="${blogpost.content}">
+							<p class="m-b-20" th:text="${blogpost.previewText}">
 								Phasellus lorem enim, luctus ut velit eget, con-vallis egestas eros.
 							</p>
 
-							<a href="blog-detail.html" class="txt4">
+							<a th:href="@{/blog-detail/(name=${blogpost.urlTitle})}" class="txt4">
 								Продолжить чтение
 								<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
 							</a>
@@ -1150,11 +1027,11 @@
 
 
 
-	<script type="text/javascript">
-		window.addEventListener("load",function(){
-			alert("Сайт находится в разработке, приносим извинения. Нажмите ОК чтобы увидеть текущую версию.");
-		},false);
-	</script>
+<!--	<script type="text/javascript">-->
+<!--		window.addEventListener("load",function(){-->
+<!--			alert("Сайт находится в разработке, приносим извинения. Нажмите ОК чтобы увидеть текущую версию.");-->
+<!--		},false);-->
+<!--	</script>-->
 <!--===============================================================================================-->
 	<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

@@ -1,7 +1,7 @@
 package ru.koryakin.dacha2.controllers;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -10,20 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 
+@Slf4j
 @Controller
 public class DachaHttpErrorController implements ErrorController {
-
-    Logger logger = LoggerFactory.getLogger(DachaHttpErrorController.class);
 
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-
-        Integer statusCode = 0;
+        String errorRequestUri = request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI).toString();
+        int statusCode = 0;
         if (status != null) {
-            statusCode = Integer.valueOf(status.toString());
+            statusCode = Integer.parseInt(status.toString());
             if (statusCode == HttpStatus.NOT_FOUND.value()) {
-                logger.warn("Not found: " + request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI));
+                log.warn("Not found: " + errorRequestUri);
                 return "404";
             } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
                 return "error";
@@ -33,7 +32,7 @@ public class DachaHttpErrorController implements ErrorController {
                 return "404";
             }
         }
-        logger.warn("Happened strange: " + HttpStatus.valueOf(statusCode).toString() + " " + request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI));
+        log.warn("Happened strange: " + HttpStatus.valueOf(statusCode).toString() + " " + errorRequestUri);
         return "error";
     }
 }

@@ -1652,3 +1652,7 @@ body {padding-right: 0px !important;}
 .vkpic {
   text-align: center;
 }
+
+.nowrap{
+  white-space: nowrap;
+}

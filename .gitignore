@@ -37,8 +37,8 @@ build/
 
 ### logs ###
 *.log
+*.gz
 
 
-### files-menu ###
-*.pdf
-
+### files ###
+#*.pdf

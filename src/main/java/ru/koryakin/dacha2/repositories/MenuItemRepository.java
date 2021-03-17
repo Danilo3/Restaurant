@@ -9,4 +9,6 @@ import java.util.List;
 public interface MenuItemRepository extends JpaRepository<MenuItem, Integer> {
 
     List<MenuItem> findAllByCategory(String category);
+
+    List<MenuItem> findAllByCategoryAndIsAvailableForOrder(String category, boolean isAvailableForOrder);
 }

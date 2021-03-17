@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Оформление заказа</title>
+    <meta charset="UTF-8">
+    <meta name="Description" content="Заказать доставку из ресторана. Функция пока недоступна."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--    <meta name="_csrf" th:content="${_csrf.token}" />-->
+<!--    <meta name="_csrf_header" th:content="${_csrf.headerName}" />-->
+    <!--===============================================================================================-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <!--===============================================================================================-->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/themify/themify-icons.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
+    <!--===============================================================================================-->
+    <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/css/smart_cart.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/dacha.css">
+    <link rel="stylesheet" type="text/css" href="/css/order.css">
+    <link rel="stylesheet" type="text/css" href="/css/hystmodal.min.css">
+    <!--===============================================================================================-->
+</head>
+<body class="animsition">
+
+<!-- Header -->
+<div th:insert="index.html :: header"></div>
+
+<!-- Sidebar -->
+<div th:insert="index.html :: sidebar"></div>
+
+<!-- Title Page -->
+<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(/images/bg-title-page-02.jpg);">
+    <h2 class="tit6 t-center">
+        Оформить заказ
+    </h2>
+</section>
+
+<section class="section-order bg1-pattern p-t-50 p-b-113" >
+    <div class="container">
+        <h3 class="tit7 t-center p-b-62 p-t-10">
+            Заказ
+        </h3>
+
+        <form class="wrap-form-reservation size22 m-l-r-auto" action="/order/detail/" th:object="${delivery_order}" method="post" onsubmit="return validate()">
+            <input type="hidden" name="username" th:value="*{username}">
+            <input type="hidden" name="price", th:value="*{price}">
+            <input type="hidden" name="id", th:value="*{id}">
+            <div class="pre-scrollable cartSummary" >
+                <div  th:each="item : ${delivery_order.orderItems}">
+                    <p th:text="${item.name} + ' x ' + ${item.quantity}"></p>
+                </div>
+                <div>
+                    <hr style="background-color: #dc0909; color: red">
+                    <strong th:text="${'Сумма заказа: ' + delivery_order.price}"></strong>
+                </div>
+            </div>
+            <div class="row">
+                <div th:if="${is_errors}"  class="col-md-12">
+                    <h3 class="t-center " style="color: red"> Ошибки в форме:</h3>
+                    <div th:each="error : ${errors}">
+                    <p th:text="${error}" style="color: red"></p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+                        Ошибка в имени
+                    </div>
+                    <!-- Name -->
+                    <span class="txt9">
+							Имя
+						</span>
+
+                    <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                        <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name" th:field="*{name}">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+
+                    <!-- Email -->
+                    <span class="txt9">
+							Email
+						</span>
+
+                    <div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                        <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email" th:field="*{email}">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <!-- Phone -->
+                    <span class="txt9">
+							Телефон
+						</span>
+
+                    <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                        <input class="bo-rad-10 sizefull txt10 p-l-20" type=tel name="phone" pattern="(\+7[-_()\s]+|\+7\s?[(]{0,1}[0-9]{3}[)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2})" placeholder="+7(___)___-__-__" th:field="*{phone}">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <!-- Phone -->
+                    <span class="txt9">
+							Адрес
+						</span>
+
+                    <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                        <input id="address" class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="address" placeholder="г.Дзержинск" th:field="*{address}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <!-- Phone -->
+                    <span class="txt9">
+							Желаемое время доставки
+						</span>
+
+                    <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                        <input id="timetoDeliver" class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="time" placeholder="в пятницу вечером" th:field="*{timeToDeliver}">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <!-- Message -->
+                    <span class="txt9">
+							Комментарий к заказу
+						</span>
+                    <textarea class="bo-rad-10 size35 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-3" name="message" placeholder="Комментарий" th:field="*{comment}"></textarea>
+                </div>
+            </div>
+
+            <div class="wrap-btn-booking flex-c-m m-t-13">
+                <!-- Button3 -->
+                <button type="submit" class="btn3 flex-c-m size36 txt11 trans-0-4">
+                     Заказать
+                </button>
+            </div>
+        </form>
+
+        <div class="row p-t-135">
+            <div class="col-sm-8 col-md-4 col-lg-4 m-l-r-auto p-t-30">
+                <div class="dis-flex m-l-23">
+                    <div class="p-r-40 p-t-6">
+                        <img src="/images/icons/map-icon.png" alt="IMG-ICON">
+                    </div>
+
+                    <div class="flex-col-l">
+							<span class="txt5 p-b-10">
+								Адрес
+							</span>
+
+                        <span class="txt23 size38">
+								г.Дзержинск, проспект Циолковского, 65a
+							</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-8 col-md-3 col-lg-4 m-l-r-auto p-t-30">
+                <div class="dis-flex m-l-23">
+                    <div class="p-r-40 p-t-6">
+                        <img src="/images/icons/phone-icon.png" alt="IMG-ICON">
+                    </div>
+
+
+                    <div class="flex-col-l">
+							<span class="txt5 p-b-10">
+								Позвоните нам
+							</span>
+
+                        <span class="txt23 size38">
+								8 (8313) 370-100
+							</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-8 col-md-5 col-lg-4 m-l-r-auto p-t-30">
+                <div class="dis-flex m-l-23">
+                    <div class="p-r-40 p-t-6">
+                        <img src="/images/icons/clock-icon.png" alt="IMG-ICON">
+                    </div>
+
+                    <div class="flex-col-l">
+							<span class="txt5 p-b-10">
+								Часы работы
+							</span>
+
+                        <span class="txt23 size38">
+								12:00 – 24:00 <br/> Ежедневно
+							</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+<!-- Footer -->
+<div th:insert="index.html :: footer"></div>
+
+
+<!-- Back to top -->
+<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
+</div>
+
+<!-- Container Selection1 -->
+<div id="dropDownSelect1"></div>
+
+
+
+<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/js/jquery.suggestions.min.js"></script>
+
+<script th:inline="javascript">
+    $("#address").suggestions({
+        token: "3fd08b2438bc216badc51f2ca95a5d5b782fbe45",
+        type: "ADDRESS",
+        constraints: {
+            locations: {
+                region: "Нижегородская",
+                city: "Дзержинск"
+            },
+        },
+        restrict_value: true,
+        onSelect: function(suggestion) {
+        }
+    });
+</script>
+
+
+<script type="text/javascript" src="/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/bootstrap/js/popper.js"></script>
+<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/slick/slick.min.js"></script>
+<script type="text/javascript" src="/js/slick-custom.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/parallax100/parallax100.js"></script>
+<script type="text/javascript">
+    $('.parallax100').parallax100();
+</script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/lightbox2/js/lightbox.min.js"></script>
+<!--===============================================================================================-->
+<script src="/js/main.js"></script>
+
+</body>
+</html>
+>

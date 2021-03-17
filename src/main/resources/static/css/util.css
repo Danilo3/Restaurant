@@ -2859,6 +2859,13 @@
 	align-items: stretch;
 }
 
+.flex-dan {
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 
 /*[ Absolute ]
 -----------------------------------------------------------
@@ -3578,6 +3585,10 @@ SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE
 	max-width: 190px;
 }
 
+.size39 {
+    max-width: 924px;
+}
+
 /*[ Background Color ]
 -----------------------------------------------------------
 */
@@ -3596,6 +3607,7 @@ SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE
 .bo1 {border: 1px solid #ebebeb;}
 .bo2 {border: 2px solid #d9d9d9;}
 .bo4 {border: 4px solid #100b0b;}
+.bo5 {border: 1px solid #100b0b;}
 
 .bo5-b {border-bottom: 1px solid #e6e6e6;}
 .bo5-r {border-right: 1px solid #e6e6e6;}
@@ -3734,6 +3746,11 @@ EFFECT   EFFECT   EFFECT   EFFECT   EFFECT   EFFECT  EFFECT
     background-repeat: repeat;
 }
 
+.bg5-pattern {
+    background-image: url(../images/pattern-bg8.jpeg);
+    background-repeat: repeat;
+}
+
 /*[ Hover ]
 -----------------------------------------------------------
 */
@@ -3807,11 +3824,11 @@ RESPONSIVE  RESPONSIVE  RESPONSIVE  RESPONSIVE   RESPONSIVE
 */
 @media (max-width: 768px) {
 	.w-full-md {width: 100%}
+	.w-full-md {width: 100%}
 	.p-r-0-md {padding-right: 0;}
 	.p-l-0-md {padding-left: 0;}
 	.p-b-0-md {padding-bottom: 0;}
 	.p-t-0-md {padding-top: 0;}
-
 	.bo-none-md {border: none;}
 }
 

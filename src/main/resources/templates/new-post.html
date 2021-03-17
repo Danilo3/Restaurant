@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <title>Добавить пост</title>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/dacha.css">
+    <!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/store/2.5.1/store2.min.js"></script>
+    <script src="/js/lib/summernoteDrafts.js"></script>
+    <script src="/js/form.js"></script>
+</head>
+<body>
+<script>
+    $(document).ready(function() {
+        var options = {
+            success:    function() {
+                alert('Пост сохранен');
+            },
+            beforeSend: function(request) {
+                             let token = $("meta[name='_csrf']").attr("content");
+                             let header = $("meta[name='_csrf_header']").attr("content");
+                            request.setRequestHeader(header, token);
+            },
+            clearForm: true
+        };
+        $('#formNewPost').ajaxForm(options);
+        $('#formNewPost').submit(function() {
+            $(this).ajaxSubmit();
+            return false;
+        });
+        $("#category").change(function(){
+            if ($(this).val() == "EVENT") {
+                $('#event_content').html(function(index, oldhtml) {
+                    $(this).css('display', 'block');
+                    return oldhtml;
+                });
+            } else {
+                $('#event_content').html(function (index, oldHhml) {
+                    $(this).css('display', 'none');
+                    return oldHhml;
+                })
+            }
+        });
+
+        var cont = document.getElementById('content');
+        function useValue() {
+            var value = cont.value;
+            // use it
+            alert(value); // just to show the new value
+        }
+        cont.onchange = useValue;
+        cont.onblur = useValue;
+        // $('#content').on('blur', function () {
+        //     localStorage.setItem('text', $(this).val());
+        // })
+    })
+</script>
+<div th:insert="manage.html :: header"> </div>
+<div class="container-fluid bg2-pattern w-full-md">
+    <div class="row">
+        <div class="col-md-8 mt-5">
+            <form id="formNewPost" method="post" th:object="${post}" action="/api/blog/">
+
+                <div class="form-group">
+                    <label for="title">Название:</label>
+                    <input type="text" id="title" placeholder="Title" autocomplete="off" class="form-control"
+                           th:field="*{title}"/>
+                    <label for="title">Превью текста:</label>
+                    <input type="text" id="preview" placeholder="Preview" autocomplete="off" class="form-control"
+                           th:field="*{previewText}"/>
+                    <label for="urlTitleInput">Называние ссылки(на английском):</label>
+                    <input type="text" id="urlTitleInput" placeholder="url-title" autocomplete="off" class="form-control"
+                           th:field="*{urlTitle}"/>
+                    <label for="authorInput">Автор:</label>
+                    <input type="text" id="authorInput" placeholder="Команда Ресторана Дача" autocomplete="on" class="form-control"
+                           th:field="*{author}"/>
+                    <label for="title">Категория:</label>
+                    <input list="categories" id="category" class="form-control" placeholder="BLOG or ABOUT or EVENT" th:field="*{category}">
+                    <datalist id="categories">
+                        <option value="BLOG">
+                        <option value="ABOUT">
+                        <option value="EVENT">
+                    </datalist>
+                    <div id="event_content" style="display: none">
+                        <label for="imageBack">Изображения для заднего фона</label>
+                        <input list="back_images" id="imageBack" class="form-control" placeholder="/images/background.png" th:field="*{eventBackgroundImageUrl}">
+                         <datalist id="back_images">
+                         <option th:each="image : ${images}" th:value="${image}", th:text="${image}">
+                          </datalist>
+                        <label for="event_time">Время события(строка):</label>
+                        <input type="text" id="event_time" placeholder="today or 18:00 yesterday" autocomplete="off" class="form-control" th:field="*{eventDateTime}"/></div>
+                    <label for="tags_checkbox">Выберите тэги</label>
+                    <div id="tags_checkbox">
+                    <input type="checkbox" th:each="tag : ${tags}" th:value="${tag.id}" name="tags" class="m-5" th:text="${tag.tagName}">
+                    </div>
+                    <label for="imageUrls">Название предварительно загруженного изображения</label>
+                    <input list="images" id="imageUrls" class="form-control" placeholder="/images/image.png" th:field="*{imageUrl}">
+                    <datalist id="images">
+                        <option th:each="image : ${images}" th:value="${image}", th:text="${image}">
+                    </datalist>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Содержание:</label>
+                    <textarea type="text" rows="4" id="content" placeholder="Content" class="form-control"
+                              th:field="*{content}" autocomplete="off"></textarea>
+                </div>
+                <button id="btnNewPost" class="btn btn-primary" type="submit">Добавить запись</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $('#content').summernote({
+        height: 400,
+        toolbar: [
+            // [groupName, [list of button]]
+            ['style'],
+            ['style', ['clear', 'bold', 'italic', 'underline']],
+            ['fontname', ['fontname']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture']],
+            ['view', ['fullscreen', 'codeview']],
+            ['misc', ['sDraftsLoad', 'sDraftsSave']]
+        ],
+    });
+</script>
+</body>
+</html>

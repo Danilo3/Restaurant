@@ -1,155 +1,119 @@
 package ru.koryakin.dacha2.controllers;
 
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import ru.koryakin.dacha2.domain.UserMessage;
-import ru.koryakin.dacha2.repositories.DachaUserRepository;
-import ru.koryakin.dacha2.repositories.MenuItemRepository;
-import ru.koryakin.dacha2.repositories.TableBookingRepository;
-import ru.koryakin.dacha2.repositories.UserMessageRepository;
+import ru.koryakin.dacha2.domain.BlogPost;
+import ru.koryakin.dacha2.repositories.*;
+import ru.koryakin.dacha2.services.*;
+import ru.koryakin.dacha2.services.impl.BlogPostServiceImpl;
 import ru.koryakin.dacha2.services.SaveMenuFromPDFService;
-import ru.koryakin.dacha2.services.SessionUtilService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Optional;
+
+import java.util.Collections;
 
 
+@Slf4j
 @Controller
 public class ManageController {
 
-    private static final Logger logger = LoggerFactory.getLogger(ManageController.class);
+    @Value("${image.prefix}")
+    private String imagePrefix;
 
-    @Autowired
-    private UserMessageRepository userMessageRepository;
-
-    @Autowired
-    private DachaUserRepository dachaUserRepository;
-
-    @Autowired
-    SessionUtilService sessionUtilService;
-
-    @GetMapping(value = "/manage.html")
-    public String manage(HttpServletRequest request, HttpSession session, Model model){
-        String username = request.getUserPrincipal().getName();
-        model.addAttribute("name", username);
-        String imgUrl = dachaUserRepository.findByUsername(username).getAvatarUrl();
-        model.addAttribute("imgUrl", imgUrl);
-        sessionUtilService.addSessionAttribute(session, "name", username);
-        sessionUtilService.addSessionAttribute(session, "imgUrl", imgUrl);
-        return "manage";
-    }
-
-    @GetMapping(value = "/manage")
-    @ResponseBody
-    public String manageAPI() {
-        return HttpStatus.OK.toString();
-    }
-
-    @GetMapping(value = "/manage/getMessages/all")
-    public @ResponseBody Iterable<UserMessage> getAllMessages() {
-        return userMessageRepository.findAll();
-    }
-
-    @RequestMapping(value = "/manage/messages/")
-    public String manageMessages(HttpSession session, Model model){
-        model.addAttribute("msgList", userMessageRepository.findAll());
-        addUserDataFromSession(session, model);
-        return "messages.html";
-    }
-
-    @DeleteMapping("/manage/messages/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void deleteUserMessage(@PathVariable Integer id){
-        Optional<UserMessage> message = userMessageRepository.findById(id);
-        userMessageRepository.deleteById(id);
-        message.ifPresent(userMessage -> logger.info("[DELETE] Message: " + userMessage));
-    }
-
-
-    @Autowired
-    private MenuItemRepository menuItemRepository;
-
-    @GetMapping("/manage/menu/")
-    public String menuPage(Model model, HttpSession session){
-        model.addAttribute("menuList", menuItemRepository.findAll());
-        addUserDataFromSession(session, model);
-        return "upload-menu";
-    }
-
-    @Value("${menu.path}")
-    private String menuPath;
-
-    @PostMapping("/manage/menu")
-    public String uploadMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model){
-        uploadFile(file, model, menuPath);
-        addUserDataFromSession(session, model);
-        return "upload-menu";
-    }
+    @Value("${lunch.path}")
+    private String lunchMenuPath;
 
     @Value("${wine.path}")
     private String wineMenuPath;
 
-    @PostMapping("/manage/wine")
-    public String uploadWineMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model){
-        uploadFile(file, model, wineMenuPath);
-        addUserDataFromSession(session, model);
-        return "upload-menu";
-    }
+    @Value("${menu.path}")
+    private String menuPath;
 
+    private final UtilService utilService;
 
-    private static void addUserDataFromSession(HttpSession session, Model model) {
-        model.addAttribute("imgUrl", session.getAttribute("imgUrl"));
-        model.addAttribute("name", session.getAttribute("name"));
-    }
+    private final DachaUserService dachaUserService;
 
-    private void uploadFile(MultipartFile file, Model model, String filename) {
-        boolean error = true;
-        if (!file.isEmpty()) {
-            try {
-                FileUtils.deleteQuietly(new File(filename));
-                File newMenu = new File(filename);
-                byte[] bytes = file.getBytes();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(newMenu));
-                stream.write(bytes);
-                stream.close();
-                error = false;
-                logger.info("Upload new menu successfully");
-            } catch (Exception e) {
-                logger.info("Failed to upload file:" + e.getMessage());
-            }
-        }
-        model.addAttribute("error", error);
-    }
+    private final BlogPostService blogPostService;
+
+    private final SessionUtilService sessionUtilService;
+
+    private final MenuService menuService;
+
+    private final SaveMenuFromPDFService saveMenuFromPDFService;
+
+    private final TableBookingService tableBookingService;
+
+    private final PostTagService postTagService;
 
     @Autowired
-    private SaveMenuFromPDFService saveMenuFromPDFService;
+    public ManageController(UtilService utilService, DachaUserService dachaUserService, BlogPostService blogPostService,
+                            SessionUtilService sessionUtilService, MenuService menuService, SaveMenuFromPDFService saveMenuFromPDFService,
+                            TableBookingService tableBookingService, PostTagService postTagService) {
+        this.utilService = utilService;
+        this.dachaUserService = dachaUserService;
+        this.blogPostService = blogPostService;
+        this.sessionUtilService = sessionUtilService;
+        this.menuService = menuService;
+        this.saveMenuFromPDFService = saveMenuFromPDFService;
+        this.tableBookingService = tableBookingService;
+        this.postTagService = postTagService;
+    }
+
+    @GetMapping(value = {"/manage.html", "/manage"})
+    public String manage(HttpServletRequest request, HttpSession session, Model model){
+        String username = request.getUserPrincipal().getName();
+        String imgUrl = dachaUserService.findByUsername(username).getAvatarUrl();
+        sessionUtilService.addSessionAttribute(session, "name", username);
+        sessionUtilService.addSessionAttribute(session, "imgUrl", imgUrl);
+        addUserDataFromSession(session, model);
+        return "manage";
+    }
+
+    @GetMapping("/manage/menu/")
+    public String menuPage(Model model, HttpSession session){
+        model.addAttribute("menuList", menuService.findAll());
+        addUserDataFromSession(session, model);
+        return "manage-menu";
+    }
+
+    @PostMapping("/manage/menu")
+    public String uploadMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model){
+        utilService.uploadFile(file, model, menuPath);
+        addUserDataFromSession(session, model);
+        return "manage-menu";
+    }
+
+    @PostMapping("/manage/wine")
+    public String uploadWineMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model){
+        utilService.uploadFile(file, model, wineMenuPath);
+        addUserDataFromSession(session, model);
+        return "manage-menu";
+    }
+
+    @PostMapping("/manage/lunch")
+    public String uploadLunchMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model){
+        utilService.uploadFile(file, model, lunchMenuPath);
+        addUserDataFromSession(session, model);
+        return "manage-menu";
+    }
 
     @GetMapping(value = "/manage/updateMenu")
-    public String updateMenu(Model model, HttpServletResponse response){
+    public String updateMenu(HttpServletResponse response){
         saveMenuFromPDFService.save();
         response.setHeader("Location", "menu.html");
         return "redirect:" + "/menu";
     }
 
-    @Autowired
-    private TableBookingRepository tableBookingRepository;
-
     @GetMapping("/manage/booking/")
     public String bookingPage(Model model, HttpSession session){
-        model.addAttribute("bookingList", tableBookingRepository.findAll());
+        model.addAttribute("bookingList", tableBookingService.findAll());
         addUserDataFromSession(session, model);
         return "manage-booking";
     }
@@ -157,7 +121,79 @@ public class ManageController {
     @GetMapping("/manage/blog/")
     public String blogPage(Model model, HttpSession session){
         addUserDataFromSession(session, model);
+        model.addAttribute("post", new BlogPost());
         return "manage-blog";
     }
 
+    @GetMapping("/manage/blog/new-post/")
+    public String newPostPage(Model model, HttpSession session){
+        addUserDataFromSession(session, model);
+        model.addAttribute("tags", postTagService.findAll());
+        model.addAttribute("post", new BlogPost());
+        model.addAttribute("images", utilService.findAllImagesInDirectory(imagePrefix));
+        return "new-post";
+    }
+
+    @GetMapping("/manage/blog/edit-post/")
+    public String editPostPage(@RequestParam(name = "title", required = false) String title, Model model, HttpSession session){
+        addUserDataFromSession(session, model);
+        if (title == null || title.isEmpty()) {
+            model.addAttribute("titles", blogPostService.findAllTitle());
+            model.addAttribute("post", new BlogPost());
+        } else {
+            model.addAttribute("titles", Collections.singletonList(title));
+            model.addAttribute("post", blogPostService.findByTitle(title));
+        }
+        return "edit-post";
+    }
+
+    @GetMapping("/manage/image/")
+    public String uploadImagePage(Model model, HttpSession session){
+        addUserDataFromSession(session, model);
+        model.addAttribute("post", new BlogPost());
+        return "add-image";
+    }
+
+    @PostMapping("/manage/image/")
+    public String uploadImage(@RequestParam("file") MultipartFile file, @RequestParam("name") String name, HttpSession session, Model model){
+        if (file == null || name == null || name.isEmpty()) {
+            model.addAttribute("error", true);
+            return "add-image";
+        }
+        name = imagePrefix + name;
+        utilService.uploadFile(file, model, name);
+        addUserDataFromSession(session, model);
+        model.addAttribute("error", false);
+        return "add-image";
+    }
+
+    @GetMapping("/manage/emails/")
+    public String emailsPage(Model model, HttpSession session){
+        addUserDataFromSession(session, model);
+        return "manage-emails";
+    }
+
+    @GetMapping("/manage/gallery/")
+    public String galleryPage(Model model, HttpSession session){
+        addUserDataFromSession(session, model);
+        model.addAttribute("images", utilService.arrayToStr(utilService.findAllImagesInDirectory(imagePrefix)));
+        return "manage-gallery";
+    }
+
+    @GetMapping("/manage/orders/")
+    public String ordersPage(Model model, HttpSession session) {
+        addUserDataFromSession(session, model);
+        return "manage-orders";
+    }
+
+    @GetMapping("/manage/messages/")
+    public String messagesPage(Model model, HttpSession session) {
+        addUserDataFromSession(session, model);
+        return "manage-messages";
+    }
+
+    private static void addUserDataFromSession(HttpSession session, Model model) {
+        model.addAttribute("imgUrl", session.getAttribute("imgUrl"));
+        model.addAttribute("name", session.getAttribute("name"));
+    }
 }

@@ -15,15 +15,16 @@ public class DachaUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(name = "username")
     private String username;
 
+    @Column(name = "password")
     private String password;
 
+    @Column(name = "avatar_url")
     private String avatarUrl;
 
+    @Column(name = "role")
     private String role;
-//    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-//    @Enumerated(EnumType.STRING)
-//    @CollectionTable(name = "dacha_user_role", joinColumns = @JoinColumn(name = "user_id"))
-//    private Set<Role> roles;
+
 }

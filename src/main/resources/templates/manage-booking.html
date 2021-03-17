@@ -23,11 +23,11 @@
         let token = $("meta[name='_csrf']").attr("content");
         let header = $("meta[name='_csrf_header']").attr("content");
         let headers = '"headers" : {"' + header +'" : "' + token + '"}'
-        document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "http://localhost:8080/api/booking/", ' + headers  + '}');
-        document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "http://localhost:8080/api/booking/", ' + headers  + '}');
-        document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "http://localhost:8080/api/booking/", ' + headers  + '}');
-        document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "http://localhost:8080/api/booking/all/", ' + headers  + '}');
-        document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "http://localhost:8080/api/booking/", ' + headers  + '}');
+        document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "/api/booking/", ' + headers  + '}');
+        document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "/api/booking/", ' + headers  + '}');
+        document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "/api/booking/", ' + headers  + '}');
+        document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "/api/booking/all/", ' + headers  + '}');
+        document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "/api/booking/", ' + headers  + '}');
     }
 </script>
 <div th:insert="manage.html :: header"> </div>

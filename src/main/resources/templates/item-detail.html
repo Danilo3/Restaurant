@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Подробнее</title>
+    <link rel="stylesheet" type="text/css" href="/fonts/themify/themify-icons.css">
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/hystmodal.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/details.css">
+</head>
+<body>
+
+<a href="#" data-hystmodal="modal-desc">Открыть</a>
+
+
+<div class="hystmodal" id="modal-desc" aria-hidden="true">
+    <div class="hystmodal__wrap">
+        <div class="hystmodal__window" role="dialog" aria-modal="true" style="width: 1000px; height: 400px">
+            <button data-hystclose class="hystmodal__close">Закрыть</button>
+            <div   th:object="${item}">
+                <h4 class="t-center m-t-10" th:text="${item.name}"></h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="isotope-item bo-rad-10 hov-img-zoom m-l-30 m-t-30" >
+                            <img th:attr="src=${item.imageUrl}" alt="IMG-DESC">
+                            <div class="overlay-item-gallery trans-0-4 flex-c-m">
+                                <a class="btn-show-gallery flex-c-m fa fa-search" th:attr="href=${item.imageUrl}" data-lightbox="gallery"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="m-t-30">
+                            <span th:text="${item.description}"></span>
+                                <br>
+                                <br>
+                            <span th:text="'Цена: '+ ${item.price}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript" src="/js/hystmodal.min.js"></script>
+    <script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+
+
+<script>
+    const myModal = new HystModal({
+        linkAttributeName: "modal-desc",
+        afterClose: function(modal){
+            window.location.href="/order";
+        },
+    }).open('#modal-desc');
+</script>
+    <script type="text/javascript" src="/vendor/lightbox2/js/lightbox.min.js"></script>
+    <script type="text/javascript" src="/vendor/isotope/isotope.pkgd.min.js"></script>
+</body>
+
+</html>

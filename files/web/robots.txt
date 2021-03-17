@@ -1,0 +1,36 @@
+User-agent: *
+
+Sitemap: https://www.dacha-restaurant.ru/sitemap.xml
+
+Disallow: /login*
+Disallow: /manage/*
+Disallow: /api/*
+Disallow: /vk
+Disallow: /400.html
+Disallow: /404.html
+Disallow: /error.html
+Disallow: /login.html
+Disallow: /manage.html
+Disallow: /strange.html
+Disallow: /send
+Disallow: /reserve
+Disallow: /subscribe
+Disallow: /js/*
+Disallow: /css/*
+Disallow: /DataTables/*
+Disallow: /fonts/*
+Disallow: /vendor/*
+Disallow: /summernote/*
+Disallow: /order
+Disallow: /item
+Disallow: /order-detail
+
+Allow: /index.html
+Allow: /blog.html
+Allow: /menu.html
+Allow: /about.html
+Allow: /gallery.html
+Allow: /reservation.html
+Allow: /contact.html
+Allow: /blog-detail.html
+Allow: /blog.html/*

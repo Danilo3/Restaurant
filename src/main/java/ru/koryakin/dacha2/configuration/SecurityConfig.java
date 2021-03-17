@@ -11,35 +11,23 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.koryakin.dacha2.services.DachaUserDetailsService;
+import ru.koryakin.dacha2.services.impl.DachaUserDetailsServiceImpl;
 
 @EnableWebSecurity
 @ComponentScan(basePackages = {"ru.koryakin.dacha2.services"})
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+
+    private DachaUserDetailsServiceImpl userDetailsService;
+
+    @Autowired
+    public void setUserDetailsService(DachaUserDetailsServiceImpl userDetailsService) {
+        this.userDetailsService = userDetailsService;
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Autowired
-    private DachaUserDetailsService userDetailsService;
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic(); //.and().csrf().disable();
-        http.authorizeRequests().antMatchers("/manage/**", "/manage.html", "/api/**").authenticated();
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/blog").authenticated();
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/manage/menu/").authenticated();
-        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/manage/messages/*").authenticated();
-        http.formLogin().loginPage("/login.html").permitAll()
-                .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/manage.html",true)
-                .failureUrl("/login.html?error=true")
-                .usernameParameter("username")
-                .passwordParameter("password");
-        http.logout().logoutUrl("/logout").logoutSuccessUrl("/");
-
     }
 
     @Override
@@ -47,11 +35,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
-
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/send");
         web.ignoring().antMatchers("/reserve");
         web.ignoring().antMatchers(HttpMethod.POST, "/subscribe/**");
+        web.ignoring().antMatchers(HttpMethod.POST, "/order/**");
+        web.ignoring().antMatchers("/gallery-images/**");
+        web.ignoring().antMatchers("/blog-images/**");
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.httpBasic();
+        http.authorizeRequests().antMatchers("/manage/**", "/manage.html", "/api/**").authenticated();
+        http.formLogin().loginPage("/login.html").permitAll()
+                .loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("/manage.html",true)
+                .failureUrl("/login.html?error=true")
+                .usernameParameter("username")
+                .passwordParameter("password");
+        http.logout().logoutUrl("/logout").logoutSuccessUrl("/");
     }
 }

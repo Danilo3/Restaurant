@@ -3,11 +3,13 @@
 <head>
 	<title>Меню</title>
 	<meta charset="UTF-8">
+	<meta name="Description" content="Меню ресторана Дача в городе Дзержинске. Посмотреть меню, узнать цены"/>
+	<meta name="Keywords" content="Меню Цены Ресторан Дача в городе Дзержинске Официальный сайт"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -32,6 +34,20 @@
 	<link rel="stylesheet" type="text/css" href="/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 <!--===============================================================================================-->
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript" >
+		(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+			m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+		(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+		ym(73333237, "init", {
+			clickmap:true,
+			trackLinks:true,
+			accurateTrackBounce:true
+		});
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/73333237" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
 </head>
 <body class="animsition">
 
@@ -51,20 +67,24 @@
 	<section class="section-mainmenu p-t-25 p-b-25 bg4-pattern">
 		<div class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
 			<div class="pos-relative m-5">
-				<form action="/menu/download/">
-					<input type="hidden" name="name" value="menu">
+<!--				<form action="/pdf/menu.pdf">-->
+<!--					<input type="hidden" name="name" value="menu">-->
+				<a target="_blank" rel="noopener noreferrer" href="/pdf/menu.pdf">
 				<button type="submit" class="btn4 flex-c-m size17 txt20 trans-0-4">
 					Скачать меню
-				</button><input type="hidden" name="param" value="value">
-				</form>
+				</button>
+				</a>
+<!--				</form>-->
 			</div>
 			<div class="pos-relative m-5">
-				<form action="/menu/download/">
-					<input type="hidden" name="name" value="wine">
-					<button type="submit" class="btn4 flex-c-m size17 txt20 trans-0-4">
+<!--				<form action="/pdf/wine.pdf">-->
+<!--					<input type="hidden" name="name" value="wine">-->
+				<a target="_blank" rel="noopener noreferrer" href="/pdf/wine.pdf">
+				<button type="submit" class="btn4 flex-c-m size17 txt20 trans-0-4">
 						Скачать винную карту
 					</button>
-				</form>
+				</a>
+<!--				</form>-->
 			</div>
 			</div>
 		</div>
@@ -211,22 +231,25 @@
 		<div class="header-lunch parallax0 parallax100" style="background-image: url(/images/header-menu-01.jpg);">
 			<div class="bg1-overlay t-center p-t-170 p-b-165">
 				<h2 class="tit4 t-center" id="business">
-					Lunch
+					Бизнес-ланч
 				</h2>
 			</div>
 		</div>
 
 		<div class="container">
+			<h4 class="tit3 t-center m-t-25" id="business_price">
+				Цена: 370.00
+			</h4>
 			<div class="row p-t-108 p-b-70">
-				<div class="col-md-8 col-lg-6 m-l-r-auto">
+				<div class="col-md-4 col-lg-4 m-l-r-auto">
 					<!-- Block3 -->
-					<div class="blo3 flex-w flex-col-l-sm m-b-30">
+					<div class="blo3 flex-w flex-col-l-sm m-b-30" th:each="bsalad : ${salads_business}">
 						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
 							<a href="#"><img src="/images/lunch-01.jpg" alt="IMG-MENU"></a>
 						</div>
 
 						<div class="text-blo3 size21 flex-col-l-m">
-							<a href="#" class="txt21 m-b-3">
+							<a href="#" class="txt21sm m-b-3" th:text="${bsalad.name}">
 								Sed varius
 							</a>
 
@@ -234,64 +257,21 @@
 								Aenean pharetra tortor dui in pellentesque
 							</span>
 
-							<span class="txt22 m-t-20">
-								$29.79
-							</span>
-						</div>
-					</div>
-
-					<!-- Block3 -->
-					<div class="blo3 flex-w flex-col-l-sm m-b-30">
-						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-							<a href="#"><img src="/images/lunch-03.jpg" alt="IMG-MENU"></a>
-						</div>
-
-						<div class="text-blo3 size21 flex-col-l-m">
-							<a href="#" class="txt21 m-b-3">
-								tempus aliquet
-							</a>
-
-							<span class="txt23">
-								Aenean condimentum ante erat
-							</span>
-
-							<span class="txt22 m-t-20">
-								$45.09
-							</span>
-						</div>
-					</div>
-
-					<!-- Block3 -->
-					<div class="blo3 flex-w flex-col-l-sm m-b-30">
-						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-							<a href="#"><img src="/images/lunch-05.jpg" alt="IMG-MENU"></a>
-						</div>
-
-						<div class="text-blo3 size21 flex-col-l-m">
-							<a href="#" class="txt21 m-b-3">
-								Duis massa
-							</a>
-
-							<span class="txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
-							</span>
-
-							<span class="txt22 m-t-20">
-								$12.75
+							<span class="txt22 m-t-20" >
 							</span>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-8 col-lg-6 m-l-r-auto">
+				<div class="col-md-4 col-lg-4 m-l-r-auto">
 					<!-- Block3 -->
-					<div class="blo3 flex-w flex-col-l-sm m-b-30">
+					<div class="blo3 flex-w flex-col-l-sm m-b-30" th:each="bhot: ${hot_business}">
 						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
 							<a href="#"><img src="/images/lunch-02.jpg" alt="IMG-MENU"></a>
 						</div>
 
 						<div class="text-blo3 size21 flex-col-l-m">
-							<a href="#" class="txt21 m-b-3">
+							<a href="#" class="txt21sm m-b-3" th:text="${bhot.name}">
 								sbrisalona
 							</a>
 
@@ -300,122 +280,20 @@
 							</span>
 
 							<span class="txt22 m-t-20">
-								$29.79
-							</span>
-						</div>
-					</div>
-
-					<!-- Block3 -->
-					<div class="blo3 flex-w flex-col-l-sm m-b-30">
-						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-							<a href="#"><img src="/images/lunch-04.jpg" alt="IMG-MENU"></a>
-						</div>
-
-						<div class="text-blo3 size21 flex-col-l-m">
-							<a href="#" class="txt21 m-b-3">
-								Cras eget magna
-							</a>
-
-							<span class="txt23">
-								Sed fermentum eros vitae eros
-							</span>
-
-							<span class="txt22 m-t-20">
-								$45.09
-							</span>
-						</div>
-					</div>
-
-					<!-- Block3 -->
-					<div class="blo3 flex-w flex-col-l-sm m-b-30">
-						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-							<a href="#"><img src="/images/lunch-06.jpg" alt="IMG-MENU"></a>
-						</div>
-
-						<div class="text-blo3 size21 flex-col-l-m">
-							<a href="#" class="txt21 m-b-3">
-								Nullam maximus
-							</a>
-
-							<span class="txt23">
-								Duis massa nibh porttitor nec imperdiet eget
-							</span>
-
-							<span class="txt22 m-t-20">
-								$12.75
 							</span>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<!-- Dinner -->
-	<section class="section-dinner bgwhite">
-		<div class="header-dinner parallax0 parallax100" style="background-image: url(/images/header-menu-02.jpg);">
-			<div class="bg1-overlay t-center p-t-170 p-b-165">
-				<h2 class="tit4 t-center">
-					Dinner
-				</h2>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="row p-t-108 p-b-70">
-				<div class="col-md-8 col-lg-6 m-l-r-auto">
+				<div class="col-md-4 col-lg-4 m-l-r-auto">
 					<!-- Block3 -->
-					<div class="blo3 flex-w flex-col-l-sm m-b-30">
+					<div class="blo3 flex-w flex-col-l-sm m-b-30" th:each="bsoup: ${soup_business}">
 						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-							<a href="#"><img src="/images/dinner-01.jpg" alt="IMG-MENU"></a>
+							<a href="#"><img src="/images/business-soup.jpg" alt="IMG-MENU"></a>
 						</div>
 
 						<div class="text-blo3 size21 flex-col-l-m">
-							<a href="#" class="txt21 m-b-3">
-								Maecenas tristique
-							</a>
-
-							<span class="txt23">
-								Aenean pharetra tortor dui in pellentesque
-							</span>
-
-							<span class="txt22 m-t-20">
-								$29.79
-							</span>
-						</div>
-					</div>
-
-					<!-- Block3 -->
-					<div class="blo3 flex-w flex-col-l-sm m-b-30">
-						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-							<a href="#"><img src="/images/dinner-03.jpg" alt="IMG-MENU"></a>
-						</div>
-
-						<div class="text-blo3 size21 flex-col-l-m">
-							<a href="#" class="txt21 m-b-3">
-								Pine nut sbrisalona
-							</a>
-
-							<span class="txt23">
-								Aenean condimentum ante erat
-							</span>
-
-							<span class="txt22 m-t-20">
-								$45.09
-							</span>
-						</div>
-					</div>
-
-					<!-- Block3 -->
-					<div class="blo3 flex-w flex-col-l-sm m-b-30">
-						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-							<a href="#"><img src="/images/dinner-05.jpg" alt="IMG-MENU"></a>
-						</div>
-
-						<div class="text-blo3 size21 flex-col-l-m">
-							<a href="#" class="txt21 m-b-3">
-								Suspendisse eu
+							<a href="#" class="txt21sm m-b-3" th:text="${bsoup.name}">
+								sbrisalona
 							</a>
 
 							<span class="txt23">
@@ -423,72 +301,6 @@
 							</span>
 
 							<span class="txt22 m-t-20">
-								$12.75
-							</span>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-8 col-lg-6 m-l-r-auto">
-					<!-- Block3 -->
-					<div class="blo3 flex-w flex-col-l-sm m-b-30">
-						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-							<a href="#"><img src="/images/dinner-02.jpg" alt="IMG-MENU"></a>
-						</div>
-
-						<div class="text-blo3 size21 flex-col-l-m">
-							<a href="#" class="txt21 m-b-3">
-								Cras maximus
-							</a>
-
-							<span class="txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
-							</span>
-
-							<span class="txt22 m-t-20">
-								$29.79
-							</span>
-						</div>
-					</div>
-
-					<!-- Block3 -->
-					<div class="blo3 flex-w flex-col-l-sm m-b-30">
-						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-							<a href="#"><img src="/images/dinner-04.jpg" alt="IMG-MENU"></a>
-						</div>
-
-						<div class="text-blo3 size21 flex-col-l-m">
-							<a href="#" class="txt21 m-b-3">
-								Pine nut sbrisalona
-							</a>
-
-							<span class="txt23">
-								Sed fermentum eros vitae eros
-							</span>
-
-							<span class="txt22 m-t-20">
-								$45.09
-							</span>
-						</div>
-					</div>
-
-					<!-- Block3 -->
-					<div class="blo3 flex-w flex-col-l-sm m-b-30">
-						<div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-							<a href="#"><img src="/images/dinner-06.jpg" alt="IMG-MENU"></a>
-						</div>
-
-						<div class="text-blo3 size21 flex-col-l-m">
-							<a href="#" class="txt21 m-b-3">
-								Tempor malesuada
-							</a>
-
-							<span class="txt23">
-								Duis massa nibh porttitor nec imperdiet eget
-							</span>
-
-							<span class="txt22 m-t-20">
-								$12.75
 							</span>
 						</div>
 					</div>
@@ -496,7 +308,6 @@
 			</div>
 		</div>
 	</section>
-
 
 	<!-- Sign up -->
 	<div th:insert="index.html :: subcribe"></div>

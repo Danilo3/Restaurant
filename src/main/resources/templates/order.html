@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Заказать доставку</title>
+    <meta charset="UTF-8">
+    <meta name="Description" content="Заказть доставку из ресторана. Функция пока недоступна."/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <!--===============================================================================================-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <!--===============================================================================================-->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/themify/themify-icons.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=88e346ee-b72a-4121-8583-108b2c556e6d&lang=ru_RU" type="text/javascript"></script>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/smart_cart.css">
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/dacha.css">
+    <link rel="stylesheet" type="text/css" href="/css/order.css">
+    <link rel="stylesheet" type="text/css" href="/css/hystmodal.min.css">
+    <!--===============================================================================================-->
+
+</head>
+<body class="animsition">
+
+<!-- Header -->
+<div th:insert="index.html :: header"></div>
+
+<!-- Sidebar -->
+<div th:insert="index.html :: sidebar"></div>
+
+<!-- Title Page -->
+<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(/images/bg-title-page-02.jpg);">
+    <h2 class="tit6 t-center">
+        Сделать заказ
+    </h2>
+</section>
+
+<section class="section-order bg1-pattern p-t-90 p-b-113" >
+    <div class=" size39 flex-w flex-sb-m m-l-r-auto flex-col-c-sm p-l-15 p-r-15 m-b-60">
+        <button id="meatBtn" class="label-gallery txt26 trans-0-4" onclick='location.href="/order?category=meat"'>
+            Мясо и птица
+        </button>
+
+        <button id="fishBtn" class="label-gallery txt26 trans-0-4" onclick='location.href="/order?category=fish"'>
+            Рыба и морепродукты
+        </button>
+
+        <button id="dessertsBtn" class="label-gallery txt26 trans-0-4" onclick='location.href="/order?category=desserts"'>
+            Десерты
+        </button>
+
+        <button id="grillBtn" class="label-gallery txt26 trans-0-4" onclick='location.href="/order?category=grill"'>
+            Гриль
+        </button>
+
+        <button id="startersBtn" class="label-gallery txt26 trans-0-4" onclick='location.href="/order?category=starters"'>
+            Закуски
+        </button>
+
+        <button id="saladsBtn" class="label-gallery txt26 trans-0-4" onclick='location.href="/order?category=salads"'>
+            Салаты
+        </button>
+
+        <button id="soupsBtn" class="label-gallery txt26 trans-0-4" onclick='location.href="/order?category=soups"'>
+            Супы
+        </button>
+    </div>
+
+    <div class="sticky-icon" >
+    <a href="#" data-hystmodal="#myModal" id="cartId">
+        <i class="fa fa-shopping-cart" style="font-size:44px" aria-hidden="true" id="cartIcon"></i>
+        <span class='badge badge-warning' id='lblCartCount'>0</span>
+    </a>
+    </div>
+
+    <div align="center" class="container flex-w" style="justify-content: center; align-content: center; align-items: center; ">
+    <div class="shop-wrap sc-product-item"  th:each="product : ${productList}" align="center" th:attr="id=${product.id}">
+        <a href="#" class="shop-item">
+        <div class="col-sm-8">
+            <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom">
+            <img data-name="product_image" th:attr="src=${product.imageUrl}" alt="IMG-MENU" align="left">
+        </div>
+
+        <div class="shop-item-desc m-l-3">
+            <p class="txt21sm m-b-3 m-t-5" data-name="product_name" th:text="${product.name}">
+                Sed varius
+            </p>
+
+            <span class="txt22sm m-t-20" th:text="${product.price}">
+			            300.00
+            </span>
+            <input name="product_price" th:value="${product.price}" type="hidden" />
+            <input name="product_id" th:value="${product.id}" type="hidden" />
+        </div>
+        </div>
+        </a>
+        <div class="flex-c-m flex-w m-l-3 p-l-15 m-b-10">
+            <div class="pos-relative m-l-3">
+                <form action="/item/">
+                    <button type="submit" id="details" class="btn4  trans-0-4">
+                        Подробнее
+                    </button>
+                    <input type="hidden" name="id" th:value="${product.id}">
+                </form>
+            </div>
+            <div class="pos-relative m-l-3">
+                    <button type="submit" class="sc-add-to-cart btn4 trans-0-4" id="vkorzinu">
+                        В корзину
+                    </button>
+            </div>
+        </div>
+    </div>
+   </div>
+
+
+</section>
+
+
+<div class="hystmodal" id="myModal" aria-hidden="true">
+    <div class="hystmodal__wrap">
+        <div class="hystmodal__window" role="dialog" aria-modal="true">
+            <button data-hystclose class="hystmodal__close">Закрыть</button>
+            <form action="/order" method="POST">
+                <!-- SmartCart element -->
+                <div class="p-5" id="smartcart"></div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div th:insert="index.html :: footer"></div>
+
+
+<!-- Back to top -->
+<div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
+</div>
+
+<!-- Container Selection1 -->
+<div id="dropDownSelect1"></div>
+
+
+
+<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery.smartCart.js"></script>
+<script type="text/javascript" src="/js/hystmodal.min.js"></script>
+
+<script>
+
+    //
+    // }
+    // // var referrer = document.referrer;
+    // // param = referrer.toString().split('=')[1];
+    // // if (param !== null) {
+    // //     $('#' + param + 'Btn').addClass('is_actived');   }
+
+    function deleteFromStorage(item) {
+        if (typeof item == 'undefined' || item == null) {
+            for(let i=0; i< localStorage.length; i++) {
+                let key = localStorage.key(i);
+                if (key.startsWith('cart_item')) {
+                    localStorage.removeItem(key);
+                }
+            }
+            for(let i=0; i< localStorage.length; i++) {
+                let key = localStorage.key(i);
+                if (key.startsWith('cart_item')) {
+                    localStorage.removeItem(key);
+                }
+            }
+            } else {
+                localStorage.removeItem('cart_item' + item.product_id);
+                $('#' + item.product_id).removeClass('sc-added-item');
+            }
+    }
+    function save(item) {
+        localStorage.setItem('cart_item' + item.product_id, JSON.stringify(item));
+    }
+
+    function getQuantityFromStorage() {
+        var quantity = 0;
+        for(let i=0; i< localStorage.length; i++) {
+            let key = localStorage.key(i);
+            if (key.startsWith('cart_item')) {
+                $('#cartIcon').css('color', '#008000');
+                quantity = quantity + Number(JSON.parse(localStorage.getItem(key)).product_quantity);
+            }
+        }
+        return quantity;
+    }
+
+    $(document).ready(function() {
+        var url = document.location;
+        var param = url.toString().split('=')[1];
+        if (param !== null) {
+            $('#' + param + 'Btn').addClass('is-actived');
+        }
+        $('#smartcart').smartCart({
+            cart : getFromStorage(),
+            currencySettings : {
+                locales: 'ru-RU',
+                currencyOptions:  {
+                    style: 'currency',
+                    currency: 'RUB',
+                    currencyDisplay: 'symbol'
+                }
+            },
+            lang : {
+                cartTitle: "Корзина",
+                checkout: 'Заказать',
+                clear: 'Очистить',
+                subtotal: 'Итого:',
+                cartRemove:'×',
+                cartEmpty: 'Корзина пустая!<br />Выберите продукты'
+            },
+        });
+        const myModal = new HystModal({
+            linkAttributeName: "data-hystmodal",
+            // настройки (не обязательно), см. API
+        });
+
+
+        function setCount(count) {
+            indicator = document.getElementById("lblCartCount")
+            indicator.innerText = String(count);
+        }
+
+        function getFromStorage() {
+            items = [];
+            ids = []
+            for(let i=0; i< localStorage.length; i++) {
+                let key = localStorage.key(i);
+                if (key.startsWith('cart_item')) {
+                    $('#cartIcon').css('color', '#008000');
+                    item = JSON.parse(localStorage.getItem(key));
+                    items.push(item);
+                    ids.push(item.product_id);
+                }
+            }
+            for (let i = 0; i < ids.length; i++) {
+                $('#' +ids[i]).addClass('sc-added-item');
+            }
+            setCount(getQuantityFromStorage());
+            return items;
+        }
+        $("#smartcart").on("itemAdded", function (e, data) {
+            $('#cartIcon').css('color', '#008000');
+            save(data);
+            setCount(getQuantityFromStorage());
+
+        });
+        $("#smartcart").on("cartEmpty", function(e) {
+            $('#cartIcon').css('color', '#7d7f7d');
+            deleteFromStorage();
+            setCount(0);
+        });
+        $("#smartcart").on("itemUpdated", function(e, data) {
+            save(data)
+            setCount(getQuantityFromStorage());
+        });
+        $("#smartcart").on("itemRemoved", function(e, data) {
+            deleteFromStorage(data);
+            setCount(getQuantityFromStorage());
+        });
+        $("#smartcart").on("quantityUpdated", function(e, data, i) {
+            save(data);
+            setCount(getQuantityFromStorage());
+
+        });
+        $("#smartcart").on("cartSubmitted", function(e, data) {
+            deleteFromStorage();
+            setCount(0);
+        });
+    });
+</script>
+
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/bootstrap/js/popper.js"></script>
+<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/slick/slick.min.js"></script>
+<script type="text/javascript" src="/js/slick-custom.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/parallax100/parallax100.js"></script>
+<script type="text/javascript">
+    $('.parallax100').parallax100();
+</script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script type="text/javascript" src="/vendor/lightbox2/js/lightbox.min.js"></script>
+<!--===============================================================================================-->
+<script src="/js/main.js"></script>
+
+</body>
+</html>

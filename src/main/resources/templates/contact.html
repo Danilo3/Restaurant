@@ -3,11 +3,12 @@
 <head>
 	<title>Контакты</title>
 	<meta charset="UTF-8">
+	<meta name="Description" content="Контакты ресторана Дача в городе Дзержинска. Здесь вы можете написать нам сообщение и узнать наше местонахождение, часы работы, телефон"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
@@ -28,11 +29,27 @@
 	<link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
+	<script src="https://api-maps.yandex.ru/2.1/?apikey=88e346ee-b72a-4121-8583-108b2c556e6d&lang=ru_RU" type="text/javascript"></script>
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="/css/util.css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 	<link rel="stylesheet" type="text/css" href="/css/dacha.css">
 	<!--===============================================================================================-->
+	<!-- Yandex.Metrika counter -->
+	<script type="text/javascript" >
+		(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+			m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+		(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+		ym(73333237, "init", {
+			clickmap:true,
+			trackLinks:true,
+			accurateTrackBounce:true
+		});
+	</script>
+	<noscript><div><img src="https://mc.yandex.ru/watch/73333237" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+	<!-- /Yandex.Metrika counter -->
+
 </head>
 <body class="animsition">
 
@@ -55,9 +72,8 @@
 <section class="section-contact bg1-pattern p-t-90 p-b-113">
 	<!-- Map -->
 	<div class="container">
-		<div class="map bo8 bo-rad-10 of-hidden">
-			<iframe class="desktop" src="https://yandex.ru/map-widget/v1/?um=constructor%3Aac37c0e2277e663cef5469981a04be238ddf6197e206947656c906c26cb395e8&amp;source=constructor" width="1176" height="550" frameborder="0"></iframe>
-			<iframe class="mobile" src="https://yandex.ru/map-widget/v1/?um=constructor%3Aac37c0e2277e663cef5469981a04be238ddf6197e206947656c906c26cb395e8&amp;source=constructor" width="1176" height="550" frameborder="0"></iframe>
+		<div class="map bo8 bo-rad-10 of-hidden" >
+			<div id="map" style="width: 100%; height: 550px"></div>
 		</div>
 
 	</div>
@@ -201,7 +217,22 @@
 
 
 
-<!--===============================================================================================-->
+<!--===============================================================================================-->\
+	<script type="text/javascript">
+			ymaps.ready(init);
+			function init() {
+				var myMap = new ymaps.Map("map", {
+					center: [56.226584, 43.412883],
+					zoom: 16
+				});
+				myMap.geoObjects
+						.add(new ymaps.Placemark([56.226584, 43.412883], {
+							balloonContent: 'Ресторан Дача'
+						}, {
+							preset: 'islands#redFoodIcon'
+						}))
+			}
+	</script>
 <script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 <script type="text/javascript" src="/vendor/animsition/js/animsition.min.js"></script>
@@ -225,8 +256,6 @@
 <script type="text/javascript" src="/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 <script type="text/javascript" src="/vendor/lightbox2/js/lightbox.min.js"></script>
-<!--===============================================================================================-->
-<script src="/js/map-custom.js"></script>
 <!--===============================================================================================-->
 <script src="/js/main.js"></script>
 

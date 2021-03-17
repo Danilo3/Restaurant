@@ -7,7 +7,6 @@
     <title>Управление блогом</title>
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
-    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -15,7 +14,11 @@
     <link rel="stylesheet" type="text/css" href="/css/util.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="stylesheet" type="text/css" href="/css/dacha.css">
+    <!--===============================================================================================-->
     <script type="text/javascript" src="/js/zinggrid.min.js" defer></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
 <script>
@@ -23,11 +26,11 @@
         let token = $("meta[name='_csrf']").attr("content");
         let header = $("meta[name='_csrf_header']").attr("content");
         let headers = '"headers" : {"' + header +'" : "' + token + '"}'
-        document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "http://localhost:8080/api/blog/", ' + headers  + '}');
-        document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "http://localhost:8080/api/blog/", ' + headers  + '}');
-        document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "http://localhost:8080/api/blog/", ' + headers  + '}');
-        document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "http://localhost:8080/api/blog/all/", ' + headers  + '}');
-        document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "http://localhost:8080/api/blog/", ' + headers  + '}');
+        document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "/api/blog/", ' + headers  + '}');
+        document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "/api/blog/", ' + headers  + '}');
+        document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "/api/blog/", ' + headers  + '}');
+        document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "/api/blog/all/", ' + headers  + '}');
+        document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "/api/blog/", ' + headers  + '}');
 
     }
 </script>
@@ -42,11 +45,14 @@
             page-size="10"
             page-size-options="2,5,10,20">
         <zg-column index="title" header="Заголовок"></zg-column>
-        <zg-column index="content" header="Содержание"></zg-column>
-        <zg-column index="imageUrl"  type="image" header="Путь до картинки"></zg-column>
+<!--        <zg-column index="content" header="Содержание"></zg-column>-->
+        <zg-column index="imageUrl"  header="Путь до картинки"></zg-column>
         <zg-column index="createDate" header="Дата создания"></zg-column>
         <zg-column index="previewText" header="Превью"></zg-column>
         <zg-column index="author" header="Автор"></zg-column>
+        <zg-column  index="category"  header="Категория" sort="disabled"
+                    type="select"
+                    type-select-options="BLOG, ABOUT, EVENT"></zg-column>
         <zg-column index="urlTitle" header="Название для ссылки"></zg-column>
 
         <zg-data>
@@ -57,7 +63,30 @@
             <zg-param name="updateRowOptions" id="idUpdateRow"></zg-param>
         </zg-data>
     </zing-grid>
+
+    <div class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
+        <div class="pos-relative m-5">
+            <form method="get" action="/manage/blog/new-post/">
+                <button type="submit" class="btn-info flex-c-m trans-0-4 m-t-5 bo-rad-3 bo5">
+                    Добавить новую запись в блог
+                </button>
+            </form>
+        </div>
+        <div class="pos-relative m-5">
+            <form method="get" action="/manage/blog/edit-post/">
+                <button type="submit" class="btn-info flex-c-m trans-0-4 m-t-5 bo-rad-3 bo5">
+                    Редактировать контент поста
+                </button>
+            </form>
+        </div>
+        <div class="pos-relative m-5">
+            <form method="get" action="/manage/image/">
+                <button type="submit" class="btn-info flex-c-m trans-0-4 m-t-5 bo-rad-3 bo5">
+                   Загрузить новое изображение
+                </button>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
-<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 </html>

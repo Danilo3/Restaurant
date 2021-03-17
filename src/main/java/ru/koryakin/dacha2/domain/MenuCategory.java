@@ -7,11 +7,15 @@ public enum MenuCategory {
     FISH("Рыба и морепродукты", true),
     SALADS("САЛАТЫ", false),
     SOUPS("СУПЫ", false),
-    MEAT("Мясо и птица", true ),
+    MEAT("Мясо и птица", true),
     PASTE("ПАСТА", false),
     SIDE("ГАРНИРЫ", false),
-    COFFEE("Кофе", false);
-
+    COFFEE("Кофе", false),
+    HOT_BUSINESS("ГОРЯЧЕЕ БИЗНЕС", true),
+    SALADS_BUSINESS("САЛАТЫ БИЗНЕС", true),
+    SOUP_BUSINESS("СУПЫ БИЗНЕС", true),
+    DRINKS_BUSINESS("НАПИТКИ БИЗНЕС", true),
+    DESSERTS_BUSINESS("ДЕСЕРТЫ БИЗНЕС", true);
     private final String text;
     private final boolean isShow;
 

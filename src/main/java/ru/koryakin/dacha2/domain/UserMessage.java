@@ -3,32 +3,34 @@ package ru.koryakin.dacha2.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
 @Entity
-public class UserMessage {
+public class UserMessage implements TextView {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "phone")
     private String phone;
 
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "message")
     private String message;
 
+    @Override
     public  String toText(){
-        return "Email: " + this.getEmail() + "\n" +
-                "Имя: " + this.getName() + "\n" +
-                "Телефон: " + this.getPhone() + "\n" +
-                "Сообщение: " + this.getMessage() + "\n";
+        return "Email: " + this.email + "\n" +
+                "Имя: " + this.name + "\n" +
+                "Телефон: " + this.phone + "\n" +
+                "Сообщение: " + this.message + "\n";
     }
 }

@@ -5,25 +5,25 @@ import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserEmail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
+    private Integer id;
 
     @Email
     @NotBlank
+    @Column(name = "email")
     private String email;
 
-    private boolean isSubscribed;
+    @Column(name = "status")
+    private String status;
 }
