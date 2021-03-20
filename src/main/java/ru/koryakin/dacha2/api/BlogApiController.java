@@ -79,7 +79,7 @@ public class BlogApiController {
     }
 
     @PostMapping(value = "/new/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<BlogPostDto> createNewPost(BlogPost blogPost) {
+    public List<BlogPostDto> createNewPostFromAdminPage(BlogPost blogPost) {
         blogPostService.save(blogPost);
         log.info("Saved new post with content: " + blogPost.toString());
         return blogPostService.findAll();

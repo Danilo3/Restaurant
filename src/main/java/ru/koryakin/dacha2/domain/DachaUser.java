@@ -9,6 +9,7 @@ import java.util.Set;
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "dacha_user")
 public class DachaUser {
 
     @Id

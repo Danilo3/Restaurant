@@ -28,7 +28,8 @@ public class UserEmailServiceImpl implements UserEmailService {
 
     @Override
     public void save(UserEmail userEmail) {
-        userEmail.setStatus("подписан");
+        if (userEmail.getStatus().isEmpty())
+            userEmail.setStatus("подписан");
         userEmailRepository.save(userEmail);
     }
 

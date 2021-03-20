@@ -53,7 +53,7 @@ public class UserEmailRestTestWithRealRepository {
         TypeFactory typeFactory = om.getTypeFactory();
         List<UserEmail> userEmails = om.readValue(response.getBody(), typeFactory.constructCollectionType(List.class, UserEmail.class));
         for (UserEmail email: userEmails) {
-            if (email.getEmail().equals(userEmail.getEmail()) && email.getStatus().equals("unsubscribed")) {
+            if (email.getEmail().equals(userEmail.getEmail()) && email.getStatus().equals("undefined")) {
                 id = email.getId();
                 break;
             }

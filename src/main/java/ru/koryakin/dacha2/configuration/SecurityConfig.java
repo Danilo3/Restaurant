@@ -62,14 +62,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         if (activeProfile.trim().equalsIgnoreCase("api-tests")) {
             http.csrf().disable();
         }
-        http.authorizeRequests().antMatchers(
-                "/v2/api-docs",
-                "/configuration/ui",
-                "/swagger-resources/**",
-                "/swagger-resources",
-                "/configuration/security",
-                "/swagger-ui.html",
-                "/v3/api-docs/**",
-                "/swagger-ui/**").authenticated();
     }
 }
