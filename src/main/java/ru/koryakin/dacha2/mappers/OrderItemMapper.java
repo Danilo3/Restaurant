@@ -17,6 +17,8 @@ public interface OrderItemMapper {
 
     List<DeliveryOrderItemDto> toDeliveryOrderItemDtos(List<DeliveryOrderItem> deliveryOrderItem);
 
+    List<DeliveryOrderItem> toDeliveryOrderItems(List<DeliveryOrderItemDto> deliveryOrderItemDto);
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateDeliveryOrderItemFromDto(DeliveryOrderItemDto dto, @MappingTarget DeliveryOrderItem deliveryOrderItem);
 }

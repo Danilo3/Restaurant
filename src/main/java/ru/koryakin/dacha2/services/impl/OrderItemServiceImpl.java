@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.koryakin.dacha2.domain.DeliveryOrderItem;
+import ru.koryakin.dacha2.dto.DeliveryOrderItemDto;
 import ru.koryakin.dacha2.mappers.OrderItemMapper;
 import ru.koryakin.dacha2.repositories.DeliveryOrderItemRepository;
 import ru.koryakin.dacha2.services.OrderItemService;
@@ -34,4 +35,15 @@ public class OrderItemServiceImpl implements OrderItemService {
     public void flush() {
         deliveryOrderItemRepository.flush();
     }
+
+    @Override
+    public void saveAllItemDtos(List<DeliveryOrderItemDto> orderItems) {
+        saveAll(mapper.toDeliveryOrderItems(orderItems));
+    }
+
+    @Override
+    public List<DeliveryOrderItemDto> findAll() {
+        return mapper.toDeliveryOrderItemDtos(deliveryOrderItemRepository.findAll());
+    }
 }
+

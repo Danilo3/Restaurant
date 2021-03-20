@@ -54,6 +54,21 @@ public class DeliverOrderApiControllerTest {
         JSONAssert.assertEquals("{\"address\": \"new Address\"}", response.getBody(), false);
     }
 
+    @Test
+    public void testDeliveryOrderItemsApi() throws JsonProcessingException, JSONException {
+        Pair<ObjectNode, Integer> result = testUtilService.makeCreateOperation(restTemplate, "/api/order/", this::initOrder, DeliveryOrderDto.class,
+                (o1, o2) -> o1.getAddress().equals(o2.getAddress()) && o1.getName().equals(o2.getName()));
+
+        Integer id = result.getSecond();
+        ResponseEntity<String> responseEntity = restTemplate.getForEntity("/api/order/" + id + "/items/", String.class);
+        JSONAssert.assertEquals("[{\"name\": \"name\"}, {\"name\": \"name2\"}]", responseEntity.getBody(), false);
+
+        Integer item_id = testUtilService.getIdFromJson(responseEntity.getBody(), DeliveryOrderItemDto.class, (i) -> i.getName().equals("name"));
+        responseEntity = restTemplate.getForEntity("/api/order/" + id + "/items/" + item_id, String.class);
+        JSONAssert.assertEquals("{\"name\": \"name\"}", responseEntity.getBody(), false);
+
+    }
+
     private DeliveryOrderDto initOrder() {
         List<DeliveryOrderItemDto> orderItems = List.of(
                 new DeliveryOrderItemDto(null, "name", 34.56, 50, null),

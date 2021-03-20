@@ -18,6 +18,7 @@ import ru.koryakin.dacha2.dto.BlogPostDto;
 
 import java.util.List;
 import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 @Service
@@ -58,6 +59,20 @@ public class TestUtilService {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+    }
+
+    public <T> Integer getIdFromJson(String json, Class<T> clazz, Predicate<T> predicate) throws JsonProcessingException {
+        Integer id = 0;
+        ObjectMapper om = new ObjectMapper();
+        TypeFactory typeFactory = om.getTypeFactory();
+        List<T> objects = om.readValue(json, typeFactory.constructCollectionType(List.class, clazz));
+        for (T dto: objects) {
+            if (predicate.test(dto)) {
+                id = ReflectionTestUtils.invokeMethod(dto, "getId");
+                break;
+            }
+        }
+        return id;
     }
 
     private  <T> HttpEntity<ObjectNode> makeRequestEntity(Supplier<T> supplier, ObjectMapper om) {

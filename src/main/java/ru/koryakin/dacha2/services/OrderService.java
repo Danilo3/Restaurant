@@ -2,6 +2,7 @@ package ru.koryakin.dacha2.services;
 
 import ru.koryakin.dacha2.domain.DeliveryOrder;
 import ru.koryakin.dacha2.dto.DeliveryOrderDto;
+import ru.koryakin.dacha2.dto.DeliveryOrderItemDto;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,4 +29,12 @@ public interface OrderService {
     DeliveryOrderDto findById(Integer id);
 
     void update(Integer id, DeliveryOrderDto deliveryOrderDto);
+
+    List<DeliveryOrderItemDto> getDeliveryOrderItemsById(Integer id);
+
+    List<DeliveryOrderItemDto> saveOrderItems(Integer id, List<DeliveryOrderItemDto> orderItems);
+
+    void updateOrderItems(Integer id, List<DeliveryOrderItemDto> orderItems);
+
+    DeliveryOrderItemDto getItemByOrderIdAndItemId(Integer order_id, Integer item_id);
 }

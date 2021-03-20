@@ -10,6 +10,7 @@ import ru.koryakin.dacha2.annotations.EmailSend;
 import ru.koryakin.dacha2.domain.DeliveryOrder;
 import ru.koryakin.dacha2.domain.DeliveryOrderItem;
 import ru.koryakin.dacha2.dto.DeliveryOrderDto;
+import ru.koryakin.dacha2.dto.DeliveryOrderItemDto;
 import ru.koryakin.dacha2.mappers.DeliveryOrderMapper;
 import ru.koryakin.dacha2.mappers.OrderItemMapper;
 import ru.koryakin.dacha2.repositories.DeliveryOrderRepository;
@@ -36,15 +37,17 @@ public class OrderServiceImpl implements OrderService {
 
     private final OrderItemService orderItemService;
 
+    private final OrderItemMapper orderItemMapper;
+
     @Autowired
     public OrderServiceImpl(DeliveryOrderRepository orderRepository, DeliveryOrderMapper deliveryOrderMapper,
-                            UtilService utilService, OrderItemService orderItemService) {
+                            UtilService utilService, OrderItemService orderItemService, OrderItemMapper orderItemMapper) {
         this.orderRepository = orderRepository;
         this.deliveryOrderMapper = deliveryOrderMapper;
         this.utilService = utilService;
         this.orderItemService = orderItemService;
+        this.orderItemMapper = orderItemMapper;
     }
-
     @Override
     public DeliveryOrderDto getDeliveryOrderByUsername(String username) {
         return deliveryOrderMapper.toDeliveryOrderDto(orderRepository.getDeliveryOrderByUsername(username));
@@ -145,6 +148,42 @@ public class OrderServiceImpl implements OrderService {
         orderItemService.flush();
         orderRepository.save(order);
     }
+
+    @Override
+    public List<DeliveryOrderItemDto> getDeliveryOrderItemsById(Integer id) {
+        return deliveryOrderMapper.toDeliveryOrderDto(orderRepository.getById(id)).getOrderItems();
+    }
+
+    @Override
+    public List<DeliveryOrderItemDto> saveOrderItems(Integer id, List<DeliveryOrderItemDto> orderItems) {
+        DeliveryOrder order = orderRepository.getById(id);
+        orderItemService.saveAllItemDtos(orderItems);
+        orderItemService.flush();
+        order.setOrderItems(orderItemMapper.toDeliveryOrderItems(orderItems));
+        orderRepository.save(order);
+        return orderItemService.findAll();
+    }
+
+    @Override
+    public void updateOrderItems(Integer id, List<DeliveryOrderItemDto> orderItems) {
+        DeliveryOrder order = orderRepository.getById(id);
+        orderItemService.saveAllItemDtos(orderItems);
+        orderItemService.flush();
+        order.getOrderItems().addAll(orderItemMapper.toDeliveryOrderItems(orderItems));
+        orderRepository.save(order);
+    }
+
+    @Override
+    public DeliveryOrderItemDto getItemByOrderIdAndItemId(Integer order_id, Integer item_id) {
+        DeliveryOrder order = orderRepository.getById(order_id);
+        for (DeliveryOrderItem item : order.getOrderItems()) {
+            if (item.getId().equals(item_id))
+                return orderItemMapper.toDeliveryOrderItemDto(item);
+        }
+        return null;
+    }
+
+
 
     private void deleteCookie(HttpServletResponse response) {
         Cookie cookie = new Cookie("abracadabra", null);
