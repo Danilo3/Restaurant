@@ -4,6 +4,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import ru.koryakin.dacha2.annotations.EmailSend;
 import ru.koryakin.dacha2.domain.TextView;
@@ -15,6 +16,9 @@ public class EmailSendAspect {
 
     private final EmailService emailService;
 
+    @Value("${spring.profiles.active:}")
+    private String activeProfile;
+
     @Autowired
     public EmailSendAspect(EmailService emailService) {
         this.emailService = emailService;
@@ -22,6 +26,9 @@ public class EmailSendAspect {
 
     @After(value = "@annotation(ru.koryakin.dacha2.annotations.EmailSend)")
     public void sendEmail(JoinPoint joinPoint) {
+        if (activeProfile.trim().equalsIgnoreCase("api-tests")) {
+            return;
+        }
         TextView view = (TextView) joinPoint.getArgs()[0];
         try {
             EmailSend annotation = joinPoint.getTarget().getClass().getMethod("save", joinPoint.getArgs()[0].getClass()).getAnnotation(EmailSend.class);

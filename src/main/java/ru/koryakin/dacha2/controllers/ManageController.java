@@ -67,7 +67,7 @@ public class ManageController {
     }
 
     @GetMapping(value = {"/manage.html", "/manage"})
-    public String manage(HttpServletRequest request, HttpSession session, Model model){
+    public String manage(HttpServletRequest request, HttpSession session, Model model) {
         String username = request.getUserPrincipal().getName();
         String imgUrl = dachaUserService.findByUsername(username).getAvatarUrl();
         sessionUtilService.addSessionAttribute(session, "name", username);
@@ -77,56 +77,56 @@ public class ManageController {
     }
 
     @GetMapping("/manage/menu/")
-    public String menuPage(Model model, HttpSession session){
+    public String menuPage(Model model, HttpSession session) {
         model.addAttribute("menuList", menuService.findAll());
         addUserDataFromSession(session, model);
         return "manage-menu";
     }
 
     @PostMapping("/manage/menu")
-    public String uploadMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model){
+    public String uploadMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model) {
         utilService.uploadFile(file, model, menuPath);
         addUserDataFromSession(session, model);
         return "manage-menu";
     }
 
     @PostMapping("/manage/wine")
-    public String uploadWineMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model){
+    public String uploadWineMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model) {
         utilService.uploadFile(file, model, wineMenuPath);
         addUserDataFromSession(session, model);
         return "manage-menu";
     }
 
     @PostMapping("/manage/lunch")
-    public String uploadLunchMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model){
+    public String uploadLunchMenu(@RequestParam("file") MultipartFile file, HttpSession session, Model model) {
         utilService.uploadFile(file, model, lunchMenuPath);
         addUserDataFromSession(session, model);
         return "manage-menu";
     }
 
     @GetMapping(value = "/manage/updateMenu")
-    public String updateMenu(HttpServletResponse response){
+    public String updateMenu(HttpServletResponse response) {
         saveMenuFromPDFService.save();
         response.setHeader("Location", "menu.html");
         return "redirect:" + "/menu";
     }
 
     @GetMapping("/manage/booking/")
-    public String bookingPage(Model model, HttpSession session){
+    public String bookingPage(Model model, HttpSession session) {
         model.addAttribute("bookingList", tableBookingService.findAll());
         addUserDataFromSession(session, model);
         return "manage-booking";
     }
 
     @GetMapping("/manage/blog/")
-    public String blogPage(Model model, HttpSession session){
+    public String blogPage(Model model, HttpSession session) {
         addUserDataFromSession(session, model);
         model.addAttribute("post", new BlogPost());
         return "manage-blog";
     }
 
     @GetMapping("/manage/blog/new-post/")
-    public String newPostPage(Model model, HttpSession session){
+    public String newPostPage(Model model, HttpSession session) {
         addUserDataFromSession(session, model);
         model.addAttribute("tags", postTagService.findAll());
         model.addAttribute("post", new BlogPost());
@@ -135,7 +135,7 @@ public class ManageController {
     }
 
     @GetMapping("/manage/blog/edit-post/")
-    public String editPostPage(@RequestParam(name = "title", required = false) String title, Model model, HttpSession session){
+    public String editPostPage(@RequestParam(name = "title", required = false) String title, Model model, HttpSession session) {
         addUserDataFromSession(session, model);
         if (title == null || title.isEmpty()) {
             model.addAttribute("titles", blogPostService.findAllTitle());
@@ -148,14 +148,14 @@ public class ManageController {
     }
 
     @GetMapping("/manage/image/")
-    public String uploadImagePage(Model model, HttpSession session){
+    public String uploadImagePage(Model model, HttpSession session) {
         addUserDataFromSession(session, model);
         model.addAttribute("post", new BlogPost());
         return "add-image";
     }
 
     @PostMapping("/manage/image/")
-    public String uploadImage(@RequestParam("file") MultipartFile file, @RequestParam("name") String name, HttpSession session, Model model){
+    public String uploadImage(@RequestParam("file") MultipartFile file, @RequestParam("name") String name, HttpSession session, Model model) {
         if (file == null || name == null || name.isEmpty()) {
             model.addAttribute("error", true);
             return "add-image";
@@ -168,13 +168,13 @@ public class ManageController {
     }
 
     @GetMapping("/manage/emails/")
-    public String emailsPage(Model model, HttpSession session){
+    public String emailsPage(Model model, HttpSession session) {
         addUserDataFromSession(session, model);
         return "manage-emails";
     }
 
     @GetMapping("/manage/gallery/")
-    public String galleryPage(Model model, HttpSession session){
+    public String galleryPage(Model model, HttpSession session) {
         addUserDataFromSession(session, model);
         model.addAttribute("images", utilService.arrayToStr(utilService.findAllImagesInDirectory(imagePrefix)));
         return "manage-gallery";

@@ -146,7 +146,7 @@
     -webkit-transform: rotate(360deg);
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
-    border-color: rgba(255,255,255,0) #5cb85c rgba(255,255,255,0) rgba(255,255,255,0);
+    border-color: rgba(255, 255, 255, 0) #5cb85c rgba(255, 255, 255, 0) rgba(255, 255, 255, 0);
 }
 
 .sc-button-checkout-default {

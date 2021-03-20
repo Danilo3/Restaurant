@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="_csrf" th:content="${_csrf.token}" />
-    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Загрузить картинку</title>
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
@@ -23,26 +23,26 @@
 
 </head>
 <body>
-<div th:insert="manage.html :: header"> </div>
+<div th:insert="manage.html :: header"></div>
 <div class="container-fluid bg2-pattern w-full-md m-t-0 p-t-0">
-            <form method="POST" enctype="multipart/form-data"  th:action="@{/manage/image/}">
-                <div class="form-file" >
-                    <div  th:if="${error}" class="error-login alert alert-error">
-                        <div class="alert alert-warning">
-                            Не удалось загрузить файл.
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="imageName">Введите имя файла на английском с расшрением</label>
-                        <input type="text" class="form-control" id="imageName" name="name" placeholder="image.png">
-                    </div>
-                    <div class="input-group">
-                        <label for="imageFileUpload">Выберите файл изображения</label>
-                        <input type="file" name="file" id="imageFileUpload" accept="image/png,image/jpeg,image/jpg,image/svg">
-                    </div>
-                    <button type="submit" class="btn btn-primary m-t-5">Загрузить</button>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/manage/image/}">
+        <div class="form-file">
+            <div th:if="${error}" class="error-login alert alert-error">
+                <div class="alert alert-warning">
+                    Не удалось загрузить файл.
                 </div>
-            </form>
+            </div>
+            <div class="form-group">
+                <label for="imageName">Введите имя файла на английском с расшрением</label>
+                <input type="text" class="form-control" id="imageName" name="name" placeholder="image.png">
+            </div>
+            <div class="input-group">
+                <label for="imageFileUpload">Выберите файл изображения</label>
+                <input type="file" name="file" id="imageFileUpload" accept="image/png,image/jpeg,image/jpg,image/svg">
+            </div>
+            <button type="submit" class="btn btn-primary m-t-5">Загрузить</button>
+        </div>
+    </form>
 </div>
 
 </body>

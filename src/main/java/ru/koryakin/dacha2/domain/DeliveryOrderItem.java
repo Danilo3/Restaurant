@@ -22,7 +22,7 @@ public class DeliveryOrderItem {
     @Column(name = "price")
     private Double price;
 
-    @Column(name="quantity")
+    @Column(name = "quantity")
     private Integer quantity;
 
     @Column(name = "menu_item_id")
@@ -31,9 +31,9 @@ public class DeliveryOrderItem {
     @Override
     public String toString() {
         return
-                "\t{название=" + name  +
-                " , цена=" + price +
-                " , количество=" + quantity +
-                "}\n";
+                "\t{название=" + name +
+                        " , цена=" + price +
+                        " , количество=" + quantity +
+                        "}\n";
     }
 }

@@ -25,6 +25,7 @@
 .badge-warning[href] {
     background-color: #c67605;
 }
+
 #lblCartCount {
     font-size: 12px;
     background: #ff0000;
@@ -46,7 +47,7 @@
 
 .cartSummary {
     padding: 10px;
-    border: solid red 1px ;
+    border: solid red 1px;
     border-radius: 10px;
     text-align: center;
     margin-bottom: 30px;

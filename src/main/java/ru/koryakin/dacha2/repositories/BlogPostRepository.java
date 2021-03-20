@@ -31,7 +31,7 @@ public interface BlogPostRepository extends JpaRepository<BlogPost, Integer> {
 
     @Query(value = "SELECT * FROM blog_post  WHERE blog_post.category='BLOG' ORDER  BY blog_post.views_count DESC LIMIT 5", nativeQuery = true)
     List<BlogPost> findTop5OrderByViewsCount();
-    
+
     @Query(value = "select title from blog_post", nativeQuery = true)
     List<String> findAllTitle();
 

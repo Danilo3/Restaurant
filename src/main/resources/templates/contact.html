@@ -1,203 +1,217 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Контакты</title>
-	<meta charset="UTF-8">
-	<meta name="Description" content="Контакты ресторана Дача в городе Дзержинска. Здесь вы можете написать нам сообщение и узнать наше местонахождение, часы работы, телефон"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!--===============================================================================================-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-	<!--===============================================================================================-->
-	<link rel="icon" href="/favicon.ico" type="image/x-icon">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/fonts/themify/themify-icons.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
-	<script src="https://api-maps.yandex.ru/2.1/?apikey=88e346ee-b72a-4121-8583-108b2c556e6d&lang=ru_RU" type="text/javascript"></script>
-	<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/css/util.css">
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
-	<link rel="stylesheet" type="text/css" href="/css/dacha.css">
-	<!--===============================================================================================-->
-	<!-- Yandex.Metrika counter -->
-	<script type="text/javascript" >
-		(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-			m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-		(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    <title>Контакты</title>
+    <meta charset="UTF-8">
+    <meta name="Description"
+          content="Контакты ресторана Дача в городе Дзержинска. Здесь вы можете написать нам сообщение и узнать наше местонахождение, часы работы, телефон"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <!--===============================================================================================-->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/themify/themify-icons.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=88e346ee-b72a-4121-8583-108b2c556e6d&lang=ru_RU"
+            type="text/javascript"></script>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/dacha.css">
+    <!--===============================================================================================-->
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-		ym(73333237, "init", {
-			clickmap:true,
-			trackLinks:true,
-			accurateTrackBounce:true
-		});
-	</script>
-	<noscript><div><img src="https://mc.yandex.ru/watch/73333237" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-	<!-- /Yandex.Metrika counter -->
+        ym(73333237, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/73333237" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 
 </head>
 <body class="animsition">
 
-	<!-- Header -->
- 	<div th:insert="index.html :: header"></div>
+<!-- Header -->
+<div th:insert="index.html :: header"></div>
 
-	<!-- Sidebar -->
-	<div th:insert="index.html :: sidebar"></div>
+<!-- Sidebar -->
+<div th:insert="index.html :: sidebar"></div>
 
 <!-- Title Page -->
-<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(/images/bg-title-page-02.jpg);">
-	<h2 class="tit6 t-center">
-		Контакты
-	</h2>
+<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15"
+         style="background-image: url(/images/bg-title-page-02.jpg);">
+    <h2 class="tit6 t-center">
+        Контакты
+    </h2>
 </section>
-
 
 
 <!-- Contact form -->
 <section class="section-contact bg1-pattern p-t-90 p-b-113">
-	<!-- Map -->
-	<div class="container">
-		<div class="map bo8 bo-rad-10 of-hidden" >
-			<div id="map" style="width: 100%; height: 550px"></div>
-		</div>
+    <!-- Map -->
+    <div class="container">
+        <div class="map bo8 bo-rad-10 of-hidden">
+            <div id="map" style="width: 100%; height: 550px"></div>
+        </div>
 
-	</div>
+    </div>
 
-	<div class="container">
-		<h3 class="tit7 t-center p-b-62 p-t-105">
-			Отправь нам сообщение
-		</h3>
-		<script>
-			function validate() {
-				alert("Сообщение отправлено");
-				let form = document.getElementsByClassName('wrap-form-reservation')[0];
-			}
-		</script>
-		<!-- th:action not working -->
-		<form class="wrap-form-reservation size22 m-l-r-auto" action="/send" th:object="${usermessage}" method="post" onsubmit="return validate()">
-			<div class="row">
-				<div class="col-md-4">
-					<!-- Name -->
-					<span class="txt9">
+    <div class="container">
+        <h3 class="tit7 t-center p-b-62 p-t-105">
+            Отправь нам сообщение
+        </h3>
+        <script>
+            function validate() {
+                alert("Сообщение отправлено");
+                let form = document.getElementsByClassName('wrap-form-reservation')[0];
+            }
+        </script>
+        <!-- th:action not working -->
+        <form class="wrap-form-reservation size22 m-l-r-auto" action="/send" th:object="${usermessage}" method="post"
+              onsubmit="return validate()">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- Name -->
+                    <span class="txt9">
 							Имя
 						</span>
 
-					<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-						<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name" th:field="*{name}">
-					</div>
-				</div>
+                    <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                        <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name"
+                               th:field="*{name}">
+                    </div>
+                </div>
 
-				<div class="col-md-4">
-					<!-- Email -->
-					<span class="txt9">
+                <div class="col-md-4">
+                    <!-- Email -->
+                    <span class="txt9">
 							Email
 						</span>
 
-					<div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
-						<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email" th:field="*{email}">
-					</div>
-				</div>
+                    <div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                        <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email"
+                               th:field="*{email}">
+                    </div>
+                </div>
 
-				<div class="col-md-4">
-					<!-- Phone -->
-					<span class="txt9">
+                <div class="col-md-4">
+                    <!-- Phone -->
+                    <span class="txt9">
 							Телефон
 						</span>
 
-					<div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-						<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone" th:field="*{phone}">
-					</div>
-				</div>
+                    <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                        <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone"
+                               th:field="*{phone}">
+                    </div>
+                </div>
 
-				<div class="col-12">
-					<!-- Message -->
-					<span class="txt9">
+                <div class="col-12">
+                    <!-- Message -->
+                    <span class="txt9">
 							Сообщение
 						</span>
-					<textarea class="bo-rad-10 size35 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-3" name="message" placeholder="Message" th:field="*{message}"></textarea>
-				</div>
-			</div>
+                    <textarea class="bo-rad-10 size35 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-3" name="message"
+                              placeholder="Message" th:field="*{message}"></textarea>
+                </div>
+            </div>
 
-			<div class="wrap-btn-booking flex-c-m m-t-13">
-				<!-- Button3 -->
-				<button type="submit" class="btn3 flex-c-m size36 txt11 trans-0-4">
-					Отправить
-				</button>
-			</div>
-		</form>
+            <div class="wrap-btn-booking flex-c-m m-t-13">
+                <!-- Button3 -->
+                <button type="submit" class="btn3 flex-c-m size36 txt11 trans-0-4">
+                    Отправить
+                </button>
+            </div>
+        </form>
 
-		<div class="row p-t-135">
-			<div class="col-sm-8 col-md-4 col-lg-4 m-l-r-auto p-t-30">
-				<div class="dis-flex m-l-23">
-					<div class="p-r-40 p-t-6">
-						<img src="/images/icons/map-icon.png" alt="IMG-ICON">
-					</div>
+        <div class="row p-t-135">
+            <div class="col-sm-8 col-md-4 col-lg-4 m-l-r-auto p-t-30">
+                <div class="dis-flex m-l-23">
+                    <div class="p-r-40 p-t-6">
+                        <img src="/images/icons/map-icon.png" alt="IMG-ICON">
+                    </div>
 
-					<div class="flex-col-l">
+                    <div class="flex-col-l">
 							<span class="txt5 p-b-10">
 								Адрес
 							</span>
 
-						<span class="txt23 size38">
+                        <span class="txt23 size38">
 								г.Дзержинск, проспект Циолковского, 65a
 							</span>
-					</div>
-				</div>
-			</div>
+                    </div>
+                </div>
+            </div>
 
-			<div class="col-sm-8 col-md-3 col-lg-4 m-l-r-auto p-t-30">
-				<div class="dis-flex m-l-23">
-					<div class="p-r-40 p-t-6">
-						<img src="/images/icons/phone-icon.png" alt="IMG-ICON">
-					</div>
+            <div class="col-sm-8 col-md-3 col-lg-4 m-l-r-auto p-t-30">
+                <div class="dis-flex m-l-23">
+                    <div class="p-r-40 p-t-6">
+                        <img src="/images/icons/phone-icon.png" alt="IMG-ICON">
+                    </div>
 
 
-					<div class="flex-col-l">
+                    <div class="flex-col-l">
 							<span class="txt5 p-b-10">
 								Позвоните нам
 							</span>
 
-						<span class="txt23 size38">
+                        <span class="txt23 size38">
 								8 (8313) 370-100
 							</span>
-					</div>
-				</div>
-			</div>
+                    </div>
+                </div>
+            </div>
 
-			<div class="col-sm-8 col-md-5 col-lg-4 m-l-r-auto p-t-30">
-				<div class="dis-flex m-l-23">
-					<div class="p-r-40 p-t-6">
-						<img src="/images/icons/clock-icon.png" alt="IMG-ICON">
-					</div>
+            <div class="col-sm-8 col-md-5 col-lg-4 m-l-r-auto p-t-30">
+                <div class="dis-flex m-l-23">
+                    <div class="p-r-40 p-t-6">
+                        <img src="/images/icons/clock-icon.png" alt="IMG-ICON">
+                    </div>
 
-					<div class="flex-col-l">
+                    <div class="flex-col-l">
 							<span class="txt5 p-b-10">
 								Часы работы
 							</span>
 
-						<span class="txt23 size38">
+                        <span class="txt23 size38">
 								12:00 – 24:00 <br/> Ежедневно
 							</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 
@@ -216,23 +230,23 @@
 <div id="dropDownSelect1"></div>
 
 
-
 <!--===============================================================================================-->\
-	<script type="text/javascript">
-			ymaps.ready(init);
-			function init() {
-				var myMap = new ymaps.Map("map", {
-					center: [56.226584, 43.412883],
-					zoom: 16
-				});
-				myMap.geoObjects
-						.add(new ymaps.Placemark([56.226584, 43.412883], {
-							balloonContent: 'Ресторан Дача'
-						}, {
-							preset: 'islands#redFoodIcon'
-						}))
-			}
-	</script>
+<script type="text/javascript">
+    ymaps.ready(init);
+
+    function init() {
+        var myMap = new ymaps.Map("map", {
+            center: [56.226584, 43.412883],
+            zoom: 16
+        });
+        myMap.geoObjects
+            .add(new ymaps.Placemark([56.226584, 43.412883], {
+                balloonContent: 'Ресторан Дача'
+            }, {
+                preset: 'islands#redFoodIcon'
+            }))
+    }
+</script>
 <script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 <script type="text/javascript" src="/vendor/animsition/js/animsition.min.js"></script>
@@ -250,7 +264,7 @@
 <!--===============================================================================================-->
 <script type="text/javascript" src="/vendor/parallax100/parallax100.js"></script>
 <script type="text/javascript">
-	$('.parallax100').parallax100();
+    $('.parallax100').parallax100();
 </script>
 <!--===============================================================================================-->
 <script type="text/javascript" src="/vendor/countdowntime/countdowntime.js"></script>

@@ -39,7 +39,7 @@ public class OrderController {
 
     @GetMapping(value = {"/order", "/order.html"})
     private String order(@RequestParam Optional<String> category, Model model) {
-        if (category.isPresent()){
+        if (category.isPresent()) {
             try {
                 MenuCategory menuCategory = MenuCategory.valueOf(category.get().toUpperCase());
                 model.addAttribute("productList", menuService.findAllByCategoryAndIsAvailableForOrder(menuCategory.toString(), true));
@@ -67,7 +67,7 @@ public class OrderController {
     }
 
     @PostMapping(value = "/order")
-    private String makingOrder(@RequestParam("cart_list") String cart_list, HttpServletResponse response){
+    private String makingOrder(@RequestParam("cart_list") String cart_list, HttpServletResponse response) {
         if (orderService.makeOrder(cart_list, response, userId))
             return "redirect:" + "/order/detail/";
         else
@@ -87,10 +87,9 @@ public class OrderController {
 
     @PostMapping(value = "/order/detail")
     private String finishOrder(@Valid DeliveryOrder deliveryOrder, BindingResult bindingResult, HttpServletResponse response, Model model) {
-        if(!validate(deliveryOrder, bindingResult, model)) {
+        if (!validate(deliveryOrder, bindingResult, model)) {
             return "order-detail";
-        }
-        else {
+        } else {
             orderService.finishOrder(deliveryOrder, response);
             orderService.save(mapper.toDeliveryOrderDto(deliveryOrder));
             return "redirect:" + "/order/success";
@@ -109,7 +108,7 @@ public class OrderController {
             bindingResult.getAllErrors().forEach((error) -> {
                 String fieldName = ((FieldError) error).getField();
                 String errorMessage = error.getDefaultMessage();
-                errors.add(fieldName+ ": " + errorMessage);
+                errors.add(fieldName + ": " + errorMessage);
             });
             if ((deliveryOrder.getEmail().isEmpty() && deliveryOrder.getPhone().isEmpty())) {
                 errors.add("Для связи должен быть телефон или имя");

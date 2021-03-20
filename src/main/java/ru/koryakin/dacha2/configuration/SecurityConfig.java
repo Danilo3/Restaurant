@@ -1,6 +1,7 @@
 package ru.koryakin.dacha2.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpMethod;
@@ -17,6 +18,8 @@ import ru.koryakin.dacha2.services.impl.DachaUserDetailsServiceImpl;
 @ComponentScan(basePackages = {"ru.koryakin.dacha2.services"})
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Value("${spring.profiles.active:}")
+    private String activeProfile;
 
     private DachaUserDetailsServiceImpl userDetailsService;
 
@@ -51,10 +54,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/manage/**", "/manage.html", "/api/**").authenticated();
         http.formLogin().loginPage("/login.html").permitAll()
                 .loginProcessingUrl("/perform_login")
-                .defaultSuccessUrl("/manage.html",true)
+                .defaultSuccessUrl("/manage.html", true)
                 .failureUrl("/login.html?error=true")
                 .usernameParameter("username")
                 .passwordParameter("password");
         http.logout().logoutUrl("/logout").logoutSuccessUrl("/");
+        if (activeProfile.trim().equalsIgnoreCase("api-tests")) {
+            http.csrf().disable();
+        }
+        http.authorizeRequests().antMatchers(
+                "/v2/api-docs",
+                "/configuration/ui",
+                "/swagger-resources/**",
+                "/swagger-resources",
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/v3/api-docs/**",
+                "/swagger-ui/**").authenticated();
     }
 }

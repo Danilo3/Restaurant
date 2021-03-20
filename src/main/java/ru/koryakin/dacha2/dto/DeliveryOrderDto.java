@@ -1,6 +1,7 @@
 package ru.koryakin.dacha2.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @AllArgsConstructor
+@Builder
 public class DeliveryOrderDto implements TextView {
 
     private Integer id;

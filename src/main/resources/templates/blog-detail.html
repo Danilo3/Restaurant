@@ -1,286 +1,299 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Записи Ресторана Дача</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-<!--===============================================================================================-->
-	<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/fonts/themify/themify-icons.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/css/util.css">
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
-<!--===============================================================================================-->
-	<!-- Yandex.Metrika counter -->
-	<script type="text/javascript" >
-		(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-			m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-		(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    <title>Записи Ресторана Дача</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <!--===============================================================================================-->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/themify/themify-icons.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!--===============================================================================================-->
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-		ym(73333237, "init", {
-			clickmap:true,
-			trackLinks:true,
-			accurateTrackBounce:true
-		});
-	</script>
-	<noscript><div><img src="https://mc.yandex.ru/watch/73333237" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-	<!-- /Yandex.Metrika counter -->
+        ym(73333237, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/73333237" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
 </head>
 <body class="animsition">
 
-	<!-- Header -->
-	<div th:insert="index.html :: header"></div>
-	<!-- Sidebar -->
-	<div th:insert="index.html :: sidebar"></div>
+<!-- Header -->
+<div th:insert="index.html :: header"></div>
+<!-- Sidebar -->
+<div th:insert="index.html :: sidebar"></div>
 
 
-	<!-- Title Page -->
-	<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15" style="background-image: url(/images/bg-title-page-03.jpg);">
-		<h2 class="tit6 t-center">
-			Блог
-		</h2>
-	</section>
+<!-- Title Page -->
+<section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15"
+         style="background-image: url(/images/bg-title-page-03.jpg);">
+    <h2 class="tit6 t-center">
+        Блог
+    </h2>
+</section>
 
 
-	<!-- Content page -->
-	<section>
-		<div class="bread-crumb bo5-b p-t-17 p-b-17">
-			<div class="container">
-				<a href="/index.html" class="txt27">
-					Главная
-				</a>
+<!-- Content page -->
+<section>
+    <div class="bread-crumb bo5-b p-t-17 p-b-17">
+        <div class="container">
+            <a href="/index.html" class="txt27">
+                Главная
+            </a>
 
-				<span class="txt29 m-l-10 m-r-10">/</span>
+            <span class="txt29 m-l-10 m-r-10">/</span>
 
-				<a href="/blog.html" class="txt27">
-					Блог
-				</a>
+            <a href="/blog.html" class="txt27">
+                Блог
+            </a>
 
-				<span class="txt29 m-l-10 m-r-10">/</span>
+            <span class="txt29 m-l-10 m-r-10">/</span>
 
-				<span th:object="${post}" class="txt29" th:text="${post.title}">
+            <span th:object="${post}" class="txt29" th:text="${post.title}">
 					Cooking recipe delicious
 				</span>
-			</div>
-		</div>
+        </div>
+    </div>
 
-		<div class="container">
-			<div class="row ">
-				<div class="col-md-8 col-lg-9">
-					<div class="p-t-80 p-b-124 bo5-r p-r-50 h-full p-r-0-md bo-none-md">
-						<!-- Block4 -->
-						<div class="blo4 p-b-63" th:object="${post}">
-							<!-- - -->
-							<div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
-								<a th:href="@{/blog-detail/(name=${post.urlTitle})}">
-									<img th:attr="src=${post.imageUrl}" alt="IMG-BLOG">
-								</a>
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-8 col-lg-9">
+                <div class="p-t-80 p-b-124 bo5-r p-r-50 h-full p-r-0-md bo-none-md">
+                    <!-- Block4 -->
+                    <div class="blo4 p-b-63" th:object="${post}">
+                        <!-- - -->
+                        <div class="pic-blo4 hov-img-zoom bo-rad-10 pos-relative">
+                            <a th:href="@{/blog-detail/(name=${post.urlTitle})}">
+                                <img th:attr="src=${post.imageUrl}" alt="IMG-BLOG">
+                            </a>
 
-								<div class="date-blo4 flex-col-c-m" th:object="${date}">
+                            <div class="date-blo4 flex-col-c-m" th:object="${date}">
 									<span class="txt30 m-b-4" th:text="${#dates.format(date, 'dd')}">
 										28
 									</span>
 
-									<span class="txt31" th:text="${#dates.format(date, 'MMM, yyyy')}">
+                                <span class="txt31" th:text="${#dates.format(date, 'MMM, yyyy')}">
 										Dec, 2018
 									</span>
-								</div>
-							</div>
+                            </div>
+                        </div>
 
-							<!-- - -->
-							<div class="text-blo4 p-t-33">
-								<h4 class="p-b-16">
-									<a href="#" class="tit9" th:text="${post.title}">Cooking recipe Delicious</a>
-								</h4>
+                        <!-- - -->
+                        <div class="text-blo4 p-t-33">
+                            <h4 class="p-b-16">
+                                <a href="#" class="tit9" th:text="${post.title}">Cooking recipe Delicious</a>
+                            </h4>
 
-								<div class="txt32 flex-w p-b-24">
-									<span th:text="${'by ' + post.author}">Admin</span>
-									<span class="m-r-6 m-l-4">|</span>
-									<span th:text="${post.createDate}">
+                            <div class="txt32 flex-w p-b-24">
+                                <span th:text="${'by ' + post.author}">Admin</span>
+                                <span class="m-r-6 m-l-4">|</span>
+                                <span th:text="${post.createDate}">
 										28 December, 2018
 									</span>
-									<span class="m-r-6 m-l-4">|</span>
-									<span th:each="tag : ${post.tags}" th:text="${tag.tagName}">
+                                <span class="m-r-6 m-l-4">|</span>
+                                <span th:each="tag : ${post.tags}" th:text="${tag.tagName}">
 										Cooking
 									</span>
 
-								</div>
+                            </div>
 
-								<div th:utext="${post.content}">Content</div>
-							</div>
-						</div>
+                            <div th:utext="${post.content}">Content</div>
+                        </div>
+                    </div>
 
-						<!-- Leave a comment -->
-						<form class="leave-comment p-t-10" style="display: none">
-							<h4 class="txt33 p-b-14">
-								Оставь комментарий(пока недоступно)
-							</h4>
+                    <!-- Leave a comment -->
+                    <form class="leave-comment p-t-10" style="display: none">
+                        <h4 class="txt33 p-b-14">
+                            Оставь комментарий(пока недоступно)
+                        </h4>
 
-							<p>
-								Ваш email не будет опубликован. Обязательные поля отмечены * *
-							</p>
+                        <p>
+                            Ваш email не будет опубликован. Обязательные поля отмечены * *
+                        </p>
 
-							<textarea class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40" name="commentent" placeholder="Comment..."></textarea>
+                        <textarea class="bo-rad-10 size29 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-40" name="commentent"
+                                  placeholder="Comment..."></textarea>
 
-							<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
-								<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name *">
-							</div>
+                        <div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
+                            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name *">
+                        </div>
 
-							<div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
-								<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email *">
-							</div>
+                        <div class="size30 bo2 bo-rad-10 m-t-3 m-b-20">
+                            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email"
+                                   placeholder="Email *">
+                        </div>
 
-							<div class="size30 bo2 bo-rad-10 m-t-3 m-b-30">
-								<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="website" placeholder="Website">
-							</div>
+                        <div class="size30 bo2 bo-rad-10 m-t-3 m-b-30">
+                            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="website"
+                                   placeholder="Website">
+                        </div>
 
-							<!-- Button3 -->
-							<button type="submit" class="btn3 flex-c-m size31 txt11 trans-0-4">
-								Отправить комментарий
-							</button>
-						</form>
-					</div>
-				</div>
+                        <!-- Button3 -->
+                        <button type="submit" class="btn3 flex-c-m size31 txt11 trans-0-4">
+                            Отправить комментарий
+                        </button>
+                    </form>
+                </div>
+            </div>
 
-				<div class="col-md-4 col-lg-3">
-					<div class="sidebar2 p-t-80 p-b-80 p-l-20 p-l-0-md p-t-0-md">
-						<!-- Search -->
-						<form action="/blog.html/">
-							<div class="search-sidebar2 size12 bo2 pos-relative">
-								<input class="input-search-sidebar2 txt10 p-l-20 p-r-55" type="text" name="find" placeholder="Search">
-								<button class="btn-search-sidebar2 flex-c-m ti-search trans-0-4" type="submit"></button>
-							</div>
-						</form>
+            <div class="col-md-4 col-lg-3">
+                <div class="sidebar2 p-t-80 p-b-80 p-l-20 p-l-0-md p-t-0-md">
+                    <!-- Search -->
+                    <form action="/blog.html/">
+                        <div class="search-sidebar2 size12 bo2 pos-relative">
+                            <input class="input-search-sidebar2 txt10 p-l-20 p-r-55" type="text" name="find"
+                                   placeholder="Search">
+                            <button class="btn-search-sidebar2 flex-c-m ti-search trans-0-4" type="submit"></button>
+                        </div>
+                    </form>
 
-						<!-- Categories -->
-						<div class="categories">
-							<h4 class="txt33 bo5-b p-b-35 p-t-58">
-								Categories
-							</h4>
+                    <!-- Categories -->
+                    <div class="categories">
+                        <h4 class="txt33 bo5-b p-b-35 p-t-58">
+                            Categories
+                        </h4>
 
-							<ul>
-								<li class="bo5-b p-t-8 p-b-8" th:each="tag: ${tags}">
-									<a th:href="@{/blog.html/(tag=${tag.urlTitle})}" class="txt27" th:text="${tag.tagName}">
-										Cooking recipe
-									</a>
-								</li>
-							</ul>
-						</div>
+                        <ul>
+                            <li class="bo5-b p-t-8 p-b-8" th:each="tag: ${tags}">
+                                <a th:href="@{/blog.html/(tag=${tag.urlTitle})}" class="txt27" th:text="${tag.tagName}">
+                                    Cooking recipe
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
 
-						<!-- Most Popular -->
-						<div class="popular" >
-							<h4 class="txt33 p-b-35 p-t-58">
-								Most popular
-							</h4>
+                    <!-- Most Popular -->
+                    <div class="popular">
+                        <h4 class="txt33 p-b-35 p-t-58">
+                            Most popular
+                        </h4>
 
-							<ul>
-								<li class="flex-w m-b-25" th:each="post : ${popular}">
-									<div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
-										<a th:href="@{/blog-detail/(name=${post.urlTitle})}" >
-											<img th:attr="src=${post.imageUrl}" alt="IMG-BLOG">
-										</a>
-									</div>
+                        <ul>
+                            <li class="flex-w m-b-25" th:each="post : ${popular}">
+                                <div class="size16 bo-rad-10 wrap-pic-w of-hidden m-r-18">
+                                    <a th:href="@{/blog-detail/(name=${post.urlTitle})}">
+                                        <img th:attr="src=${post.imageUrl}" alt="IMG-BLOG">
+                                    </a>
+                                </div>
 
-									<div class="size28">
-										<a th:href="@{/blog-detail/(name=${post.urlTitle})}" class="dis-block txt28 m-b-8" th:text="${post.title}">
-											Best Places for Wine
-										</a>
+                                <div class="size28">
+                                    <a th:href="@{/blog-detail/(name=${post.urlTitle})}" class="dis-block txt28 m-b-8"
+                                       th:text="${post.title}">
+                                        Best Places for Wine
+                                    </a>
 
-										<span class="txt14" th:text="${post.createDate}">
+                                    <span class="txt14" th:text="${post.createDate}">
 											3 days ago
 										</span>
-									</div>
-								</li>
-							</ul>
-						</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
 
-						<!-- Archive -->
-						<div class="archive">
-							<h4 class="txt33 p-b-20 p-t-43">
-								Архив
-							</h4>
+                    <!-- Archive -->
+                    <div class="archive">
+                        <h4 class="txt33 p-b-20 p-t-43">
+                            Архив
+                        </h4>
 
-							<ul >
-								<li class="flex-sb-m p-t-8 p-b-8" th:each="ar : ${archive}">
-									<a th:href="@{/blog.html/(date=${ar.key})}" class="txt27" th:text="${#temporals.format(ar.key, 'MMM, yyyy')}">
-										July 2018
-									</a>
+                        <ul>
+                            <li class="flex-sb-m p-t-8 p-b-8" th:each="ar : ${archive}">
+                                <a th:href="@{/blog.html/(date=${ar.key})}" class="txt27"
+                                   th:text="${#temporals.format(ar.key, 'MMM, yyyy')}">
+                                    July 2018
+                                </a>
 
-									<span class="txt29" th:text="${ar.value}">
+                                <span class="txt29" th:text="${ar.value}">
 										(9)
 									</span>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-	<div th:insert="index.html :: footer"></div>
+<div th:insert="index.html :: footer"></div>
 
 
-	<!-- Back to top -->
-	<div class="btn-back-to-top bg0-hov" id="myBtn">
+<!-- Back to top -->
+<div class="btn-back-to-top bg0-hov" id="myBtn">
 		<span class="symbol-btn-back-to-top">
 			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
 		</span>
-	</div>
+</div>
 
 
-
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/animsition/js/animsition.min.js"></script>
+<script type="text/javascript" src="/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/bootstrap/js/popper.js"></script>
-	<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/vendor/bootstrap/js/popper.js"></script>
+<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
+<script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/daterangepicker/moment.min.js"></script>
-	<script type="text/javascript" src="/vendor/daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="/vendor/daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/slick/slick.min.js"></script>
-	<script type="text/javascript" src="/js/slick-custom.js"></script>
+<script type="text/javascript" src="/vendor/slick/slick.min.js"></script>
+<script type="text/javascript" src="/js/slick-custom.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/parallax100/parallax100.js"></script>
-	<script type="text/javascript">
-        $('.parallax100').parallax100();
-	</script>
+<script type="text/javascript" src="/vendor/parallax100/parallax100.js"></script>
+<script type="text/javascript">
+    $('.parallax100').parallax100();
+</script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/countdowntime/countdowntime.js"></script>
+<script type="text/javascript" src="/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/lightbox2/js/lightbox.min.js"></script>
+<script type="text/javascript" src="/vendor/lightbox2/js/lightbox.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/isotope/isotope.pkgd.min.js"></script>
+<script type="text/javascript" src="/vendor/isotope/isotope.pkgd.min.js"></script>
 <!--===============================================================================================-->
-	<script src="/js/main.js"></script>
+<script src="/js/main.js"></script>
 
 </body>
 </html>

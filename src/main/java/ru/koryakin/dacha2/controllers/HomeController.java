@@ -36,11 +36,12 @@ public class HomeController {
     }
 
     @GetMapping(value = "/vk", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody public String getVkWall() {
-       return vkService.getWallPlainJSON();
+    @ResponseBody
+    public String getVkWall() {
+        return vkService.getWallPlainJSON();
     }
 
-    private void addAttributes(Model model){
+    private void addAttributes(Model model) {
         model.addAttribute("tablebooking", new TableBooking());
         model.addAttribute("latestPosts", blogPostService.getNLatestPostsFromRepository(3));
         model.addAttribute("useremail", new UserEmail());

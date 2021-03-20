@@ -1,9 +1,10 @@
 package ru.koryakin.dacha2.mappers;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 import ru.koryakin.dacha2.domain.DeliveryOrderItem;
+import ru.koryakin.dacha2.domain.UserEmail;
 import ru.koryakin.dacha2.dto.DeliveryOrderItemDto;
+import ru.koryakin.dacha2.dto.UserEmailDto;
 
 import java.util.List;
 
@@ -11,7 +12,11 @@ import java.util.List;
 public interface OrderItemMapper {
 
     DeliveryOrderItem toDeliveryOrderItem(DeliveryOrderItemDto deliveryOrderItemDto);
+
     DeliveryOrderItemDto toDeliveryOrderItemDto(DeliveryOrderItem deliveryOrderItem);
+
     List<DeliveryOrderItemDto> toDeliveryOrderItemDtos(List<DeliveryOrderItem> deliveryOrderItem);
 
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateDeliveryOrderItemFromDto(DeliveryOrderItemDto dto, @MappingTarget DeliveryOrderItem deliveryOrderItem);
 }

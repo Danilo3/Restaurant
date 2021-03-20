@@ -24,7 +24,7 @@ public class ReservationController {
     }
 
     @GetMapping(value = "/reservation.html")
-    public String reservation(Model model){
+    public String reservation(Model model) {
         model.addAttribute("tablebooking", new TableBooking());
         return "reservation";
     }

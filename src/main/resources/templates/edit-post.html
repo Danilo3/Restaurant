@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="_csrf" th:content="${_csrf.token}" />
-    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Редактировать пост</title>
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
@@ -29,15 +29,15 @@
 </head>
 <body>
 <script th:inline="javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         var options = {
-            method : "POST",
-            success:    function() {
+            method: "POST",
+            success: function () {
                 $('#formEditPost')[0].reset();
                 alert('Пост сохранен');
-                document.location.href =  "/manage/blog/edit-post/";
+                document.location.href = "/manage/blog/edit-post/";
             },
-            beforeSend: function(request) {
+            beforeSend: function (request) {
                 let token = $("meta[name='_csrf']").attr("content");
                 let header = $("meta[name='_csrf_header']").attr("content");
                 request.setRequestHeader(header, token);
@@ -45,17 +45,17 @@
             clearForm: true
         };
         $('#formEditPost').ajaxForm(options);
-        $('#formEditPost').submit(function() {
+        $('#formEditPost').submit(function () {
             $(this).ajaxSubmit();
             return false;
         });
-        var gArrayFonts = ['Poppins','Arial', 'Montsserat', 'Antarctic', 'Courgette', 'Helvetica'];
+        var gArrayFonts = ['Poppins', 'Arial', 'Montsserat', 'Antarctic', 'Courgette', 'Helvetica'];
 
         jQuery('#content').summernote({
             height: 400,
             fontNames: gArrayFonts,
             fontNamesIgnoreCheck: gArrayFonts,
-            fontSizes: ['8', '9', '10', '11', '12', '13', '14', '15', '16', '18', '20', '22' , '24', '28', '32', '36', '40', '48'],
+            fontSizes: ['8', '9', '10', '11', '12', '13', '14', '15', '16', '18', '20', '22', '24', '28', '32', '36', '40', '48'],
             followingToolbar: false,
             dialogsInBody: true,
             toolbar: [
@@ -70,20 +70,20 @@
                 ['insert', ['link', 'picture']],
                 ['view', ['fullscreen', 'codeview']]
             ],
-            pasteHTML : [[${post.content}]]
+            pasteHTML: [[${post.content}]]
         });
 
         $('#title').on('change', function (e) {
             var valueSelected = this.value;
-            document.location.href =  "/manage/blog/edit-post/?title=" + valueSelected;
+            document.location.href = "/manage/blog/edit-post/?title=" + valueSelected;
         })
     })
 </script>
-<div th:insert="manage.html :: header"> </div>
+<div th:insert="manage.html :: header"></div>
 <div class="container-fluid bg2-pattern w-full-md">
     <div class="row">
         <div class="col-md-8 mt-5">
-            <label for = "title">Выберите пост по заголовку: </label>
+            <label for="title">Выберите пост по заголовку: </label>
             <select id="title" class="form-control" style="height: 30px">
                 <option th:each="title : ${titles}" th:value="${title}" th:text="${title}">Default select</option>
             </select>

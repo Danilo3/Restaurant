@@ -71,13 +71,13 @@ public class MenuServiceImpl implements MenuService {
         ResponseEntity<byte[]> response;
         try {
             String filename = null;
-            if (file!= null && file.equals("menu")) {
+            if (file != null && file.equals("menu")) {
                 filename = menuFileName;
             } else if (file != null && file.equals("wine")) {
                 filename = wineMenuFileName;
             } else if (file != null && file.equals("lunch")) {
                 filename = lunchMenuFileName;
-            } else  {
+            } else {
                 HttpHeaders headers = new HttpHeaders();
                 headers.setLocation(URI.create("/strange"));
                 response = new ResponseEntity<>(null, headers, HttpStatus.PERMANENT_REDIRECT);
@@ -106,5 +106,10 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public Optional<MenuItemDto> findById(Integer id) {
         return Optional.of(mapper.toMenuItemDto(menuItemRepository.findById(id).orElse(new MenuItem())));
+    }
+
+    @Override
+    public void save(MenuItemDto menuItemDto) {
+        this.save(mapper.toMenuItem(menuItemDto));
     }
 }

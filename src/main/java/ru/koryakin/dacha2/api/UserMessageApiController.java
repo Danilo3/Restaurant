@@ -24,27 +24,32 @@ public class UserMessageApiController {
     }
 
     @GetMapping(value = "/all/")
-    public List<UserMessageDto> getAllMessages(){
+    public List<UserMessageDto> getAllMessages() {
         return userMessageService.findAll();
     }
 
+    @GetMapping(value = "/{id}")
+    public UserMessageDto getOneById(@PathVariable("id") Integer id) {
+        return userMessageService.findById(id);
+    }
+
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String deleteMessageById(@PathVariable(name = "id") Integer id){
+    public String deleteMessageById(@PathVariable(name = "id") Integer id) {
         userMessageService.deleteById(id);
         log.info("message was deleted");
         return "{\"HttpStatus\": \"ok\"}";
     }
 
     @PatchMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String updateUserMessage(@PathVariable(name = "id") Integer id, @RequestBody UserMessage userMessage) {
-        userMessageService.save(userMessage);
+    public String updateUserMessage(@PathVariable(name = "id") Integer id, @RequestBody UserMessageDto userMessageDto) {
+        userMessageService.update(id, userMessageDto);
         log.info("user message was updated");
         return "{\"HttpStatus\": \"ok\"}";
     }
 
     @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<UserMessageDto> createUserMessage(@RequestBody UserMessage userMessage) {
-        userMessageService.save(userMessage);
+    public List<UserMessageDto> createUserMessage(@RequestBody UserMessageDto userMessageDto) {
+        userMessageService.save(userMessageDto);
         log.info("new user message was created");
         return userMessageService.findAll();
     }

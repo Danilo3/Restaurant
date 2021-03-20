@@ -9,6 +9,7 @@ import ru.koryakin.dacha2.dto.BlogPostDto;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface BlogPostService {
@@ -20,6 +21,7 @@ public interface BlogPostService {
     Page<BlogPost> findPaginated(Pageable pageRequest);
 
     Page<BlogPost> findSearchedAndPaginated(Pageable pageRequest, String search);
+
     List<BlogPostDto> findPopular();
 
     HashMap<LocalDate, Integer> findDates();
@@ -48,4 +50,7 @@ public interface BlogPostService {
 
     BlogPostDto findPostByTitle(String urlTitle);
 
+    void update(Integer id, BlogPostDto blogPostDto);
+
+    boolean editPost(Map<String, String> params);
 }

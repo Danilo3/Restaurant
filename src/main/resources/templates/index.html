@@ -1,1030 +1,1087 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Ресторан Дача</title>
-	<meta charset="UTF-8">
-	<meta name="yandex-verification" content="6371e1a3b4a38c08" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="Description" content="Официальный сайт ресторана Дача в городе Дзержинске. На данный момент сайт находится в разработке, но вы можете открыть его. Будьте осторожны, почти вся информация кроме основного меню и контактных данных ресторана является недостоверной."/>
-	<meta name="Keywords" content="Ресторан Дача в городе Дзержинске Официальный сайт"/>
-	<!--===============================================================================================-->
-	<link rel="icon" href="/favicon.ico" type="image/x-icon">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/fonts/themify/themify-icons.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/css/util.css">
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
-<!--===============================================================================================-->
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
-<!--===============================================================================================-->
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-<!--===============================================================================================-->
+    <title>Ресторан Дача</title>
+    <meta charset="UTF-8">
+    <meta name="yandex-verification" content="6371e1a3b4a38c08"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description"
+          content="Официальный сайт ресторана Дача в городе Дзержинске. На данный момент сайт находится в разработке, но вы можете открыть его. Будьте осторожны, почти вся информация кроме основного меню и контактных данных ресторана является недостоверной."/>
+    <meta name="Keywords" content="Ресторан Дача в городе Дзержинске Официальный сайт"/>
+    <!--===============================================================================================-->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/themify/themify-icons.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!--===============================================================================================-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+    <!--===============================================================================================-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!--===============================================================================================-->
 
-	<!-- Yandex.Metrika counter -->
-	<script type="text/javascript" >
-		(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-			m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-		(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-		ym(73333237, "init", {
-			clickmap:true,
-			trackLinks:true,
-			accurateTrackBounce:true
-		});
-	</script>
-	<noscript><div><img src="https://mc.yandex.ru/watch/73333237" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-	<!-- /Yandex.Metrika counter -->
-	<meta name="google-site-verification" content="PrHOQJ8Addb8YUBS4vL-aCbv07-SoRGhg1qjxzB2EP8" />
+        ym(73333237, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/73333237" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+    <meta name="google-site-verification" content="PrHOQJ8Addb8YUBS4vL-aCbv07-SoRGhg1qjxzB2EP8"/>
 </head>
-<body class="animsition" >
+<body class="animsition">
 
-	<!-- Header -->
-	<div th:fragment="header">
-	<header>
-		<!-- Header desktop -->
-		<div class="wrap-menu-header gradient1 trans-0-4">
-			<div class="container h-full">
-				<div class="wrap_header trans-0-3">
-					<!-- Logo -->
-					<div class="logo">
-						<a href="/index.html">
-							<img src="/images/icons/logo.png" alt="IMG-LOGO" data-logofixed="/images/icons/logo.png">
-						</a>
-					</div>
+<!-- Header -->
+<div th:fragment="header">
+    <header>
+        <!-- Header desktop -->
+        <div class="wrap-menu-header gradient1 trans-0-4">
+            <div class="container h-full">
+                <div class="wrap_header trans-0-3">
+                    <!-- Logo -->
+                    <div class="logo">
+                        <a href="/index.html">
+                            <img src="/images/icons/logo.png" alt="IMG-LOGO" data-logofixed="/images/icons/logo.png">
+                        </a>
+                    </div>
 
-					<!-- Menu -->
-					<div class="wrap_menu p-l-45 p-l-0-xl">
-						<nav class="menu">
-							<ul class="main_menu">
-								<li>
-									<a href="/index.html">Главная</a>
-								</li>
+                    <!-- Menu -->
+                    <div class="wrap_menu p-l-45 p-l-0-xl">
+                        <nav class="menu">
+                            <ul class="main_menu">
+                                <li>
+                                    <a href="/index.html">Главная</a>
+                                </li>
 
-								<li>
-									<a href="/menu.html">Меню</a>
-								</li>
+                                <li>
+                                    <a href="/menu.html">Меню</a>
+                                </li>
 
-								<li>
-									<a href="/reservation.html">Бронирование</a>
-								</li>
+                                <li>
+                                    <a href="/reservation.html">Бронирование</a>
+                                </li>
 
-								<li>
-									<a href="/gallery.html">Галерея</a>
-								</li>
+                                <li>
+                                    <a href="/gallery.html">Галерея</a>
+                                </li>
 
-								<li>
-									<a href="/about.html">О нас</a>
-								</li>
+                                <li>
+                                    <a href="/about.html">О нас</a>
+                                </li>
 
-								<li>
-									<a href="/blog.html">Блог</a>
-								</li>
+                                <li>
+                                    <a href="/blog.html">Блог</a>
+                                </li>
 
-								<li>
-									<a href="/contact.html">Контакты</a>
-								</li>
-							</ul>
-						</nav>
-					</div>
+                                <li>
+                                    <a href="/contact.html">Контакты</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
 
-					<!-- Social -->
-					<div class="social flex-w flex-l-m p-r-20">
-						<a href="https://www.tripadvisor.ru/Restaurant_Review-g2167756-d6914938-Reviews-Restaurant_Dacha-Dzerzhinsk_Nizhny_Novgorod_Oblast_Volga_District.html"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
-						<a href="https://www.facebook.com/dacharest52/"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
-						<a href="https://vk.com/dacharestaurant"><i class="fa fa-vk m-l-21" aria-hidden="true"></i></a>
+                    <!-- Social -->
+                    <div class="social flex-w flex-l-m p-r-20">
+                        <a href="https://www.tripadvisor.ru/Restaurant_Review-g2167756-d6914938-Reviews-Restaurant_Dacha-Dzerzhinsk_Nizhny_Novgorod_Oblast_Volga_District.html"><i
+                                class="fa fa-tripadvisor" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/dacharest52/"><i class="fa fa-facebook m-l-21"
+                                                                           aria-hidden="true"></i></a>
+                        <a href="https://vk.com/dacharestaurant"><i class="fa fa-vk m-l-21" aria-hidden="true"></i></a>
 
-						<button class="btn-show-sidebar m-l-33 trans-0-4 " ></button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-	</div>
+                        <button class="btn-show-sidebar m-l-33 trans-0-4 "></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
 
-	<!-- Sidebar -->
-	<div th:fragment="sidebar">
-	<aside class="sidebar trans-0-4">
-		<!-- Button Hide sidebar -->
-		<button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
+<!-- Sidebar -->
+<div th:fragment="sidebar">
+    <aside class="sidebar trans-0-4">
+        <!-- Button Hide sidebar -->
+        <button class="btn-hide-sidebar ti-close color0-hov trans-0-4"></button>
 
-		<!-- - -->
-		<ul class="menu-sidebar p-t-95 p-b-70">
-			<li class="t-center m-b-13">
-				<a href="/index.html" class="txt19">Главная</a>
-			</li>
+        <!-- - -->
+        <ul class="menu-sidebar p-t-95 p-b-70">
+            <li class="t-center m-b-13">
+                <a href="/index.html" class="txt19">Главная</a>
+            </li>
 
-			<li class="t-center m-b-13">
-				<a href="/menu.html" class="txt19">Меню</a>
-			</li>
+            <li class="t-center m-b-13">
+                <a href="/menu.html" class="txt19">Меню</a>
+            </li>
 
-			<li class="t-center m-b-13">
-				<a href="/gallery.html" class="txt19">Галерея</a>
-			</li>
+            <li class="t-center m-b-13">
+                <a href="/gallery.html" class="txt19">Галерея</a>
+            </li>
 
-			<li class="t-center m-b-13">
-				<a href="/about.html" class="txt19">О нас</a>
-			</li>
+            <li class="t-center m-b-13">
+                <a href="/about.html" class="txt19">О нас</a>
+            </li>
 
-			<li class="t-center m-b-13">
-				<a href="/blog.html" class="txt19">Блог</a>
-			</li>
+            <li class="t-center m-b-13">
+                <a href="/blog.html" class="txt19">Блог</a>
+            </li>
 
-			<li class="t-center m-b-33">
-				<a href="/contact.html" class="txt19">Контакты</a>
-			</li>
+            <li class="t-center m-b-33">
+                <a href="/contact.html" class="txt19">Контакты</a>
+            </li>
 
-			<li class="t-center">
-				<!-- Button3 -->
-				<a href="/reservation.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">Бронирование</a>
-			</li>
-		</ul>
+            <li class="t-center">
+                <!-- Button3 -->
+                <a href="/reservation.html" class="btn3 flex-c-m size13 txt11 trans-0-4 m-l-r-auto">Бронирование</a>
+            </li>
+        </ul>
 
-		<!-- - -->
-		<div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
-			<!-- - -->
-			<h4 class="txt20 m-b-33">
-				Галерея
-			</h4>
+        <!-- - -->
+        <div class="gallery-sidebar t-center p-l-60 p-r-60 p-b-40">
+            <!-- - -->
+            <h4 class="txt20 m-b-33">
+                Галерея
+            </h4>
 
-			<!-- Gallery -->
-			<div class="wrap-gallery-sidebar flex-w">
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-01.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-01.jpg" alt="GALLERY">
-				</a>
+            <!-- Gallery -->
+            <div class="wrap-gallery-sidebar flex-w">
+                <a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-01.jpg"
+                   data-lightbox="gallery-footer">
+                    <img src="/images/photo-gallery-thumb-01.jpg" alt="GALLERY">
+                </a>
 
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-02.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-02.jpg" alt="GALLERY">
-				</a>
+                <a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-02.jpg"
+                   data-lightbox="gallery-footer">
+                    <img src="/images/photo-gallery-thumb-02.jpg" alt="GALLERY">
+                </a>
 
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-03.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-03.jpg" alt="GALLERY">
-				</a>
+                <a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-03.jpg"
+                   data-lightbox="gallery-footer">
+                    <img src="/images/photo-gallery-thumb-03.jpg" alt="GALLERY">
+                </a>
 
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-05.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-05.jpg" alt="GALLERY">
-				</a>
+                <a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-05.jpg"
+                   data-lightbox="gallery-footer">
+                    <img src="/images/photo-gallery-thumb-05.jpg" alt="GALLERY">
+                </a>
 
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-06.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-06.jpg" alt="GALLERY">
-				</a>
+                <a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-06.jpg"
+                   data-lightbox="gallery-footer">
+                    <img src="/images/photo-gallery-thumb-06.jpg" alt="GALLERY">
+                </a>
 
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-07.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-07.jpg" alt="GALLERY">
-				</a>
+                <a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-07.jpg"
+                   data-lightbox="gallery-footer">
+                    <img src="/images/photo-gallery-thumb-07.jpg" alt="GALLERY">
+                </a>
 
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-09.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-09.jpg" alt="GALLERY">
-				</a>
+                <a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-09.jpg"
+                   data-lightbox="gallery-footer">
+                    <img src="/images/photo-gallery-thumb-09.jpg" alt="GALLERY">
+                </a>
 
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-10.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-10.jpg" alt="GALLERY">
-				</a>
+                <a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-10.jpg"
+                   data-lightbox="gallery-footer">
+                    <img src="/images/photo-gallery-thumb-10.jpg" alt="GALLERY">
+                </a>
 
-				<a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-11.jpg" data-lightbox="gallery-footer">
-					<img src="/images/photo-gallery-thumb-11.jpg" alt="GALLERY">
-				</a>
-			</div>
-		</div>
-	</aside>
-	</div>
+                <a class="item-gallery-sidebar wrap-pic-w" href="/images/photo-gallery-11.jpg"
+                   data-lightbox="gallery-footer">
+                    <img src="/images/photo-gallery-thumb-11.jpg" alt="GALLERY">
+                </a>
+            </div>
+        </div>
+    </aside>
+</div>
 
-	<!-- Slide1 -->
-	<section class="section-slide">
-		<div class="wrap-slick1">
-			<div class="slick1">
-				<div class="item-slick1 item1-slick1" style="background-image: url(/images/slide1-01.jpeg);">
-					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-						<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
+<!-- Slide1 -->
+<section class="section-slide">
+    <div class="wrap-slick1">
+        <div class="slick1">
+            <div class="item-slick1 item1-slick1" style="background-image: url(/images/slide1-01.jpeg);">
+                <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
+                              data-appear="fadeInDown">
 							Добро пожаловать в
 						</span>
 
-						<h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
-							Ресторан Дача
-						</h2>
+                    <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
+                        Ресторан Дача
+                    </h2>
 
-						<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
-							<!-- Button1 -->
-							<a href="menu.html" class="btn1 flex-c-m size4 txt3 trans-0-4">
-								Посмотреть Меню
-							</a>
-						</div>
-					</div>
-				</div>
+                    <div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
+                        <!-- Button1 -->
+                        <a href="menu.html" class="btn1 flex-c-m size4 txt3 trans-0-4">
+                            Посмотреть Меню
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-				<div class="item-slick1 item2-slick1" style="background-image: url(/images/master-slides-02.jpg);">
-					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+            <div class="item-slick1 item2-slick1" style="background-image: url(/images/master-slides-02.jpg);">
+                <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
 						<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="rollIn">
 							Добро пожаловать в
 						</span>
 
-						<h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
-							Ресторан Дача
-						</h2>
+                    <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
+                        Ресторан Дача
+                    </h2>
 
-						<div class="wrap-btn-slide1 animated visible-false" data-appear="slideInUp">
-							<!-- Button1 -->
-							<a href="menu.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
-								Посмотреть Меню
-							</a>
-						</div>
-					</div>
-				</div>
+                    <div class="wrap-btn-slide1 animated visible-false" data-appear="slideInUp">
+                        <!-- Button1 -->
+                        <a href="menu.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
+                            Посмотреть Меню
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-				<div class="item-slick1 item3-slick1" style="background-image: url(/images/master-slides-01.jpg);">
-					<div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
-						<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
+            <div class="item-slick1 item3-slick1" style="background-image: url(/images/master-slides-01.jpg);">
+                <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<span class="caption1-slide1 txt1 t-center animated visible-false m-b-15"
+                              data-appear="rotateInDownLeft">
 							Добро пожаловать в
 						</span>
 
-						<h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
-							Ресторан Дача
-						</h2>
+                    <h2 class="caption2-slide1 tit1 t-center animated visible-false m-b-37"
+                        data-appear="rotateInUpRight">
+                        Ресторан Дача
+                    </h2>
 
-						<div class="wrap-btn-slide1 animated visible-false" data-appear="rotateIn">
-							<!-- Button1 -->
-							<a href="menu.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
-								Посмотреть Меню
-							</a>
-						</div>
-					</div>
-				</div>
+                    <div class="wrap-btn-slide1 animated visible-false" data-appear="rotateIn">
+                        <!-- Button1 -->
+                        <a href="menu.html" class="btn1 flex-c-m size1 txt3 trans-0-4">
+                            Посмотреть Меню
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-			</div>
+        </div>
 
-			<div class="wrap-slick1-dots"></div>
-		</div>
-	</section>
+        <div class="wrap-slick1-dots"></div>
+    </div>
+</section>
 
-	<!-- Welcome -->
-	<section class="section-welcome bg1-pattern p-t-120 p-b-105">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 p-t-45 p-b-30">
-					<div class="wrap-text-welcome t-center">
+<!-- Welcome -->
+<section class="section-welcome bg1-pattern p-t-120 p-b-105">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 p-t-45 p-b-30">
+                <div class="wrap-text-welcome t-center">
 						<span class="tit2 t-center">
 							Ресторан Европейской кухни
 						</span>
 
-						<h3 class="tit3 t-center m-b-35 m-t-5">
-							Будьте как дома!
-						</h3>
+                    <h3 class="tit3 t-center m-b-35 m-t-5">
+                        Будьте как дома!
+                    </h3>
 
-						<p class="t-center m-b-22 size3 m-l-r-auto">
-							Просим прощения, сайт находится в разработке.
-						</p>
+                    <p class="t-center m-b-22 size3 m-l-r-auto">
+                        Просим прощения, сайт находится в разработке.
+                    </p>
 
-						<a href="about.html" class="txt4">
-							Наша история
-							<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-						</a>
-					</div>
-				</div>
+                    <a href="about.html" class="txt4">
+                        Наша история
+                        <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
 
-				<div class="col-md-6 p-b-30">
-					<div class="wrap-pic-welcome size2 bo-rad-10 hov-img-zoom m-l-r-auto">
-						<img src="/images/our-story-01.jpg" alt="IMG-OUR">
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+            <div class="col-md-6 p-b-30">
+                <div class="wrap-pic-welcome size2 bo-rad-10 hov-img-zoom m-l-r-auto">
+                    <img src="/images/our-story-01.jpg" alt="IMG-OUR">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-	<!-- Intro -->
-	<section class="section-intro">
-		<div class="header-intro parallax100 t-center p-t-135 p-b-158" style="background-image: url(/images/bg-intro-01.jpg);">
+<!-- Intro -->
+<section class="section-intro">
+    <div class="header-intro parallax100 t-center p-t-135 p-b-158"
+         style="background-image: url(/images/bg-intro-01.jpg);">
 			<span class="tit2 p-l-15 p-r-15">
 				Открой для себя
 			</span>
 
-			<h3 class="tit4 t-center p-l-15 p-r-15 p-t-3">
-				Ресторан Дача
-			</h3>
-		</div>
+        <h3 class="tit4 t-center p-l-15 p-r-15 p-t-3">
+            Ресторан Дача
+        </h3>
+    </div>
 
-		<div class="content-intro bg-white p-t-77 p-b-133">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 p-t-30" th:each="in : ${intro}">
-						<!-- Block1 -->
-						<div class="blo1">
-							<div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
-								<a th:href="@{/blog-detail/(name=${in.urlTitle})}"><img th:attr="src=${in.imageUrl}"  alt="IMG-INTRO"></a>
-							</div>
+    <div class="content-intro bg-white p-t-77 p-b-133">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 p-t-30" th:each="in : ${intro}">
+                    <!-- Block1 -->
+                    <div class="blo1">
+                        <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom">
+                            <a th:href="@{/blog-detail/(name=${in.urlTitle})}"><img th:attr="src=${in.imageUrl}"
+                                                                                    alt="IMG-INTRO"></a>
+                        </div>
 
-							<div class="wrap-text-blo1 p-t-35">
-								<a th:href="@{/blog-detail/(name=${in.urlTitle})}"><h4 class="txt5 color0-hov trans-0-4 m-b-13" th:text="${in.title}">
-									Романтичный ресторан
-								</h4></a>
+                        <div class="wrap-text-blo1 p-t-35">
+                            <a th:href="@{/blog-detail/(name=${in.urlTitle})}"><h4
+                                    class="txt5 color0-hov trans-0-4 m-b-13" th:text="${in.title}">
+                                Романтичный ресторан
+                            </h4></a>
 
-								<p class="m-b-20" th:text="${in.previewText}">
-									Phasellus lorem enim, luctus ut velit eget, con-vallis egestas eros.
-								</p>
+                            <p class="m-b-20" th:text="${in.previewText}">
+                                Phasellus lorem enim, luctus ut velit eget, con-vallis egestas eros.
+                            </p>
 
-								<a th:href="@{/blog-detail/(name=${in.urlTitle})}" class="txt4">
-									Узнать больше
-									<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                            <a th:href="@{/blog-detail/(name=${in.urlTitle})}" class="txt4">
+                                Узнать больше
+                                <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-	<!-- Our menu -->
-	<section class="section-ourmenu bg2-pattern p-t-115 p-b-120">
-		<div class="container">
-			<div class="title-section-ourmenu t-center m-b-22">
+<!-- Our menu -->
+<section class="section-ourmenu bg2-pattern p-t-115 p-b-120">
+    <div class="container">
+        <div class="title-section-ourmenu t-center m-b-22">
 				<span class="tit2 t-center">
 					Исследуй
 				</span>
 
-				<h3 class="tit5 t-center m-t-2">
-					Наше Меню
-				</h3>
-			</div>
+            <h3 class="tit5 t-center m-t-2">
+                Наше Меню
+            </h3>
+        </div>
 
-			<div class="row">
-				<div class="col-md-8">
-					<div class="row">
-						<div class="col-sm-6">
-							<!-- Item our menu -->
-							<div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
-								<img src="/images/our-menu-01.jpg" alt="IMG-MENU">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!-- Item our menu -->
+                        <div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
+                            <img src="/images/our-menu-01.jpg" alt="IMG-MENU">
 
-								<!-- Button2 -->
-								<a href="/menu#business" class="btn2 flex-c-m txt5 ab-c-m size4">
-									Ланч
-								</a>
-							</div>
-						</div>
+                            <!-- Button2 -->
+                            <a href="/menu#business" class="btn2 flex-c-m txt5 ab-c-m size4">
+                                Ланч
+                            </a>
+                        </div>
+                    </div>
 
-						<div class="col-sm-6">
-							<!-- Item our menu -->
-							<div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
-								<img src="/images/our-menu-05.jpg" alt="IMG-MENU">
+                    <div class="col-sm-6">
+                        <!-- Item our menu -->
+                        <div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
+                            <img src="/images/our-menu-05.jpg" alt="IMG-MENU">
 
-								<!-- Button2 -->
-								<a href="/menu#business" class="btn2 flex-c-m txt5 ab-c-m size5">
-									Обед
-								</a>
-							</div>
-						</div>
+                            <!-- Button2 -->
+                            <a href="/menu#business" class="btn2 flex-c-m txt5 ab-c-m size5">
+                                Обед
+                            </a>
+                        </div>
+                    </div>
 
-						<div class="col-12">
-							<!-- Item our menu -->
-							<div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
-								<img src="/images/our-menu-13.jpg" alt="IMG-MENU">
+                    <div class="col-12">
+                        <!-- Item our menu -->
+                        <div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
+                            <img src="/images/our-menu-13.jpg" alt="IMG-MENU">
 
-								<!-- Button2 -->
-								<a href="/menu#business" class="btn2 flex-c-m txt5 ab-c-m size6">
-									Бизнес-Ланч
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
+                            <!-- Button2 -->
+                            <a href="/menu#business" class="btn2 flex-c-m txt5 ab-c-m size6">
+                                Бизнес-Ланч
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-				<div class="col-md-4">
-					<div class="row">
-						<div class="col-12">
-							<!-- Item our menu -->
-							<div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
-								<img src="/images/our-menu-08.jpg" alt="IMG-MENU">
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Item our menu -->
+                        <div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
+                            <img src="/images/our-menu-08.jpg" alt="IMG-MENU">
 
-								<!-- Button2 -->
-								<a href="/menu#meat" class="btn2 flex-c-m txt5 ab-c-m size7">
-									Мясо
-								</a>
-							</div>
-						</div>
+                            <!-- Button2 -->
+                            <a href="/menu#meat" class="btn2 flex-c-m txt5 ab-c-m size7">
+                                Мясо
+                            </a>
+                        </div>
+                    </div>
 
-						<div class="col-12">
-							<!-- Item our menu -->
-							<div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
-								<img src="/images/our-menu-10.jpg" alt="IMG-MENU">
+                    <div class="col-12">
+                        <!-- Item our menu -->
+                        <div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
+                            <img src="/images/our-menu-10.jpg" alt="IMG-MENU">
 
-								<!-- Button2 -->
-								<a href="/menu#starters" class="btn2 flex-c-m txt5 ab-c-m size8">
-									Закуски
-								</a>
-							</div>
-						</div>
+                            <!-- Button2 -->
+                            <a href="/menu#starters" class="btn2 flex-c-m txt5 ab-c-m size8">
+                                Закуски
+                            </a>
+                        </div>
+                    </div>
 
-						<div class="col-12">
-							<!-- Item our menu -->
-							<div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
-								<img src="/images/our-menu-16.jpg" alt="IMG-MENU">
+                    <div class="col-12">
+                        <!-- Item our menu -->
+                        <div class="item-ourmenu bo-rad-10 hov-img-zoom pos-relative m-t-30">
+                            <img src="/images/our-menu-16.jpg" alt="IMG-MENU">
 
-								<!-- Button2 -->
-								<a href="/menu#desserts" class="btn2 flex-c-m txt5 ab-c-m size9">
-									Десерты
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5 p-t-35">
-				<div class="pos-absolute m-5">
-					<form action="/pdf/menu.pdf">
-						<button type="submit" class="btn3 flex-c-m size17 txt20 trans-0-4 no-wrap">
-							Скачать меню
-						</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
+                            <!-- Button2 -->
+                            <a href="/menu#desserts" class="btn2 flex-c-m txt5 ab-c-m size9">
+                                Десерты
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5 p-t-35">
+            <div class="pos-absolute m-5">
+                <form action="/pdf/menu.pdf">
+                    <button type="submit" class="btn3 flex-c-m size17 txt20 trans-0-4 no-wrap">
+                        Скачать меню
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-	<!-- Event -->
-	<section class="section-event">
-		<div class="wrap-slick2">
-			<div class="slick2">
-				<div  th:each="event : ${events}" class="item-slick2 item1-slick2" th:attr="style=${event.eventBackgroundImageUrl}">
-					<div class="wrap-content-slide2 p-t-115 p-b-208">
-						<div class="container">
-							<!-- - -->
-							<div class="title-event t-center m-b-52">
+<!-- Event -->
+<section class="section-event">
+    <div class="wrap-slick2">
+        <div class="slick2">
+            <div th:each="event : ${events}" class="item-slick2 item1-slick2"
+                 th:attr="style=${event.eventBackgroundImageUrl}">
+                <div class="wrap-content-slide2 p-t-115 p-b-208">
+                    <div class="container">
+                        <!-- - -->
+                        <div class="title-event t-center m-b-52">
 								<span class="tit2 p-l-15 p-r-15">
 									Грядущие
 								</span>
 
-								<h3 class="tit6 t-center p-l-15 p-r-15 p-t-3">
-									События
-								</h3>
-							</div>
+                            <h3 class="tit6 t-center p-l-15 p-r-15 p-t-3">
+                                События
+                            </h3>
+                        </div>
 
-							<!-- Block2 -->
-							<div class="blo2 flex-w flex-str flex-col-c-m-lg animated visible-false" data-appear="zoomIn">
-								<!-- Pic block2 -->
-								<a th:href="@{/blog-detail/(name=${event.urlTitle})}" class="wrap-pic-blo2 bg1-blo2" th:attr="style=${event.imageUrl}">
-									<div class="time-event size10 txt6 effect1">
+                        <!-- Block2 -->
+                        <div class="blo2 flex-w flex-str flex-col-c-m-lg animated visible-false" data-appear="zoomIn">
+                            <!-- Pic block2 -->
+                            <a th:href="@{/blog-detail/(name=${event.urlTitle})}" class="wrap-pic-blo2 bg1-blo2"
+                               th:attr="style=${event.imageUrl}">
+                                <div class="time-event size10 txt6 effect1">
 										<span class="txt-effect1 flex-c-m t-center" th:text="${event.eventDateTime}">
 											08:00 PM Tuesday - 21 November 2021
 										</span>
-									</div>
-								</a>
+                                </div>
+                            </a>
 
-								<!-- Text block2 -->
-								<div class="wrap-text-blo2 flex-col-c-m p-l-40 p-r-40 p-t-45 p-b-30">
-									<h4 class="tit7 t-center m-b-10" th:text="${event.title}">
-										Особенные винные ночи
-									</h4>
+                            <!-- Text block2 -->
+                            <div class="wrap-text-blo2 flex-col-c-m p-l-40 p-r-40 p-t-45 p-b-30">
+                                <h4 class="tit7 t-center m-b-10" th:text="${event.title}">
+                                    Особенные винные ночи
+                                </h4>
 
-									<p class="t-center" th:text="${event.previewText}">
-										Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc sed imperdiet lacinia
-									</p>
+                                <p class="t-center" th:text="${event.previewText}">
+                                    Donec quis lorem nulla. Nunc eu odio mi. Morbi nec lobortis est. Sed fringilla, nunc
+                                    sed imperdiet lacinia
+                                </p>
 
-									<a th:href="@{/blog-detail/(name=${event.urlTitle})}" class="txt4 m-t-40">
-										Посмотреть детали
-										<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="wrap-slick2-dots"></div>
-		</div>
-	</section>
+                                <a th:href="@{/blog-detail/(name=${event.urlTitle})}" class="txt4 m-t-40">
+                                    Посмотреть детали
+                                    <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrap-slick2-dots"></div>
+    </div>
+</section>
 
-	<!-- Booking -->
-	<section class="section-booking bg1-pattern p-t-100 p-b-110">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 p-b-30">
-					<div class="t-center">
+<!-- Booking -->
+<section class="section-booking bg1-pattern p-t-100 p-b-110">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 p-b-30">
+                <div class="t-center">
 						<span class="tit2 t-center">
 							Бронирование
 						</span>
 
-						<h3 class="tit3 t-center m-b-35 m-t-2">
-							Забронировать стол
-						</h3>
-					</div>
+                    <h3 class="tit3 t-center m-b-35 m-t-2">
+                        Забронировать стол
+                    </h3>
+                </div>
 
-					<form class="wrap-form-booking" action="/reserve" th:object="${tablebooking}" method="post">
-						<div class="row">
-							<div class="col-md-6">
-								<!-- Date -->
-								<span class="txt9">
+                <form class="wrap-form-booking" action="/reserve" th:object="${tablebooking}" method="post">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Date -->
+                            <span class="txt9">
 									Дата
 								</span>
 
-								<div class="wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input class="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="text" name="date" th:field="*{date}">
-									<i class="btn-calendar fa fa-calendar ab-r-m hov-pointer m-r-18" aria-hidden="true"></i>
-								</div>
+                            <div class="wrap-inputdate pos-relative txt10 size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                <input class="my-calendar bo-rad-10 sizefull txt10 p-l-20" type="text" name="date"
+                                       th:field="*{date}">
+                                <i class="btn-calendar fa fa-calendar ab-r-m hov-pointer m-r-18" aria-hidden="true"></i>
+                            </div>
 
-								<!-- Time -->
-								<span class="txt9">
+                            <!-- Time -->
+                            <span class="txt9">
 									Время
 								</span>
 
-								<div class="wrap-inputtime size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<!-- Select2 -->
-									<select class="selection-1" name="time" th:field="*{time}">
-									<option th:value="'12:00'">12:00</option>
-									<option th:value="'12:30'">12:30</option>
-									<option th:value="'13:00'">13:00</option>
-									<option th:value="'13:30'">13:30</option>
-									<option th:value="'14:00'">14:00</option>
-									<option th:value="'14:30'">14:30</option>
-									<option th:value="'15:00'">15:00</option>
-									<option th:value="'15:30'">15:30</option>
-									<option th:value="'16:00'">16:00</option>
-									<option th:value="'16:30'">16:30</option>
-									<option th:value="'17:00'">17:00</option>
-									<option th:value="'17:30'">17:30</option>
-									<option th:value="'18:00'">18:00</option>
-									<option th:value="'18:30'">18:30</option>
-									<option th:value="'19:00'">19:00</option>
-									<option th:value="'19:30'">19:30</option>
-									<option th:value="'20:00'">20:00</option>
-									<option th:value="'20:30'">20:30</option>
-									<option th:value="'21:00'">21:00</option>
-									<option th:value="'21:30'">21:30</option>
-									<option th:value="'22:00'">22:00</option>
-									<option th:value="'22:30'">22:30</option>
-									<option th:value="'23:00'">23:00</option>
-									<option th:value="'23:30'">23:30</option>
-									</select>
-								</div>
+                            <div class="wrap-inputtime size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                <!-- Select2 -->
+                                <select class="selection-1" name="time" th:field="*{time}">
+                                    <option th:value="'12:00'">12:00</option>
+                                    <option th:value="'12:30'">12:30</option>
+                                    <option th:value="'13:00'">13:00</option>
+                                    <option th:value="'13:30'">13:30</option>
+                                    <option th:value="'14:00'">14:00</option>
+                                    <option th:value="'14:30'">14:30</option>
+                                    <option th:value="'15:00'">15:00</option>
+                                    <option th:value="'15:30'">15:30</option>
+                                    <option th:value="'16:00'">16:00</option>
+                                    <option th:value="'16:30'">16:30</option>
+                                    <option th:value="'17:00'">17:00</option>
+                                    <option th:value="'17:30'">17:30</option>
+                                    <option th:value="'18:00'">18:00</option>
+                                    <option th:value="'18:30'">18:30</option>
+                                    <option th:value="'19:00'">19:00</option>
+                                    <option th:value="'19:30'">19:30</option>
+                                    <option th:value="'20:00'">20:00</option>
+                                    <option th:value="'20:30'">20:30</option>
+                                    <option th:value="'21:00'">21:00</option>
+                                    <option th:value="'21:30'">21:30</option>
+                                    <option th:value="'22:00'">22:00</option>
+                                    <option th:value="'22:30'">22:30</option>
+                                    <option th:value="'23:00'">23:00</option>
+                                    <option th:value="'23:30'">23:30</option>
+                                </select>
+                            </div>
 
-								<!-- People -->
-								<span class="txt9">
+                            <!-- People -->
+                            <span class="txt9">
 									Количество человек
 								</span>
 
-								<div class="wrap-inputpeople size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<!-- Select2 -->
-									<select class="selection-1" name="people" th:field="*{personCount}">
-										<option th:each="i : ${#numbers.sequence(0, 15)}" th:value="${i}" th:text="${i}">
-										</option>
-									</select>
-								</div>
-							</div>
+                            <div class="wrap-inputpeople size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                <!-- Select2 -->
+                                <select class="selection-1" name="people" th:field="*{personCount}">
+                                    <option th:each="i : ${#numbers.sequence(0, 15)}" th:value="${i}" th:text="${i}">
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
 
-							<div class="col-md-6">
-								<!-- Name -->
-								<span class="txt9">
+                        <div class="col-md-6">
+                            <!-- Name -->
+                            <span class="txt9">
 									Имя
 								</span>
 
-								<div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name" th:field="*{name}">
-								</div>
+                            <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name"
+                                       placeholder="Name" th:field="*{name}">
+                            </div>
 
-								<!-- Phone -->
-								<span class="txt9">
+                            <!-- Phone -->
+                            <span class="txt9">
 									Телефон
 								</span>
 
-								<div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone" th:field="*{phone}">
-								</div>
+                            <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone"
+                                       placeholder="Phone" th:field="*{phone}">
+                            </div>
 
-								<!-- Email -->
-								<span class="txt9">
+                            <!-- Email -->
+                            <span class="txt9">
 									Email
 								</span>
 
-								<div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
-									<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email" th:field="*{email}">
-								</div>
-							</div>
-						</div>
+                            <div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
+                                <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email"
+                                       placeholder="Email" th:field="*{email}">
+                            </div>
+                        </div>
+                    </div>
 
-						<div class="wrap-btn-booking flex-c-m m-t-6">
-							<!-- Button3 -->
-							<button type="submit" class="btn3 flex-c-m size13 txt11 trans-0-4">
-								Забронировать
-							</button>
-						</div>
-					</form>
-				</div>
+                    <div class="wrap-btn-booking flex-c-m m-t-6">
+                        <!-- Button3 -->
+                        <button type="submit" class="btn3 flex-c-m size13 txt11 trans-0-4">
+                            Забронировать
+                        </button>
+                    </div>
+                </form>
+            </div>
 
-				<div class="col-lg-6 p-b-30 p-t-18">
-					<div class="wrap-pic-booking size2 bo-rad-10 hov-img-zoom m-l-r-auto">
-						<img src="/images/booking-01.jpg" alt="IMG-OUR">
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+            <div class="col-lg-6 p-b-30 p-t-18">
+                <div class="wrap-pic-booking size2 bo-rad-10 hov-img-zoom m-l-r-auto">
+                    <img src="/images/booking-01.jpg" alt="IMG-OUR">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-	<!-- Review -->
-	<section class="section-review p-t-115">
-		<!-- - -->
-		<div class="title-review t-center m-b-2">
+<!-- Review -->
+<section class="section-review p-t-115">
+    <!-- - -->
+    <div class="title-review t-center m-b-2">
 			<span class="tit2 p-l-15 p-r-15">
 				Отзывы посетителей
 			</span>
 
-			<h3 class="tit8 t-center p-l-20 p-r-15 p-t-3">
-				Обзоры
-			</h3>
-		</div>
+        <h3 class="tit8 t-center p-l-20 p-r-15 p-t-3">
+            Обзоры
+        </h3>
+    </div>
 
-		<!-- - -->
-		<div class="wrap-slick3">
-			<div class="slick3">
-				<div class="item-slick3 item1-slick3">
-					<div class="wrap-content-slide3 p-b-50 p-t-50">
-						<div class="container">
-							<div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false" data-appear="zoomIn">
-								<img src="/images/ego4.jpeg" alt="IGM-AVATAR">
-							</div>
+    <!-- - -->
+    <div class="wrap-slick3">
+        <div class="slick3">
+            <div class="item-slick3 item1-slick3">
+                <div class="wrap-content-slide3 p-b-50 p-t-50">
+                    <div class="container">
+                        <div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false"
+                             data-appear="zoomIn">
+                            <img src="/images/ego4.jpeg" alt="IGM-AVATAR">
+                        </div>
 
-							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
-								<p class="t-center txt12 size15 m-l-r-auto">
-									"Ratatouille the best"
-								</p>
+                        <div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
+                            <p class="t-center txt12 size15 m-l-r-auto">
+                                "Ratatouille the best"
+                            </p>
 
-								<div class="star-review fs-18 color0 flex-c-m m-t-12">
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-								</div>
+                            <div class="star-review fs-18 color0 flex-c-m m-t-12">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+                            </div>
 
-								<div class="more-review txt4 t-center animated visible-false m-t-32" data-appear="fadeInUp">
-									Ego - Paris
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                            <div class="more-review txt4 t-center animated visible-false m-t-32" data-appear="fadeInUp">
+                                Ego - Paris
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-				<div class="item-slick3 item2-slick3">
-					<div class="wrap-content-slide3 p-b-50 p-t-50">
-						<div class="container">
-							<div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false" data-appear="zoomIn">
-								<img src="/images/yandex.jpg" alt="IGM-AVATAR">
-							</div>
+            <div class="item-slick3 item2-slick3">
+                <div class="wrap-content-slide3 p-b-50 p-t-50">
+                    <div class="container">
+                        <div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false"
+                             data-appear="zoomIn">
+                            <img src="/images/yandex.jpg" alt="IGM-AVATAR">
+                        </div>
 
-							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
-								<p class="t-center txt12 size15 m-l-r-auto">
-									По мне так лучший ресторан в городе. Очень вкусное классическое меню, комуникабельные и вежливые официанты, спокойная (по домашнему обстановка). Итог: все СУПЕР!!!								</p>
+                        <div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
+                            <p class="t-center txt12 size15 m-l-r-auto">
+                                По мне так лучший ресторан в городе. Очень вкусное классическое меню, комуникабельные и
+                                вежливые официанты, спокойная (по домашнему обстановка). Итог: все СУПЕР!!! </p>
 
-								<div class="star-review fs-18 color0 flex-c-m m-t-12">
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-								</div>
+                            <div class="star-review fs-18 color0 flex-c-m m-t-12">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+                            </div>
 
-								<div class="more-review txt4 t-center animated visible-false m-t-32" data-appear="fadeInUp">
-									Яндекс.Отзывы
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                            <div class="more-review txt4 t-center animated visible-false m-t-32" data-appear="fadeInUp">
+                                Яндекс.Отзывы
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-				<div class="item-slick3 item3-slick3">
-					<div class="wrap-content-slide3 p-b-50 p-t-50">
-						<div class="container">
-							<div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false" data-appear="zoomIn">
-								<img src="/images/yandex.jpg" alt="IGM-AVATAR">
-							</div>
+            <div class="item-slick3 item3-slick3">
+                <div class="wrap-content-slide3 p-b-50 p-t-50">
+                    <div class="container">
+                        <div class="pic-review size14 bo4 wrap-cir-pic m-l-r-auto animated visible-false"
+                             data-appear="zoomIn">
+                            <img src="/images/yandex.jpg" alt="IGM-AVATAR">
+                        </div>
 
-							<div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
-								<p class="t-center txt12 size15 m-l-r-auto">
-									Данный ресторан-это прекрасное место для отдыха всей семьей.
-								</p>
+                        <div class="content-review m-t-33 animated visible-false" data-appear="fadeInUp">
+                            <p class="t-center txt12 size15 m-l-r-auto">
+                                Данный ресторан-это прекрасное место для отдыха всей семьей.
+                            </p>
 
-								<div class="star-review fs-18 color0 flex-c-m m-t-12">
-									<i class="fa fa-star" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-									<i class="fa fa-star p-l-1" aria-hidden="true"></i>
-								</div>
+                            <div class="star-review fs-18 color0 flex-c-m m-t-12">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+                                <i class="fa fa-star p-l-1" aria-hidden="true"></i>
+                            </div>
 
-								<div class="more-review txt4 t-center animated visible-false m-t-32" data-appear="fadeInUp">
-									Яндекс.Отзывы
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+                            <div class="more-review txt4 t-center animated visible-false m-t-32" data-appear="fadeInUp">
+                                Яндекс.Отзывы
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-			</div>
+        </div>
 
-			<div class="wrap-slick3-dots m-t-30"></div>
-		</div>
-	</section>
+        <div class="wrap-slick3-dots m-t-30"></div>
+    </div>
+</section>
 
 
-	<!-- Video -->
-	<section class="section-video parallax100" style="background-image: url(/images/bg-cover-video-02.jpg);">
-		<div class="content-video t-center p-t-225 p-b-250">
+<!-- Video -->
+<section class="section-video parallax100" style="background-image: url(/images/bg-cover-video-02.jpg);">
+    <div class="content-video t-center p-t-225 p-b-250">
 			<span class="tit2 p-l-15 p-r-15">
 				Посмотри
 			</span>
 
-			<h3 class="tit4 t-center p-l-15 p-r-15 p-t-3">
-				Наши видео
-			</h3>
+        <h3 class="tit4 t-center p-l-15 p-r-15 p-t-3">
+            Наши видео
+        </h3>
 
-			<div class="btn-play ab-center size16 hov-pointer m-l-r-auto m-t-43 m-b-33" data-toggle="modal" data-target="#modal-video-01">
-				<div class="flex-c-m sizefull bo-cir bgwhite color1 hov1 trans-0-4">
-					<i class="fa fa-play fs-18 m-l-2" aria-hidden="true"></i>
-				</div>
-			</div>
-		</div>
-	</section>
+        <div class="btn-play ab-center size16 hov-pointer m-l-r-auto m-t-43 m-b-33" data-toggle="modal"
+             data-target="#modal-video-01">
+            <div class="flex-c-m sizefull bo-cir bgwhite color1 hov1 trans-0-4">
+                <i class="fa fa-play fs-18 m-l-2" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-	<!-- Blog -->
-	<section class="section-blog bg-white p-t-115 p-b-123">
-		<div class="container">
-			<div class="title-section-ourmenu t-center m-b-22">
+<!-- Blog -->
+<section class="section-blog bg-white p-t-115 p-b-123">
+    <div class="container">
+        <div class="title-section-ourmenu t-center m-b-22">
 				<span class="tit2 t-center">
 					Последние новости
 				</span>
 
-				<h3 class="tit5 t-center m-t-2">
-					Блог
-				</h3>
-			</div>
+            <h3 class="tit5 t-center m-t-2">
+                Блог
+            </h3>
+        </div>
 
-			<div class="row">
-				<div class="col-md-4 p-t-30" th:each="blogpost : ${latestPosts}">
-					<!-- Block1 -->
-					<div class="blo1">
-						<div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom pos-relative">
-							<a th:href="@{/blog-detail/(name=${blogpost.urlTitle})}"><img th:attr="src=${blogpost.imageUrl}" alt="IMG-INTRO"></a>
+        <div class="row">
+            <div class="col-md-4 p-t-30" th:each="blogpost : ${latestPosts}">
+                <!-- Block1 -->
+                <div class="blo1">
+                    <div class="wrap-pic-blo1 bo-rad-10 hov-img-zoom pos-relative">
+                        <a th:href="@{/blog-detail/(name=${blogpost.urlTitle})}"><img th:attr="src=${blogpost.imageUrl}"
+                                                                                      alt="IMG-INTRO"></a>
 
-							<div class="time-blog">
-								21 Dec 2020
-							</div>
-						</div>
+                        <div class="time-blog">
+                            21 Dec 2020
+                        </div>
+                    </div>
 
-						<div class="wrap-text-blo1 p-t-35">
-							<a th:href="@{/blog-detail/(name=${blogpost.urlTitle})}"><h4 class="txt5 color0-hov trans-0-4 m-b-13" th:text="${blogpost.title}">
-								Лучшие места для Вин
-							</h4></a>
+                    <div class="wrap-text-blo1 p-t-35">
+                        <a th:href="@{/blog-detail/(name=${blogpost.urlTitle})}"><h4
+                                class="txt5 color0-hov trans-0-4 m-b-13" th:text="${blogpost.title}">
+                            Лучшие места для Вин
+                        </h4></a>
 
-							<p class="m-b-20" th:text="${blogpost.previewText}">
-								Phasellus lorem enim, luctus ut velit eget, con-vallis egestas eros.
-							</p>
+                        <p class="m-b-20" th:text="${blogpost.previewText}">
+                            Phasellus lorem enim, luctus ut velit eget, con-vallis egestas eros.
+                        </p>
 
-							<a th:href="@{/blog-detail/(name=${blogpost.urlTitle})}" class="txt4">
-								Продолжить чтение
-								<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+                        <a th:href="@{/blog-detail/(name=${blogpost.urlTitle})}" class="txt4">
+                            Продолжить чтение
+                            <i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-	<!-- Sign up -->
-	<div th:fragment="subcribe">
-	<div class="section-signup bg1-pattern p-t-85 p-b-85">
-		<form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5" action="/subscribe/" method="post" th:object="${useremail}" autofocus="autofocus">
+<!-- Sign up -->
+<div th:fragment="subcribe">
+    <div class="section-signup bg1-pattern p-t-85 p-b-85">
+        <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5" action="/subscribe/" method="post"
+              th:object="${useremail}" autofocus="autofocus">
 			<span class="txt5 m-10">
 				Подписка на рассылку
 			</span>
 
-			<div class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
-				<input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email Adrress">
-				<i class="fa fa-envelope ab-r-m m-r-18" aria-hidden="true"></i>
-			</div>
+            <div class="wrap-input-signup size17 bo2 bo-rad-10 bgwhite pos-relative txt10 m-10">
+                <input class="bo-rad-10 sizefull txt10 p-l-20" type="email"
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" placeholder="Email Adrress">
+                <i class="fa fa-envelope ab-r-m m-r-18" aria-hidden="true"></i>
+            </div>
 
-			<!-- Button3 -->
-			<button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
-				Подписаться
-			</button>
-		</form>
-	</div>
-	</div>
+            <!-- Button3 -->
+            <button type="submit" class="btn3 flex-c-m size18 txt11 trans-0-4 m-10">
+                Подписаться
+            </button>
+        </form>
+    </div>
+</div>
 
 
-	<!-- Footer -->
-	<div th:fragment="footer">
-	<footer class="bg1">
-		<div class="container p-t-40 p-b-70">
-			<div class="row">
-				<div class="col-sm-6 col-md-4 p-t-50">
-					<!-- - -->
-					<h4 class="txt13 m-b-33">
-						Свяжитесь с нами
-					</h4>
+<!-- Footer -->
+<div th:fragment="footer">
+    <footer class="bg1">
+        <div class="container p-t-40 p-b-70">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 p-t-50">
+                    <!-- - -->
+                    <h4 class="txt13 m-b-33">
+                        Свяжитесь с нами
+                    </h4>
 
-					<ul class="m-b-70">
-						<li class="txt14 m-b-14">
-							<i class="fa fa-map-marker fs-16 dis-inline-block size19" aria-hidden="true"></i>
-							г.Дзержинск, проспект Циолковского, 65a
-						</li>
+                    <ul class="m-b-70">
+                        <li class="txt14 m-b-14">
+                            <i class="fa fa-map-marker fs-16 dis-inline-block size19" aria-hidden="true"></i>
+                            г.Дзержинск, проспект Циолковского, 65a
+                        </li>
 
-						<li class="txt14 m-b-14">
-							<i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
-							8 (8313) 370-100
-						</li>
+                        <li class="txt14 m-b-14">
+                            <i class="fa fa-phone fs-16 dis-inline-block size19" aria-hidden="true"></i>
+                            8 (8313) 370-100
+                        </li>
 
-						<li class="txt14 m-b-14">
-							<i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
-							contact@dacha-restaurant.ru
-						</li>
-					</ul>
+                        <li class="txt14 m-b-14">
+                            <i class="fa fa-envelope fs-13 dis-inline-block size19" aria-hidden="true"></i>
+                            contact@dacha-restaurant.ru
+                        </li>
+                    </ul>
 
-					<!-- - -->
-					<h4 class="txt13 m-b-32">
-						Часы работы
-					</h4>
+                    <!-- - -->
+                    <h4 class="txt13 m-b-32">
+                        Часы работы
+                    </h4>
 
-					<ul>
-						<li class="txt14">
-							12:00 – 24:00
-						</li>
+                    <ul>
+                        <li class="txt14">
+                            12:00 – 24:00
+                        </li>
 
-						<li class="txt14">
-							Ежедневно
-						</li>
-					</ul>
-				</div>
+                        <li class="txt14">
+                            Ежедневно
+                        </li>
+                    </ul>
+                </div>
 
-				<div class="col-sm-6 col-md-4 p-t-50">
-					<!-- - -->
-					<h4 class="txt13 m-b-33">
-						Последнее из Вконтакте
-					</h4>
+                <div class="col-sm-6 col-md-4 p-t-50">
+                    <!-- - -->
+                    <h4 class="txt13 m-b-33">
+                        Последнее из Вконтакте
+                    </h4>
 
-					<div class="m-b-25">
+                    <div class="m-b-25">
 						<span class="fs-13 color2 m-r-5">
 							<i class="fa fa-vk" aria-hidden="true"></i>
 						</span>
-						<div id="imgFromVk"></div>
-						<p class="txt14 m-b-18" id="txtFromVk">
-							<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="txt15">
-								Подробнее
-							</a>
-						</p>
+                        <div id="imgFromVk"></div>
+                        <p class="txt14 m-b-18" id="txtFromVk">
+                            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="txt15">
+                                Подробнее
+                            </a>
+                        </p>
 
-						<span class="txt16" id="dateFromVk">
+                        <span class="txt16" id="dateFromVk">
 							23 Feb 2021
 						</span>
-					</div>
-				</div>
+                    </div>
+                </div>
 
-				<div class="col-sm-6 col-md-4 p-t-50">
-					<!-- - -->
-					<h4 class="txt13 m-b-38">
-						Галерея
-					</h4>
+                <div class="col-sm-6 col-md-4 p-t-50">
+                    <!-- - -->
+                    <h4 class="txt13 m-b-38">
+                        Галерея
+                    </h4>
 
-					<!-- Gallery footer -->
-					<div class="wrap-gallery-footer flex-w">
-						<a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-01.jpg" data-lightbox="gallery-footer">
-							<img src="/images/photo-gallery-thumb-01.jpg" alt="GALLERY">
-						</a>
+                    <!-- Gallery footer -->
+                    <div class="wrap-gallery-footer flex-w">
+                        <a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-01.jpg"
+                           data-lightbox="gallery-footer">
+                            <img src="/images/photo-gallery-thumb-01.jpg" alt="GALLERY">
+                        </a>
 
-						<a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-02.jpg" data-lightbox="gallery-footer">
-							<img src="/images/photo-gallery-thumb-02.jpg" alt="GALLERY">
-						</a>
+                        <a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-02.jpg"
+                           data-lightbox="gallery-footer">
+                            <img src="/images/photo-gallery-thumb-02.jpg" alt="GALLERY">
+                        </a>
 
-						<a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-03.jpg" data-lightbox="gallery-footer">
-							<img src="/images/photo-gallery-thumb-03.jpg" alt="GALLERY">
-						</a>
+                        <a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-03.jpg"
+                           data-lightbox="gallery-footer">
+                            <img src="/images/photo-gallery-thumb-03.jpg" alt="GALLERY">
+                        </a>
 
-						<a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-04.jpg" data-lightbox="gallery-footer">
-							<img src="/images/photo-gallery-thumb-04.jpg" alt="GALLERY">
-						</a>
+                        <a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-04.jpg"
+                           data-lightbox="gallery-footer">
+                            <img src="/images/photo-gallery-thumb-04.jpg" alt="GALLERY">
+                        </a>
 
-						<a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-05.jpg" data-lightbox="gallery-footer">
-							<img src="/images/photo-gallery-thumb-05.jpg" alt="GALLERY">
-						</a>
+                        <a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-05.jpg"
+                           data-lightbox="gallery-footer">
+                            <img src="/images/photo-gallery-thumb-05.jpg" alt="GALLERY">
+                        </a>
 
-						<a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-06.jpg" data-lightbox="gallery-footer">
-							<img src="/images/photo-gallery-thumb-06.jpg" alt="GALLERY">
-						</a>
+                        <a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-06.jpg"
+                           data-lightbox="gallery-footer">
+                            <img src="/images/photo-gallery-thumb-06.jpg" alt="GALLERY">
+                        </a>
 
-						<a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-07.jpg" data-lightbox="gallery-footer">
-							<img src="/images/photo-gallery-thumb-07.jpg" alt="GALLERY">
-						</a>
+                        <a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-07.jpg"
+                           data-lightbox="gallery-footer">
+                            <img src="/images/photo-gallery-thumb-07.jpg" alt="GALLERY">
+                        </a>
 
-						<a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-08.jpg" data-lightbox="gallery-footer">
-							<img src="/images/photo-gallery-thumb-08.jpg" alt="GALLERY">
-						</a>
+                        <a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-08.jpg"
+                           data-lightbox="gallery-footer">
+                            <img src="/images/photo-gallery-thumb-08.jpg" alt="GALLERY">
+                        </a>
 
-						<a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-09.jpg" data-lightbox="gallery-footer">
-							<img src="/images/photo-gallery-thumb-09.jpg" alt="GALLERY">
-						</a>
+                        <a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-09.jpg"
+                           data-lightbox="gallery-footer">
+                            <img src="/images/photo-gallery-thumb-09.jpg" alt="GALLERY">
+                        </a>
 
-						<a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-10.jpg" data-lightbox="gallery-footer">
-							<img src="/images/photo-gallery-thumb-10.jpg" alt="GALLERY">
-						</a>
+                        <a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-10.jpg"
+                           data-lightbox="gallery-footer">
+                            <img src="/images/photo-gallery-thumb-10.jpg" alt="GALLERY">
+                        </a>
 
-						<a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-11.jpg" data-lightbox="gallery-footer">
-							<img src="/images/photo-gallery-thumb-11.jpg" alt="GALLERY">
-						</a>
+                        <a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-11.jpg"
+                           data-lightbox="gallery-footer">
+                            <img src="/images/photo-gallery-thumb-11.jpg" alt="GALLERY">
+                        </a>
 
-						<a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-12.jpg" data-lightbox="gallery-footer">
-							<img src="/images/photo-gallery-thumb-12.jpg" alt="GALLERY">
-						</a>
-					</div>
+                        <a class="item-gallery-footer wrap-pic-w" href="/images/photo-gallery-12.jpg"
+                           data-lightbox="gallery-footer">
+                            <img src="/images/photo-gallery-thumb-12.jpg" alt="GALLERY">
+                        </a>
+                    </div>
 
-				</div>
-			</div>
-		</div>
+                </div>
+            </div>
+        </div>
 
-		<div class="end-footer bg2">
-			<div class="container">
-				<div class="flex-sb-m flex-w p-t-22 p-b-22">
-					<div class="p-t-5 p-b-5">
-						<a href="https://www.tripadvisor.ru/Restaurant_Review-g2167756-d6914938-Reviews-Restaurant_Dacha-Dzerzhinsk_Nizhny_Novgorod_Oblast_Volga_District.html"><i class="fa fa-tripadvisor" aria-hidden="true"></i></a>
-						<a href="https://www.facebook.com/dacharest52/"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
-						<a href="https://vk.com/dacharestaurant"><i class="fa fa-vk m-l-21" aria-hidden="true"></i></a>
-					</div>
+        <div class="end-footer bg2">
+            <div class="container">
+                <div class="flex-sb-m flex-w p-t-22 p-b-22">
+                    <div class="p-t-5 p-b-5">
+                        <a href="https://www.tripadvisor.ru/Restaurant_Review-g2167756-d6914938-Reviews-Restaurant_Dacha-Dzerzhinsk_Nizhny_Novgorod_Oblast_Volga_District.html"><i
+                                class="fa fa-tripadvisor" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/dacharest52/"><i class="fa fa-facebook m-l-21"
+                                                                           aria-hidden="true"></i></a>
+                        <a href="https://vk.com/dacharestaurant"><i class="fa fa-vk m-l-21" aria-hidden="true"></i></a>
+                    </div>
 
-					<div class="txt17 p-r-20 p-t-5 p-b-5">
-						Copyright &copy; 2021 All rights reserved  |  This site is made with <i class="fa fa-heart"></i> by <a href="#" target="_blank">Danilo</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-		<script type="text/javascript">
-			window.onload = function() {
-				var text = "Sorry, no news";
-				$.ajax({
-					type : "GET",
-					contentType: "application/json",
-					dataType: "json",
-					url : "/vk",
-					success : function (data, status) {
-						text = data["text"];
-						var imgSrc = data.attachments[0].photo.sizes[1].url;
-						var dateVk = new Date(Number(data.date) * 1000).toString();
-						var txtP = document.getElementById("txtFromVk");
-						txtP.innerText=text;
-						var imgDiv = document.getElementById("imgFromVk");
-						imgDiv.innerHTML="<img class='vkpic' src=" + "\'" + imgSrc +"\'>";
-						var dateSpan = document.getElementById("dateFromVk");
-						dateSpan.innerText=dateVk;
-					},
-				});
-			}
-		</script>
-	</div>
+                    <div class="txt17 p-r-20 p-t-5 p-b-5">
+                        Copyright &copy; 2021 All rights reserved | This site is made with <i class="fa fa-heart"></i>
+                        by <a href="#" target="_blank">Danilo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        window.onload = function () {
+            var text = "Sorry, no news";
+            $.ajax({
+                type: "GET",
+                contentType: "application/json",
+                dataType: "json",
+                url: "/vk",
+                success: function (data, status) {
+                    text = data["text"];
+                    var imgSrc = data.attachments[0].photo.sizes[1].url;
+                    var dateVk = new Date(Number(data.date) * 1000).toString();
+                    var txtP = document.getElementById("txtFromVk");
+                    txtP.innerText = text;
+                    var imgDiv = document.getElementById("imgFromVk");
+                    imgDiv.innerHTML = "<img class='vkpic' src=" + "\'" + imgSrc + "\'>";
+                    var dateSpan = document.getElementById("dateFromVk");
+                    dateSpan.innerText = dateVk;
+                },
+            });
+        }
+    </script>
+</div>
 
 
-	<!-- Back to top -->
-	<div class="btn-back-to-top bg0-hov" id="myBtn">
+<!-- Back to top -->
+<div class="btn-back-to-top bg0-hov" id="myBtn">
 		<span class="symbol-btn-back-to-top">
 			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
 		</span>
-	</div>
+</div>
 
-	<!-- Container Selection1 -->
-	<div id="dropDownSelect1"></div>
+<!-- Container Selection1 -->
+<div id="dropDownSelect1"></div>
 
-	<!-- Modal Video 01-->
-	<div class="modal fade" id="modal-video-01" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- Modal Video 01-->
+<div class="modal fade" id="modal-video-01" tabindex="-1" role="dialog" aria-hidden="true">
 
-		<div class="modal-dialog" role="document" data-dismiss="modal">
-			<div class="close-mo-video-01 trans-0-4" data-dismiss="modal" aria-label="Close">&times;</div>
+    <div class="modal-dialog" role="document" data-dismiss="modal">
+        <div class="close-mo-video-01 trans-0-4" data-dismiss="modal" aria-label="Close">&times;</div>
 
-			<div class="wrap-video-mo-01">
-				<div class="w-full wrap-pic-w op-0-0"><img src="/images/icons/video-16-9.jpg" alt="IMG"></div>
-				<div class="video-mo-01">
-					<iframe width="420" height="345" src="https://www.youtube.com/embed/SNGSx1Xp5Ro?start=92&version=3?autoplay=1" allow='autoplay' frameborder="0" allowfullscreen></iframe>				</div>
-			</div>
-		</div>
-	</div>
-
-
+        <div class="wrap-video-mo-01">
+            <div class="w-full wrap-pic-w op-0-0"><img src="/images/icons/video-16-9.jpg" alt="IMG"></div>
+            <div class="video-mo-01">
+                <iframe width="420" height="345"
+                        src="https://www.youtube.com/embed/SNGSx1Xp5Ro?start=92&version=3?autoplay=1" allow='autoplay'
+                        frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <!--	<script type="text/javascript">-->
@@ -1033,31 +1090,31 @@
 <!--		},false);-->
 <!--	</script>-->
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/animsition/js/animsition.min.js"></script>
+<script type="text/javascript" src="/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/bootstrap/js/popper.js"></script>
-	<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/vendor/bootstrap/js/popper.js"></script>
+<script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
+<script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/daterangepicker/moment.min.js"></script>
-	<script type="text/javascript" src="/vendor/daterangepicker/daterangepicker.js"></script>
+<script type="text/javascript" src="/vendor/daterangepicker/moment.min.js"></script>
+<script type="text/javascript" src="/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/slick/slick.min.js"></script>
-	<script type="text/javascript" src="/js/slick-custom.js"></script>
+<script type="text/javascript" src="/vendor/slick/slick.min.js"></script>
+<script type="text/javascript" src="/js/slick-custom.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/parallax100/parallax100.js"></script>
-	<script type="text/javascript">
-        $('.parallax100').parallax100();
-	</script>
+<script type="text/javascript" src="/vendor/parallax100/parallax100.js"></script>
+<script type="text/javascript">
+    $('.parallax100').parallax100();
+</script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/countdowntime/countdowntime.js"></script>
+<script type="text/javascript" src="/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script type="text/javascript" src="/vendor/lightbox2/js/lightbox.min.js"></script>
+<script type="text/javascript" src="/vendor/lightbox2/js/lightbox.min.js"></script>
 <!--===============================================================================================-->
-	<script src="/js/main.js"></script>
+<script src="/js/main.js"></script>
 
 </body>
 </html>

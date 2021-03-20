@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-public class UserMessageServiceImpl  implements UserMessageService {
+public class UserMessageServiceImpl implements UserMessageService {
 
 
     private final UserMessageRepository userMessageRepository;
@@ -31,13 +31,13 @@ public class UserMessageServiceImpl  implements UserMessageService {
     }
 
     UserMessageDto findUserMessageById(Integer id) {
-       Optional<UserMessage> userMessage = userMessageRepository.findById(id);
-       if (userMessage.isPresent()) {
-           return userMessageMapper.toUserMessageDto(userMessage.get());
-       } else {
-           log.warn("no user find with id: " + id);
-           return null;
-       }
+        Optional<UserMessage> userMessage = userMessageRepository.findById(id);
+        if (userMessage.isPresent()) {
+            return userMessageMapper.toUserMessageDto(userMessage.get());
+        } else {
+            log.warn("no user find with id: " + id);
+            return null;
+        }
     }
 
     @Override
@@ -54,5 +54,23 @@ public class UserMessageServiceImpl  implements UserMessageService {
     @EmailSend(subject = "New message on site")
     public void save(UserMessage userMessage) {
         userMessageRepository.save(userMessage);
+    }
+
+    @Override
+    public void save(UserMessageDto userMessageDto) {
+        save(userMessageMapper.toUserMessage(userMessageDto));
+    }
+
+    @Override
+    public UserMessageDto findById(Integer id) {
+        return userMessageMapper.toUserMessageDto(userMessageRepository.findById(id).orElse(new UserMessage()));
+    }
+
+    @Override
+    public void update(Integer id, UserMessageDto userMessageDto) {
+        UserMessage userMessage = userMessageRepository.findById(id).orElseThrow();
+        userMessageMapper.updateUserMessageFromDto(userMessageDto, userMessage);
+        userMessageRepository.save(userMessage);
+
     }
 }

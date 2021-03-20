@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="_csrf" th:content="${_csrf.token}" />
-    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Бронирование</title>
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
@@ -19,41 +19,41 @@
 </head>
 <body>
 <script>
-    window.onload = function() {
+    window.onload = function () {
         let token = $("meta[name='_csrf']").attr("content");
         let header = $("meta[name='_csrf_header']").attr("content");
-        let headers = '"headers" : {"' + header +'" : "' + token + '"}'
-        document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "/api/booking/", ' + headers  + '}');
-        document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "/api/booking/", ' + headers  + '}');
-        document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "/api/booking/", ' + headers  + '}');
-        document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "/api/booking/all/", ' + headers  + '}');
-        document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "/api/booking/", ' + headers  + '}');
+        let headers = '"headers" : {"' + header + '" : "' + token + '"}'
+        document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "/api/booking/", ' + headers + '}');
+        document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "/api/booking/", ' + headers + '}');
+        document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "/api/booking/", ' + headers + '}');
+        document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "/api/booking/all/", ' + headers + '}');
+        document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "/api/booking/", ' + headers + '}');
     }
 </script>
-<div th:insert="manage.html :: header"> </div>
+<div th:insert="manage.html :: header"></div>
 <div class="container-fluid bg2-pattern w-full-md p-t-20">
-<zing-grid
-        caption="Бронирование"
-        search
-        columns-control
-        editor-controls
-        pager
-        page-size="10"
-        page-size-options="2,5,10">
-    <zg-column index="name" header="Имя"></zg-column>
-    <zg-column index="phone" header="Телефон"></zg-column>
-    <zg-column index="email" header="email"></zg-column>
-    <zg-column index="personCount" header="Количество человек"></zg-column>
-    <zg-column index="time" header="Время"></zg-column>
-    <zg-column index="date" header="Дата"></zg-column>
-    <zg-data>
-        <zg-param name="deleteOptions" id="idDelete"> </zg-param>
-        <zg-param name="readOptions" id="idRead"></zg-param>
-        <zg-param name="createOptions" id="idCreate"> </zg-param>
-        <zg-param name="updateCellOptions" id="idUpdateCell"></zg-param>
-        <zg-param name="updateRowOptions" id="idUpdateRow"></zg-param>
-    </zg-data>
-</zing-grid>
+    <zing-grid
+            caption="Бронирование"
+            search
+            columns-control
+            editor-controls
+            pager
+            page-size="10"
+            page-size-options="2,5,10">
+        <zg-column index="name" header="Имя"></zg-column>
+        <zg-column index="phone" header="Телефон"></zg-column>
+        <zg-column index="email" header="email"></zg-column>
+        <zg-column index="personCount" header="Количество человек"></zg-column>
+        <zg-column index="time" header="Время"></zg-column>
+        <zg-column index="date" header="Дата"></zg-column>
+        <zg-data>
+            <zg-param name="deleteOptions" id="idDelete"></zg-param>
+            <zg-param name="readOptions" id="idRead"></zg-param>
+            <zg-param name="createOptions" id="idCreate"></zg-param>
+            <zg-param name="updateCellOptions" id="idUpdateCell"></zg-param>
+            <zg-param name="updateRowOptions" id="idUpdateRow"></zg-param>
+        </zg-data>
+    </zing-grid>
 </div>
 </body>
 <script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>

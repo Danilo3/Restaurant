@@ -10,6 +10,7 @@ import ru.koryakin.dacha2.repositories.UserEmailRepository;
 import ru.koryakin.dacha2.services.UserEmailService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -39,5 +40,22 @@ public class UserEmailServiceImpl implements UserEmailService {
     @Override
     public void deleteById(Integer id) {
         userEmailRepository.deleteById(id);
+    }
+
+    @Override
+    public void save(UserEmailDto userEmailDto) {
+        save(mapper.toUserEmail(userEmailDto));
+    }
+
+    @Override
+    public UserEmailDto findById(Integer id) {
+        return mapper.toUserEmailDto(userEmailRepository.findById(id).orElse(new UserEmail()));
+    }
+
+    @Override
+    public void update(Integer id, UserEmailDto userEmailDto) {
+        UserEmail userEmail = userEmailRepository.findById(id).orElseThrow();
+        mapper.updateUserEmailFromDto(userEmailDto, userEmail);
+        userEmailRepository.save(userEmail);
     }
 }

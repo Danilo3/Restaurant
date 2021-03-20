@@ -2,6 +2,7 @@ package ru.koryakin.dacha2.services.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import ru.koryakin.dacha2.domain.PostTag;
 import ru.koryakin.dacha2.dto.PostTagDto;
 import ru.koryakin.dacha2.mappers.PostTagMapper;
 import ru.koryakin.dacha2.repositories.PostTagRepository;
@@ -30,5 +31,11 @@ public class PostTagServiceImpl implements PostTagService {
     @Override
     public List<PostTagDto> findAll() {
         return mapper.toPostTagDtos(postTagRepository.findAll());
+    }
+
+    @Override
+    public void save(List<PostTag> tags) {
+        postTagRepository.saveAll(tags);
+        postTagRepository.flush();
     }
 }

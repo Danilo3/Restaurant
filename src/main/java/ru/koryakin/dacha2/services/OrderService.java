@@ -24,4 +24,8 @@ public interface OrderService {
     void finishOrder(DeliveryOrder deliveryOrder, HttpServletResponse response);
 
     DeliveryOrderDto getDeliveryOrder(HttpServletRequest request);
+
+    DeliveryOrderDto findById(Integer id);
+
+    void update(Integer id, DeliveryOrderDto deliveryOrderDto);
 }

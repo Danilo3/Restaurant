@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="_csrf" th:content="${_csrf.token}" />
-    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Управление меню</title>
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
@@ -20,95 +20,96 @@
 </head>
 
 <body>
-    <div th:insert="manage.html :: header"> </div>
-    <div class="container-fluid bg2-pattern w-full-md">
-        <h4 class="p-t-5">Загружать по очереди</h4>
-        <form method="POST" enctype="multipart/form-data"  th:action="@{/manage/menu}">
-            <div class="form-file" >
-            <div  th:if="${error}" class="error-login alert alert-error">
+<div th:insert="manage.html :: header"></div>
+<div class="container-fluid bg2-pattern w-full-md">
+    <h4 class="p-t-5">Загружать по очереди</h4>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/manage/menu}">
+        <div class="form-file">
+            <div th:if="${error}" class="error-login alert alert-error">
                 <div class="alert alert-warning">
                     Не удалось загрузить файл.
                 </div>
             </div>
-                <label for="fileUpload">Выберите файл меню(.pdf, size <= 10Mb)</label>
-                <div class="input-group">
-                    <input type="file" name="file" id="fileUpload" accept="application/pdf"><br />
-                    <button type="submit" class="btn btn-primary">Загрузить</button>
+            <label for="fileUpload">Выберите файл меню(.pdf, size <= 10Mb)</label>
+            <div class="input-group">
+                <input type="file" name="file" id="fileUpload" accept="application/pdf"><br/>
+                <button type="submit" class="btn btn-primary">Загрузить</button>
+            </div>
+        </div>
+    </form>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/manage/wine}">
+        <div class="form-file">
+            <div th:if="${error}" class="error-login alert alert-error">
+                <div class="alert alert-warning">
+                    Не удалось загрузить файл.
                 </div>
             </div>
-        </form>
-        <form method="POST" enctype="multipart/form-data"  th:action="@{/manage/wine}">
-            <div class="form-file" >
-                <div  th:if="${error}" class="error-login alert alert-error">
-                    <div class="alert alert-warning">
-                        Не удалось загрузить файл.
-                    </div>
-                </div>
-                <label for="wineFileUpload">Выберите файл винной карты(.pdf, size <= 10Mb)</label>
-                <div class="input-group">
-                    <input type="file" name="file" id="wineFileUpload" accept="application/pdf">
-                    <button type="submit" class="btn btn-primary">Загрузить</button>
+            <label for="wineFileUpload">Выберите файл винной карты(.pdf, size <= 10Mb)</label>
+            <div class="input-group">
+                <input type="file" name="file" id="wineFileUpload" accept="application/pdf">
+                <button type="submit" class="btn btn-primary">Загрузить</button>
+            </div>
+        </div>
+    </form>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/manage/lunch}">
+        <div class="form-file">
+            <div th:if="${error}" class="error-login alert alert-error">
+                <div class="alert alert-warning">
+                    Не удалось загрузить файл.
                 </div>
             </div>
-        </form>
-        <form method="POST" enctype="multipart/form-data"  th:action="@{/manage/lunch}">
-            <div class="form-file" >
-                <div  th:if="${error}" class="error-login alert alert-error">
-                    <div class="alert alert-warning">
-                        Не удалось загрузить файл.
-                    </div>
-                </div>
-                <label for="lunchFileUpload">Выберите файл бизнес-ланча(.pdf, size <= 10Mb)</label>
-                <div class="input-group">
-                    <input type="file" name="file" id="lunchFileUpload" accept="application/pdf">
-                    <button type="submit" class="btn btn-primary">Загрузить</button>
-                </div>
+            <label for="lunchFileUpload">Выберите файл бизнес-ланча(.pdf, size <= 10Mb)</label>
+            <div class="input-group">
+                <input type="file" name="file" id="lunchFileUpload" accept="application/pdf">
+                <button type="submit" class="btn btn-primary">Загрузить</button>
             </div>
-        </form>
-        <form method="get" action="/manage/updateMenu/">
-            <button type="submit" class="btn-danger flex-c-m trans-0-4 m-t-5 bo-rad-3 bo5" onclick="return confirm('are u sure about that?');">
-                Обновить цены и блюда из файла
-            </button>
-        </form>
-    </div>
+        </div>
+    </form>
+    <form method="get" action="/manage/updateMenu/">
+        <button type="submit" class="btn-danger flex-c-m trans-0-4 m-t-5 bo-rad-3 bo5"
+                onclick="return confirm('are u sure about that?');">
+            Обновить цены и блюда из файла
+        </button>
+    </form>
+</div>
 
-    <div class="container-fluid bg2-pattern w-full-md p-t-20">
-        <zing-grid
-                caption="Меню"
-                search
-                columns-control
-                editor-controls
-                pager
-                page-size="30"
-                page-size-options="20,50,80">
-            <zg-column index="name" header="Название"></zg-column>
-            <zg-column index="price" header="Цена"></zg-column>
-            <zg-column index="category" header="Категория"></zg-column>
-            <zg-column index="description" header="Описание"></zg-column>
-            <zg-column index="imageUrl" header="Путь до картинки"></zg-column>
-            <zg-column index="isAvailableForOrder" type="boolean" header="Доступно для покупки"></zg-column>
-            <zg-data>
-                <zg-param name="deleteOptions" id="idDelete"> </zg-param>
-                <zg-param name="readOptions" id="idRead"></zg-param>
-                <zg-param name="createOptions" id="idCreate"> </zg-param>
-                <zg-param name="updateCellOptions" id="idUpdateCell"></zg-param>
-                <zg-param name="updateRowOptions" id="idUpdateRow"></zg-param>
-            </zg-data>
-        </zing-grid>
-    </div>
+<div class="container-fluid bg2-pattern w-full-md p-t-20">
+    <zing-grid
+            caption="Меню"
+            search
+            columns-control
+            editor-controls
+            pager
+            page-size="30"
+            page-size-options="20,50,80">
+        <zg-column index="name" header="Название"></zg-column>
+        <zg-column index="price" header="Цена"></zg-column>
+        <zg-column index="category" header="Категория"></zg-column>
+        <zg-column index="description" header="Описание"></zg-column>
+        <zg-column index="imageUrl" header="Путь до картинки"></zg-column>
+        <zg-column index="isAvailableForOrder" type="boolean" header="Доступно для покупки"></zg-column>
+        <zg-data>
+            <zg-param name="deleteOptions" id="idDelete"></zg-param>
+            <zg-param name="readOptions" id="idRead"></zg-param>
+            <zg-param name="createOptions" id="idCreate"></zg-param>
+            <zg-param name="updateCellOptions" id="idUpdateCell"></zg-param>
+            <zg-param name="updateRowOptions" id="idUpdateRow"></zg-param>
+        </zg-data>
+    </zing-grid>
+</div>
 
-    <script>
-        window.onload = function() {
-            let token = $("meta[name='_csrf']").attr("content");
-            let header = $("meta[name='_csrf_header']").attr("content");
-            let headers = '"headers" : {"' + header +'" : "' + token + '"}'
-            document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "/api/menu/", ' + headers  + '}');
-            document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "/api/menu/", ' + headers  + '}');
-            document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "/api/menu/", ' + headers  + '}');
-            document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "/api/menu/all/", ' + headers  + '}');
-            document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "/api/menu/", ' + headers  + '}');
-        }
-    </script>
-    <script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script>
+    window.onload = function () {
+        let token = $("meta[name='_csrf']").attr("content");
+        let header = $("meta[name='_csrf_header']").attr("content");
+        let headers = '"headers" : {"' + header + '" : "' + token + '"}'
+        document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "/api/menu/", ' + headers + '}');
+        document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "/api/menu/", ' + headers + '}');
+        document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "/api/menu/", ' + headers + '}');
+        document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "/api/menu/all/", ' + headers + '}');
+        document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "/api/menu/", ' + headers + '}');
+    }
+</script>
+<script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
 </body>
 </html>

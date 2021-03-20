@@ -9,6 +9,7 @@ import ru.koryakin.dacha2.repositories.DeliveryOrderItemRepository;
 import ru.koryakin.dacha2.services.OrderItemService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Service
@@ -25,7 +26,7 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
-    public void saveAll(ArrayList<DeliveryOrderItem> items) {
+    public void saveAll(List<DeliveryOrderItem> items) {
         deliveryOrderItemRepository.saveAll(items);
     }
 

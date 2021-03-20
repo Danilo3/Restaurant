@@ -52,6 +52,8 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void save(DeliveryOrder deliveryOrder) {
+        orderItemService.saveAll(deliveryOrder.getOrderItems());
+        orderItemService.flush();
         orderRepository.save(deliveryOrder);
     }
 
@@ -96,8 +98,6 @@ public class OrderServiceImpl implements OrderService {
                 order.setUsername(username);
                 order.setOrderItems(items);
                 order.setPrice(total);
-                orderItemService.saveAll(items);
-                orderItemService.flush();
                 save(order);
             } catch (JsonProcessingException e) {
                 log.warn("Something wrong with cart_list:" + cart);
@@ -130,6 +130,20 @@ public class OrderServiceImpl implements OrderService {
         } else {
             return null;
         }
+    }
+
+    @Override
+    public DeliveryOrderDto findById(Integer id) {
+        return deliveryOrderMapper.toDeliveryOrderDto(orderRepository.findById(id).orElse(new DeliveryOrder()));
+    }
+
+    @Override
+    public void update(Integer id, DeliveryOrderDto deliveryOrderDto) {
+        DeliveryOrder order = orderRepository.getById(id);
+        deliveryOrderMapper.updateDeliveryOrderFromDto(deliveryOrderDto, order);
+        orderItemService.saveAll(order.getOrderItems());
+        orderItemService.flush();
+        orderRepository.save(order);
     }
 
     private void deleteCookie(HttpServletResponse response) {

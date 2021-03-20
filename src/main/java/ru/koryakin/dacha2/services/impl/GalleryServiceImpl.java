@@ -19,7 +19,7 @@ import java.util.List;
 
 
 @Service
-public class GalleryServiceImpl  implements GalleryService {
+public class GalleryServiceImpl implements GalleryService {
 
 
     private final GalleryItemRepository galleryItemRepository;
@@ -33,7 +33,7 @@ public class GalleryServiceImpl  implements GalleryService {
     }
 
     @Override
-    public Page<GalleryItem> getAllGalleryPictures(Pageable pageable){
+    public Page<GalleryItem> getAllGalleryPictures(Pageable pageable) {
         return galleryItemRepository.findAll(pageable);
     }
 
@@ -42,10 +42,27 @@ public class GalleryServiceImpl  implements GalleryService {
         ArrayList<String> categories = new ArrayList<>(Arrays.asList("events", "guests", "food", "interior"));
         PageRequest pageRequest = PageRequest.of(page - 1, size);
         if (!tag.equals("empty") && categories.contains(tag)) {
-             return getPaginatedItemsByTag(pageRequest, tag);
+            return getPaginatedItemsByTag(pageRequest, tag);
         } else {
             return getAllGalleryPictures(pageRequest);
         }
+    }
+
+    @Override
+    public void save(GalleryItemDto galleryItemDto) {
+        save(mapper.toGalleryItem(galleryItemDto));
+    }
+
+    @Override
+    public GalleryItemDto findById(Integer id) {
+        return mapper.toGalleryItemDto(galleryItemRepository.findById(id).orElse(new GalleryItem()));
+    }
+
+    @Override
+    public void update(Integer id, GalleryItemDto galleryItemDto) {
+        GalleryItem galleryItem = galleryItemRepository.findById(id).orElseThrow();
+        mapper.updateGalleryItemFromDto(galleryItemDto, galleryItem);
+        galleryItemRepository.save(galleryItem);
     }
 
     @Override

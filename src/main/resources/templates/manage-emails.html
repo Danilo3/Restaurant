@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="_csrf" th:content="${_csrf.token}" />
-    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Управление подписками</title>
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
@@ -19,18 +19,18 @@
 </head>
 <body>
 <script>
-    window.onload = function() {
+    window.onload = function () {
         let token = $("meta[name='_csrf']").attr("content");
         let header = $("meta[name='_csrf_header']").attr("content");
-        let headers = '"headers" : {"' + header +'" : "' + token + '"}'
-        document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "/api/email/", ' + headers  + '}');
-        document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "/api/email/", ' + headers  + '}');
-        document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "/api/email/", ' + headers  + '}');
-        document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "/api/email/all/", ' + headers  + '}');
-        document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "/api/email/", ' + headers  + '}');
+        let headers = '"headers" : {"' + header + '" : "' + token + '"}'
+        document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "/api/email/", ' + headers + '}');
+        document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "/api/email/", ' + headers + '}');
+        document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "/api/email/", ' + headers + '}');
+        document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "/api/email/all/", ' + headers + '}');
+        document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "/api/email/", ' + headers + '}');
     }
 </script>
-<div th:insert="manage.html :: header"> </div>
+<div th:insert="manage.html :: header"></div>
 <div class="container-fluid bg2-pattern w-full-md p-t-20">
     <zing-grid
             caption="Подписки на рассылку"
@@ -43,9 +43,9 @@
         <zg-column index="email" header="Email"></zg-column>
         <zg-column index="status" header="Статус"></zg-column>
         <zg-data>
-            <zg-param name="deleteOptions" id="idDelete"> </zg-param>
+            <zg-param name="deleteOptions" id="idDelete"></zg-param>
             <zg-param name="readOptions" id="idRead"></zg-param>
-            <zg-param name="createOptions" id="idCreate"> </zg-param>
+            <zg-param name="createOptions" id="idCreate"></zg-param>
             <zg-param name="updateCellOptions" id="idUpdateCell"></zg-param>
             <zg-param name="updateRowOptions" id="idUpdateRow"></zg-param>
         </zg-data>

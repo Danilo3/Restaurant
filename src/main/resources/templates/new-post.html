@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="_csrf" th:content="${_csrf.token}" />
-    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Добавить пост</title>
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
@@ -30,26 +30,26 @@
 </head>
 <body>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         var options = {
-            success:    function() {
+            success: function () {
                 alert('Пост сохранен');
             },
-            beforeSend: function(request) {
-                             let token = $("meta[name='_csrf']").attr("content");
-                             let header = $("meta[name='_csrf_header']").attr("content");
-                            request.setRequestHeader(header, token);
+            beforeSend: function (request) {
+                let token = $("meta[name='_csrf']").attr("content");
+                let header = $("meta[name='_csrf_header']").attr("content");
+                request.setRequestHeader(header, token);
             },
             clearForm: true
         };
         $('#formNewPost').ajaxForm(options);
-        $('#formNewPost').submit(function() {
+        $('#formNewPost').submit(function () {
             $(this).ajaxSubmit();
             return false;
         });
-        $("#category").change(function(){
+        $("#category").change(function () {
             if ($(this).val() == "EVENT") {
-                $('#event_content').html(function(index, oldhtml) {
+                $('#event_content').html(function (index, oldhtml) {
                     $(this).css('display', 'block');
                     return oldhtml;
                 });
@@ -62,11 +62,13 @@
         });
 
         var cont = document.getElementById('content');
+
         function useValue() {
             var value = cont.value;
             // use it
             alert(value); // just to show the new value
         }
+
         cont.onchange = useValue;
         cont.onblur = useValue;
         // $('#content').on('blur', function () {
@@ -74,12 +76,11 @@
         // })
     })
 </script>
-<div th:insert="manage.html :: header"> </div>
+<div th:insert="manage.html :: header"></div>
 <div class="container-fluid bg2-pattern w-full-md">
     <div class="row">
         <div class="col-md-8 mt-5">
-            <form id="formNewPost" method="post" th:object="${post}" action="/api/blog/">
-
+            <form id="formNewPost" method="post" th:object="${post}" action="/api/blog/new/">
                 <div class="form-group">
                     <label for="title">Название:</label>
                     <input type="text" id="title" placeholder="Title" autocomplete="off" class="form-control"
@@ -88,13 +89,16 @@
                     <input type="text" id="preview" placeholder="Preview" autocomplete="off" class="form-control"
                            th:field="*{previewText}"/>
                     <label for="urlTitleInput">Называние ссылки(на английском):</label>
-                    <input type="text" id="urlTitleInput" placeholder="url-title" autocomplete="off" class="form-control"
+                    <input type="text" id="urlTitleInput" placeholder="url-title" autocomplete="off"
+                           class="form-control"
                            th:field="*{urlTitle}"/>
                     <label for="authorInput">Автор:</label>
-                    <input type="text" id="authorInput" placeholder="Команда Ресторана Дача" autocomplete="on" class="form-control"
+                    <input type="text" id="authorInput" placeholder="Команда Ресторана Дача" autocomplete="on"
+                           class="form-control"
                            th:field="*{author}"/>
                     <label for="title">Категория:</label>
-                    <input list="categories" id="category" class="form-control" placeholder="BLOG or ABOUT or EVENT" th:field="*{category}">
+                    <input list="categories" id="category" class="form-control" placeholder="BLOG or ABOUT or EVENT"
+                           th:field="*{category}">
                     <datalist id="categories">
                         <option value="BLOG">
                         <option value="ABOUT">
@@ -102,20 +106,24 @@
                     </datalist>
                     <div id="event_content" style="display: none">
                         <label for="imageBack">Изображения для заднего фона</label>
-                        <input list="back_images" id="imageBack" class="form-control" placeholder="/images/background.png" th:field="*{eventBackgroundImageUrl}">
-                         <datalist id="back_images">
-                         <option th:each="image : ${images}" th:value="${image}", th:text="${image}">
-                          </datalist>
+                        <input list="back_images" id="imageBack" class="form-control"
+                               placeholder="/images/background.png" th:field="*{eventBackgroundImageUrl}">
+                        <datalist id="back_images">
+                            <option th:each="image : ${images}" th:value="${image}" , th:text="${image}">
+                        </datalist>
                         <label for="event_time">Время события(строка):</label>
-                        <input type="text" id="event_time" placeholder="today or 18:00 yesterday" autocomplete="off" class="form-control" th:field="*{eventDateTime}"/></div>
+                        <input type="text" id="event_time" placeholder="today or 18:00 yesterday" autocomplete="off"
+                               class="form-control" th:field="*{eventDateTime}"/></div>
                     <label for="tags_checkbox">Выберите тэги</label>
                     <div id="tags_checkbox">
-                    <input type="checkbox" th:each="tag : ${tags}" th:value="${tag.id}" name="tags" class="m-5" th:text="${tag.tagName}">
+                        <input type="checkbox" th:each="tag : ${tags}" th:value="${tag.id}" name="tags" class="m-5"
+                               th:text="${tag.tagName}">
                     </div>
                     <label for="imageUrls">Название предварительно загруженного изображения</label>
-                    <input list="images" id="imageUrls" class="form-control" placeholder="/images/image.png" th:field="*{imageUrl}">
+                    <input list="images" id="imageUrls" class="form-control" placeholder="/images/image.png"
+                           th:field="*{imageUrl}">
                     <datalist id="images">
-                        <option th:each="image : ${images}" th:value="${image}", th:text="${image}">
+                        <option th:each="image : ${images}" th:value="${image}" , th:text="${image}">
                     </datalist>
                 </div>
 

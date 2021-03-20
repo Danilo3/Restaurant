@@ -30,12 +30,12 @@ public class BlogController {
     }
 
     @GetMapping(value = {"/blog.html", "/blog"})
-    public String blog( Model model, @RequestParam("page") Optional<Integer> page,
-                                    @RequestParam("size") Optional<Integer> size,
-                                    @RequestParam("find") Optional<String>  find,
-                                    @RequestParam("tag")  Optional<String>  tag,
-                                    @RequestParam("date") Optional<String>  date) {
-        Page<BlogPostDto> blogPage = blogPostService.getBlogPage(page, size, find, tag,date);
+    public String blog(Model model, @RequestParam("page") Optional<Integer> page,
+                       @RequestParam("size") Optional<Integer> size,
+                       @RequestParam("find") Optional<String> find,
+                       @RequestParam("tag") Optional<String> tag,
+                       @RequestParam("date") Optional<String> date) {
+        Page<BlogPostDto> blogPage = blogPostService.getBlogPage(page, size, find, tag, date);
         if (blogPage == null)
             return "404";
         model.addAttribute("blog", blogPage);
@@ -44,13 +44,11 @@ public class BlogController {
     }
 
     @GetMapping(value = "/blog-detail/")
-    public String blogDetail(@RequestParam(name = "name", required = false) String urlTitle, Model model)
-    {
+    public String blogDetail(@RequestParam(name = "name", required = false) String urlTitle, Model model) {
         BlogPostDto blogPost = blogPostService.findPostByTitle(urlTitle);
         if (blogPost == null) {
             return "404";
-        }
-        else {
+        } else {
             model.addAttribute("post", blogPost);
             model.addAttribute("date", Date.from(blogPost.getCreateDate().atStartOfDay(ZoneId.systemDefault()).toInstant()));
             addAttributesToModel(model, 0);
@@ -60,7 +58,7 @@ public class BlogController {
     }
 
     private void addAttributesToModel(Model model, int totalPages) {
-        model.addAttribute("tags",  postTagService.findAll());
+        model.addAttribute("tags", postTagService.findAll());
         model.addAttribute("popular", blogPostService.findPopular());
         model.addAttribute("archive", blogPostService.findDates());
         if (totalPages > 0) {

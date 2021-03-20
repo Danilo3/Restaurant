@@ -47,7 +47,7 @@ public class MenuItem {
         this.category = category;
     }
 
-    public MenuItem (String line, String category) {
+    public MenuItem(String line, String category) {
         String[] arr = line.split(":");
         this.name = arr[0];
         this.price = arr[1];

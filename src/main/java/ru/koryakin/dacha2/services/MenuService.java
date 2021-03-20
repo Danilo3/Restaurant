@@ -22,4 +22,6 @@ public interface MenuService {
     List<MenuItemDto> findAllByCategoryAndIsAvailableForOrder(String category, boolean isAvailable);
 
     Optional<MenuItemDto> findById(Integer id);
+
+    void save(MenuItemDto menuItemDto);
 }

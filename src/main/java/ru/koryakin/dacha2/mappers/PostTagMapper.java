@@ -1,9 +1,10 @@
 package ru.koryakin.dacha2.mappers;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 import ru.koryakin.dacha2.domain.PostTag;
+import ru.koryakin.dacha2.domain.UserEmail;
 import ru.koryakin.dacha2.dto.PostTagDto;
+import ru.koryakin.dacha2.dto.UserEmailDto;
 
 import java.util.List;
 
@@ -15,4 +16,7 @@ public interface PostTagMapper {
     PostTag toPostTag(PostTagDto postTagDto);
 
     List<PostTagDto> toPostTagDtos(List<PostTag> postTags);
+
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updatePostTagFromDto(PostTagDto dto, @MappingTarget PostTag postTag);
 }

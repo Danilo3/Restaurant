@@ -33,7 +33,7 @@ public class TableBooking implements TextView {
     private String email;
 
     @Override
-    public  String toText(){
+    public String toText() {
         return "\t\tБронирование" + "\n" +
                 "Email: " + this.email + "\n" +
                 "Имя: " + this.name + "\n" +

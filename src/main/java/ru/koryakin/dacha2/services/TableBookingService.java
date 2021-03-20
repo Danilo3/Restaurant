@@ -12,4 +12,11 @@ public interface TableBookingService {
     void save(TableBooking booking);
 
     void deleteById(Integer id);
+
+    void save(TableBookingDto bookingDto);
+
+    TableBookingDto findById(Integer id);
+
+    void update(Integer id, TableBookingDto bookingDto);
+
 }

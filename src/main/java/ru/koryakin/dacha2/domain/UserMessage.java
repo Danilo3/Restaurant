@@ -27,7 +27,7 @@ public class UserMessage implements TextView {
     private String message;
 
     @Override
-    public  String toText(){
+    public String toText() {
         return "Email: " + this.email + "\n" +
                 "Имя: " + this.name + "\n" +
                 "Телефон: " + this.phone + "\n" +

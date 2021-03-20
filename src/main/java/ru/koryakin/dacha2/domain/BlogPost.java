@@ -52,7 +52,7 @@ public class BlogPost {
     @Column(name = "event_background_image_url")
     private String eventBackgroundImageUrl;
 
-    @Column(name = "views_count", columnDefinition="integer default '0'")
+    @Column(name = "views_count", columnDefinition = "integer default '0'")
     private Integer viewsCount = 0;
 
     @Enumerated(EnumType.STRING)

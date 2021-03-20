@@ -6,6 +6,6 @@ import ru.koryakin.dacha2.domain.PostTag;
 import java.util.List;
 
 
-public interface PostTagRepository  extends JpaRepository<PostTag, Integer> {
+public interface PostTagRepository extends JpaRepository<PostTag, Integer> {
     List<PostTag> findByUrlTitle(String tagUrlTitle);
 }

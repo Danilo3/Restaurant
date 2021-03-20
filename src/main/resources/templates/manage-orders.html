@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="_csrf" th:content="${_csrf.token}" />
-    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>Управление заказами</title>
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
@@ -19,28 +19,30 @@
 </head>
 <body>
 <script>
-    window.onload = function() {
+    window.onload = function () {
         let token = $("meta[name='_csrf']").attr("content");
         let header = $("meta[name='_csrf_header']").attr("content");
-        let headers = '"headers" : {"' + header +'" : "' + token + '"}'
-        document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "/api/order/", ' + headers  + '}');
-        document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "/api/order/", ' + headers  + '}');
-        document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "/api/order/", ' + headers  + '}');
-        document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "/api/order/all/", ' + headers  + '}');
-        document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "/api/order/", ' + headers  + '}');
+        let headers = '"headers" : {"' + header + '" : "' + token + '"}'
+        document.getElementById('idDelete').setAttribute('value', '{"method": "DELETE", "src": "/api/order/", ' + headers + '}');
+        document.getElementById('idCreate').setAttribute('value', '{"method": "POST", "src": "/api/order/", ' + headers + '}');
+        document.getElementById('idUpdateCell').setAttribute('value', '{"method": "PATCH", "src": "/api/order/", ' + headers + '}');
+        document.getElementById('idRead').setAttribute('value', '{"method": "GET", "src": "/api/order/all/", ' + headers + '}');
+        document.getElementById('idUpdateRow').setAttribute('value', '{"method": "PATCH", "src": "/api/order/", ' + headers + '}');
     }
 
     function _renderInnerGrid(orderItems, cellRef, $cell) {
         var data_arr = [];
         for (let i = 0; i < orderItems.length; i++) {
-            data_arr.push({ "name": orderItems[i].name,
+            data_arr.push({
+                "name": orderItems[i].name,
                 "price": orderItems[i].price,
-                "quantity": orderItems[i].quantity});
+                "quantity": orderItems[i].quantity
+            });
         }
         cellRef.querySelector('zing-grid').setData(data_arr);
     }
 </script>
-<div th:insert="manage.html :: header"> </div>
+<div th:insert="manage.html :: header"></div>
 <div class="container-fluid bg2-pattern w-full-md">
     <zing-grid
             caption="Заказы"
@@ -60,18 +62,18 @@
         <zg-column index="orderItems" header="Заказ" width="30%" renderer="_renderInnerGrid">
             <template>
                 <zing-grid caption="Что входит в заказ">
-                <zg-colgroup>
-                    <zg-column index="name" header="Название" ></zg-column>
-                    <zg-column index="price" header="Цена" ></zg-column>
-                    <zg-column index="quantity" header="Количество"></zg-column>
-                </zg-colgroup>
+                    <zg-colgroup>
+                        <zg-column index="name" header="Название"></zg-column>
+                        <zg-column index="price" header="Цена"></zg-column>
+                        <zg-column index="quantity" header="Количество"></zg-column>
+                    </zg-colgroup>
                 </zing-grid>
             </template>
         </zg-column>
         <zg-data>
-            <zg-param name="deleteOptions" id="idDelete"> </zg-param>
+            <zg-param name="deleteOptions" id="idDelete"></zg-param>
             <zg-param name="readOptions" id="idRead"></zg-param>
-            <zg-param name="createOptions" id="idCreate"> </zg-param>
+            <zg-param name="createOptions" id="idCreate"></zg-param>
             <zg-param name="updateCellOptions" id="idUpdateCell"></zg-param>
             <zg-param name="updateRowOptions" id="idUpdateRow"></zg-param>
         </zg-data>

@@ -9,5 +9,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EmailSend {
     String to() default "contact@dacha-restaurant.ru";
+
     String subject() default "New";
 }

@@ -13,4 +13,10 @@ public interface UserMessageService {
     void deleteById(Integer id);
 
     void save(UserMessage userMessage);
+
+    void save(UserMessageDto userMessageDto);
+
+    UserMessageDto findById(Integer id);
+
+    void update(Integer id, UserMessageDto userMessageDto);
 }

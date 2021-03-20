@@ -21,4 +21,11 @@ public interface GalleryService {
     Page<GalleryItem> getAllGalleryPictures(Pageable pageRequest);
 
     Page<GalleryItem> getGalleryPage(Integer page, Integer size, String tag);
+
+    void save(GalleryItemDto galleryItemDto);
+
+    GalleryItemDto findById(Integer id);
+
+    void update(Integer id, GalleryItemDto galleryItemDto);
+
 }

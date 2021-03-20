@@ -528,7 +528,7 @@
         _triggerEvent: function (name, params) {
             // Trigger an event
             var e = $.Event(name);
-            e.data=params;
+            e.data = params;
             this.cart_element.trigger(e, params);
             if (e.isDefaultPrevented()) {
                 return false;

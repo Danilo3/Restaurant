@@ -1,5 +1,6 @@
 package ru.koryakin.dacha2.services;
 
+import ru.koryakin.dacha2.domain.PostTag;
 import ru.koryakin.dacha2.dto.PostTagDto;
 
 import java.util.Collection;
@@ -9,4 +10,6 @@ public interface PostTagService {
     List<PostTagDto> findByTagUrlTitle(String s);
 
     List<PostTagDto> findAll();
+
+    void save(List<PostTag> tags);
 }

@@ -49,10 +49,10 @@ public class WebSettingsController {
         }
     }
 
-    @GetMapping(value = { "/favicon.ico"})
+    @GetMapping(value = {"/favicon.ico"})
     public void favicon(HttpServletResponse response) {
         try {
-            byte [] arr = FileUtils.readFileToByteArray(new File(faviconPath));
+            byte[] arr = FileUtils.readFileToByteArray(new File(faviconPath));
             response.getOutputStream().write(arr);
             response.setStatus(HttpStatus.OK.value());
             response.setContentType("image/x-icon");

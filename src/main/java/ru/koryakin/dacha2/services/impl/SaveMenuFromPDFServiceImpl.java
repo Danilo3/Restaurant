@@ -58,7 +58,7 @@ public class SaveMenuFromPDFServiceImpl implements SaveMenuFromPDFService {
         ArrayList<MenuItem> lunch = new ArrayList<>(12);
         try {
             String text = FileUtils.readFileToString(new File(lunchTxtPath), StandardCharsets.UTF_8);
-            String []lines = text.split("\n");
+            String[] lines = text.split("\n");
             String price = lines[0];
             for (int i = 3; i < 6; i++) {
                 lunch.add(new MenuItem(lines[i], price, "САЛАТЫ БИЗНЕС"));
@@ -71,13 +71,13 @@ public class SaveMenuFromPDFServiceImpl implements SaveMenuFromPDFService {
 
             }
         } catch (IOException exception) {
-            log.warn("Something wrong with lunch file: "+ exception.getMessage());
+            log.warn("Something wrong with lunch file: " + exception.getMessage());
         }
         return lunch;
     }
 
 
-    private ArrayList<MenuItem> getAllFromPDFMenu(){
+    private ArrayList<MenuItem> getAllFromPDFMenu() {
         ArrayList<MenuItem> menu = new ArrayList<>(100);
         StringBuilder sb = new StringBuilder(5024);
         try {
@@ -85,7 +85,7 @@ public class SaveMenuFromPDFServiceImpl implements SaveMenuFromPDFService {
             pdf.pipe(new OutputTarget(sb));
             pdf.close();
         } catch (IOException exception) {
-            log.warn("Something wrong with pdf "+ exception.getMessage());
+            log.warn("Something wrong with pdf " + exception.getMessage());
         }
         try {
             String text = deleteUseless(sb.toString(), trashStrings);
@@ -106,7 +106,7 @@ public class SaveMenuFromPDFServiceImpl implements SaveMenuFromPDFService {
         return menu;
     }
 
-    private static final  ArrayList<String> trashStrings = new ArrayList<>(Arrays.asList(
+    private static final ArrayList<String> trashStrings = new ArrayList<>(Arrays.asList(
             "за 100 гр",
             "Если у вас есть аллергия, просим сообщить нам об этом",
             "Данное меню является рекламным материалом. С контрольным меню можно ознакомиться у администрации.",
@@ -119,10 +119,10 @@ public class SaveMenuFromPDFServiceImpl implements SaveMenuFromPDFService {
         return text;
     }
 
-    private static ArrayList<MenuItem> getMenuCategory(String text, String category, String stopWord){
+    private static ArrayList<MenuItem> getMenuCategory(String text, String category, String stopWord) {
         String dishes = "none";
         ArrayList<MenuItem> dishesList = new ArrayList<>(20);
-        dishes = text.substring(text.indexOf(category), stopWord.equals("end")? text.length() : text.indexOf(stopWord));
+        dishes = text.substring(text.indexOf(category), stopWord.equals("end") ? text.length() : text.indexOf(stopWord));
         for (String line : dishes.split("\n")) {
             if (!line.isEmpty() && !line.equals(category)) {
                 line = line.trim().replaceAll("[ ]{3,}", ":");
@@ -132,6 +132,7 @@ public class SaveMenuFromPDFServiceImpl implements SaveMenuFromPDFService {
         }
         return dishesList;
     }
+
     private static String reformatGrill(String text) {
         text = text.replace("ГРИЛЬ", "");
         ArrayList<Integer> positions = new ArrayList<>();
@@ -141,7 +142,7 @@ public class SaveMenuFromPDFServiceImpl implements SaveMenuFromPDFService {
                 positions.add(i + 3);
         }
         int add = 0;
-        for (Integer pos: positions) {
+        for (Integer pos : positions) {
             if (sb.charAt(pos) != '\n') {
                 sb.insert(pos + add, "\n");
                 add++;

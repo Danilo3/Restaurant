@@ -24,7 +24,6 @@ import java.time.format.DateTimeParseException;
 import java.util.*;
 
 
-
 @Slf4j
 @Service
 public class BlogPostServiceImpl implements BlogPostService {
@@ -35,7 +34,7 @@ public class BlogPostServiceImpl implements BlogPostService {
 
     private final BlogPostRepository blogPostRepository;
 
-    private  final EntityManager em;
+    private final EntityManager em;
 
     private final BlogPostMapper mapper;
 
@@ -60,7 +59,7 @@ public class BlogPostServiceImpl implements BlogPostService {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<BlogPost> cq = cb.createQuery(BlogPost.class);
         Root<BlogPost> post = cq.from(BlogPost.class);
-        Predicate titlePredicate = cb.like(cb.lower(post.get("title")), cb.lower(cb.literal("%" + search +"%")));
+        Predicate titlePredicate = cb.like(cb.lower(post.get("title")), cb.lower(cb.literal("%" + search + "%")));
         cq.where(titlePredicate);
         TypedQuery<BlogPost> query = em.createQuery(cq);
         ArrayList<BlogPost> postArrayList = new ArrayList<>(query.getResultList());
@@ -77,7 +76,7 @@ public class BlogPostServiceImpl implements BlogPostService {
     }
 
     @Transactional
-    public List<BlogPostDto> findAll(){
+    public List<BlogPostDto> findAll() {
         return mapper.toBlogPostDtos(blogPostRepository.findAll());
     }
 
@@ -85,6 +84,7 @@ public class BlogPostServiceImpl implements BlogPostService {
     @Transactional
     public void save(BlogPost blogPost) {
         blogPost = setupPost(blogPost);
+        postTagService.save(blogPost.getTags());
         blogPostRepository.save(blogPost);
     }
 
@@ -100,13 +100,13 @@ public class BlogPostServiceImpl implements BlogPostService {
 
     @Override
     @Transactional
-    public  BlogPostDto findByUrlTitle(String urlTitle) {
-        return  mapper.toBlogPostDto(blogPostRepository.findBlogPostByUrlTitle(urlTitle));
+    public BlogPostDto findByUrlTitle(String urlTitle) {
+        return mapper.toBlogPostDto(blogPostRepository.findBlogPostByUrlTitle(urlTitle));
     }
 
     @Transactional
-    public  BlogPostDto findByTitle(String title) {
-        return  mapper.toBlogPostDto(blogPostRepository.findBlogPostByTitle(title));
+    public BlogPostDto findByTitle(String title) {
+        return mapper.toBlogPostDto(blogPostRepository.findBlogPostByTitle(title));
     }
 
 
@@ -142,7 +142,7 @@ public class BlogPostServiceImpl implements BlogPostService {
     @Transactional
     public Page<BlogPost> findPaginatedByTag(Pageable pageable, String tagUrlTitle) {
         List<Integer> idList = blogPostRepository.getBlogPostIdByTagUrlTitle(tagUrlTitle);
-        ArrayList<BlogPost>  postArrayList = new ArrayList<>(blogPostRepository.findAllById(idList));
+        ArrayList<BlogPost> postArrayList = new ArrayList<>(blogPostRepository.findAllById(idList));
         return utilService.makePageImpl(postArrayList, pageable);
     }
 
@@ -156,8 +156,8 @@ public class BlogPostServiceImpl implements BlogPostService {
     public HashMap<LocalDate, Integer> findDates() {
         HashMap<LocalDate, Integer> archive = new HashMap<>();
         List<Date> dates = blogPostRepository.getLocalDates();
-        for (Date date:
-             dates) {
+        for (Date date :
+                dates) {
             LocalDate localDate = utilService.convertToLocalDateViaMillisecond(date);
             archive.put(localDate, blogPostRepository.countPostByDate(localDate));
         }
@@ -169,7 +169,6 @@ public class BlogPostServiceImpl implements BlogPostService {
         PageRequest pageRequest = PageRequest.of(0, 100);
         return blogPostRepository.findAllByCreateDate(date, pageRequest);
     }
-
 
 
     @Override
@@ -225,9 +224,36 @@ public class BlogPostServiceImpl implements BlogPostService {
         }
     }
 
+    @Override
+    public void update(Integer id, BlogPostDto blogPostDto) {
+        BlogPost post = blogPostRepository.getById(id);
+        mapper.updateBlogPostFromDto(blogPostDto, post);
+        blogPostRepository.save(post);
+    }
+
+    @Override
+    public boolean editPost(Map<String, String> params) {
+        if (params != null && !params.isEmpty()) {
+            String id = params.get("id");
+            if (id != null && !id.isEmpty()) {
+                Optional<BlogPostDto> blogPost = findById(Integer.valueOf(id));
+                blogPost.ifPresent(post -> {
+                    blogPost.get().setContent(params.get("content"));
+                    blogPost.get().setModifyDate(LocalDate.now());
+                    save(post);
+                });
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     private BlogPost setupPost(BlogPost blogPost) {
         blogPost.setCreateDate(LocalDate.now());
-        if (blogPost.getCategory().equals(PostCategory.EVENT)) {
+        if (blogPost.getCategory() != null && blogPost.getCategory().equals(PostCategory.EVENT)) {
             String backgroundImageUrl = blogPost.getEventBackgroundImageUrl();
             backgroundImageUrl = "background-image: url(" + addImagePath(backgroundImageUrl) + ")";
             blogPost.setEventBackgroundImageUrl(backgroundImageUrl);
@@ -242,7 +268,7 @@ public class BlogPostServiceImpl implements BlogPostService {
 
 
     private String addImagePath(String imageName) {
-        if (!imageName.startsWith("/"))
+        if (imageName != null && !imageName.startsWith("/"))
             return imageName.replace("files/images", "/blog-images");
         return imageName;
     }

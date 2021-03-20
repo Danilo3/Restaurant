@@ -41,4 +41,21 @@ public class TableBookingServiceImpl implements TableBookingService {
     public void deleteById(Integer id) {
         tableBookingRepository.deleteById(id);
     }
+
+    @Override
+    public void save(TableBookingDto bookingDto) {
+        this.save(mapper.toTableBooking(bookingDto));
+    }
+
+    @Override
+    public TableBookingDto findById(Integer id) {
+        return mapper.toTableBookingDto(tableBookingRepository.getById(id));
+    }
+
+    @Override
+    public void update(Integer id, TableBookingDto bookingDto) {
+        TableBooking booking = tableBookingRepository.findById(id).orElseThrow();
+        mapper.updateTableBookingFromDto(bookingDto, booking);
+        tableBookingRepository.save(booking);
+    }
 }

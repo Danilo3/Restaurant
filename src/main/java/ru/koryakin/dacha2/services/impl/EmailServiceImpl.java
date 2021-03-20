@@ -24,7 +24,7 @@ public class EmailServiceImpl implements EmailService {
     public JavaMailSender getJavaMailSender() {
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("");
-        mailSender.setPort(465);
+        mailSender.setPort(42);
 
 
         mailSender.setUsername("");

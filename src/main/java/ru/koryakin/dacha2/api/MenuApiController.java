@@ -23,27 +23,32 @@ public class MenuApiController {
     }
 
     @GetMapping(value = "/all/")
-    public List<MenuItemDto> getAllMenu(){
+    public List<MenuItemDto> getAllMenu() {
         return menuService.findAll();
     }
 
+    @GetMapping(value = "/{id}")
+    public MenuItemDto getOneById(@PathVariable("id") Integer id) {
+        return menuService.findById(id).orElse(new MenuItemDto());
+    }
+
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String deleteMenuItemById(@PathVariable(name = "id") Integer id){
+    public String deleteMenuItemById(@PathVariable(name = "id") Integer id) {
         menuService.deleteById(id);
         log.info("menu item was deleted");
         return "{\"HttpStatus\": \"ok\"}";
     }
 
     @PatchMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String updateMenuItem(@PathVariable(name = "id") Integer id, @RequestBody MenuItem menuItem) {
-        menuService.save(menuItem);
+    public String updateMenuItem(@PathVariable(name = "id") Integer id, @RequestBody MenuItemDto menuItemDto) {
+        menuService.save(menuItemDto);
         log.info(" menu item was updated");
         return "{\"HttpStatus\": \"ok\"}";
     }
 
     @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<MenuItemDto> createMenuItem(@RequestBody MenuItem menuItem) {
-        menuService.save(menuItem);
+    public List<MenuItemDto> createMenuItem(@RequestBody MenuItemDto menuItemDto) {
+        menuService.save(menuItemDto);
         log.info("menu item was created");
         return menuService.findAll();
     }

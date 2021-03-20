@@ -13,4 +13,9 @@ public interface UserEmailService {
 
     void deleteById(Integer id);
 
+    void save(UserEmailDto userEmailDto);
+
+    UserEmailDto findById(Integer id);
+
+    void update(Integer id, UserEmailDto userEmailDto);
 }

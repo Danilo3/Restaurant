@@ -51,7 +51,7 @@ public class UtilServiceImpl implements UtilService {
                 .toLocalDate();
     }
 
-    public <T> ArrayList<T>  arrayListFromIterable(Iterable<T> iterable) {
+    public <T> ArrayList<T> arrayListFromIterable(Iterable<T> iterable) {
         Iterator<T> iterator = iterable.iterator();
         ArrayList<T> items = new ArrayList<>();
         while (iterator.hasNext()) {
@@ -86,7 +86,7 @@ public class UtilServiceImpl implements UtilService {
         while (iterator.hasNext()) {
             File next = iterator.next();
             Path path = Path.of(next.getPath());
-            imagesUrls.add(imagePrefix  + path.getFileName());
+            imagesUrls.add(imagePrefix + path.getFileName());
         }
         return imagesUrls;
     }

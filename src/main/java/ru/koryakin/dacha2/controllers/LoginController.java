@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LoginController {
 
     @GetMapping(value = {"/login", "/login.html"})
-    public String login(){
+    public String login() {
         log.info("Someone try to login");
         return "login";
     }
